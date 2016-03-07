@@ -1,0 +1,69 @@
+import vtk
+print vtk.VTK_VERSION
+r = vtk.vtkXMLImageDataReader()
+r.SetFileName("/home/stephenh/mixing64x64x128.vti")
+r.Update()
+
+w = vtk.vtkXMLImageDataWriter()
+w.SetInputData(r.GetOutput())
+w.SetFileName("/home/stephenh/zfpout.vti")
+w.SetCompressorTypeToZfp()
+
+print w.GetCompressor()
+w.GetCompressor().SetNx(64)
+w.GetCompressor().SetNy(64)
+w.GetCompressor().SetNz(128)
+
+w.GetCompressor().SetTolerance(1e-4)
+print w.GetCompressor()
+
+w.Write()
+
+
+
+import vtk
+
+ru = vtk.vtkXMLImageDataReader()
+ru.SetFileName("/home/stephenh/zfpout.vti")
+ru.Update()
+
+
+
+
+
+import vtk
+print vtk.VTK_VERSION
+r = vtk.vtkXMLImageDataReader()
+r.SetFileName("/home/stephenh/iso256vel.vti")
+r.Update()
+
+w = vtk.vtkXMLImageDataWriter()
+w.SetInputData(r.GetOutput())
+w.SetFileName("/home/stephenh/zfp-velocity.vti")
+w.SetCompressorTypeToZfp()
+
+
+w.GetCompressor().SetNx(256)
+w.GetCompressor().SetNy(256)
+w.GetCompressor().SetNz(256)
+
+w.GetCompressor().SetTolerance(1e-2)
+w.GetCompressor().SetNumComponents(3)
+print w.GetCompressor()
+
+w.Write()
+
+
+import vtk
+print vtk.VTK_VERSION
+r = vtk.vtkXMLImageDataReader()
+r.SetFileName("/home/stephenh/zfp-velocity256.vti")
+r.Update()
+
+w = vtk.vtkXMLImageDataWriter()
+w.SetInputData(r.GetOutput())
+w.SetFileName("/home/stephenh/zfp-zlibvelocity.vti")
+
+w.Write()
+
+

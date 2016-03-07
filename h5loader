@@ -1,0 +1,26 @@
+import vtk
+import h5py
+import numpy
+from vtk.util import numpy_support
+
+#read in file
+data_file = h5py.File('/home/stephen/Downloads/mhd1024.h5', 'r')
+vel = numpy.array(data_file['u00000'])
+data_file.close()
+
+#convert numpy array to vtk
+
+vtkdata = numpy_support.numpy_to_vtk(vel.flat, deep=True, array_type=vtk.VTK_FLOAT)
+vtkdata.SetNumberOfComponents(3)
+vtkdata.SetName("Velocity")
+image = vtk.vtkImageData()
+image.GetPointData().SetVectors(vtkdata)
+image.SetExtent(0,63,0,63,0,63)
+
+
+w = vtk.vtkXMLImageDataWriter()
+w.SetFileName("mhdout.vti")
+w.SetInputData(image)
+w.Write()
+
+
