@@ -7,16 +7,16 @@ import numpy as np
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:", ["ifile=","ofile=","sx=","ex=","sy=","ez="])
+        opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:d:", ["ifile=","ofile=","sx=","ex=","sy=","ez=","dataset="])
         print opts
     except getopt.GetoptError as err:
-        print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez'
+        print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
         print (str(err))
     print ("Opts are: ")
     print (opts)
     for opt, arg in opts:
         if opt == '-h':
-            print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez'
+            print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
             sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
@@ -34,10 +34,12 @@ def main(argv):
             sz = int(arg)
         elif opt in ("-c", "--ez"):
             ez = int(arg)
+        elif opt in ("-d", "--dataset"):
+            dataset = str(arg)
     print ("Loading h5 file, %s", inputfile)
     #read in file
     data_file = h5py.File(inputfile, 'r')
-    vel = np.array(data_file['b00000'])
+    vel = np.array(data_file[dataset])
     data_file.close()
 
     #convert numpy array to vtk
