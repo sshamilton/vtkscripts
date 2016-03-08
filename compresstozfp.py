@@ -1,0 +1,64 @@
+
+import sys, getopt
+import vtk
+from vtk.util import numpy_support
+import h5py
+import numpy as np
+
+def main(argv):
+    try:
+        opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:", ["ifile=","ofile=","sx=","ex=","sy=","ez="])
+        print opts
+    except getopt.GetoptError as err:
+        print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez'
+        print (str(err))
+    print ("Opts are: ")
+    print (opts)
+    for opt, arg in opts:
+        if opt == '-h':
+            print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez'
+            sys.exit()
+        elif opt in ("-i", "--ifile"):
+            inputfile = arg
+        elif opt in ("-o", "--ofile"):
+            outputfile = arg
+        elif opt in ("-x", "--sx"):
+            sx = int(arg)
+        elif opt in ("-a", "--ex"):
+            ex = int(arg)
+        elif opt in ("-y", "--sy"):
+            sy = int(arg)
+        elif opt in ("-b", "--ey"):
+            ey = int(arg)
+        elif opt in ("-z", "--sz"):
+            sz = int(arg)
+        elif opt in ("-c", "--ez"):
+            ez = int(arg)
+    print ("Loading h5 file, %s", inputfile)
+    #read in file
+    data_file = h5py.File(inputfile, 'r')
+    vel = np.array(data_file['b00000'])
+    data_file.close()
+
+    #convert numpy array to vtk
+    vtkdata = numpy_support.numpy_to_vtk(vel.flat, deep=True, array_type=vtk.VTK_FLOAT)
+    vtkdata.SetNumberOfComponents(3)
+    vtkdata.SetName("Velocity")
+    image = vtk.vtkImageData()
+    image.GetPointData().SetVectors(vtkdata)
+    image.SetExtent(sx,ex,sy,ey,sz,ez)
+
+    w = vtk.vtkXMLImageDataWriter()
+    w.SetCompressorTypeToZfp()
+    w.GetCompressor().SetNx(ex-sx+1)
+    w.GetCompressor().SetNy(ey-sy+1)
+    w.GetCompressor().SetNz(ez-sz+1)
+    w.GetCompressor().SetTolerance(1e-1)
+    w.GetCompressor().SetNumComponents(3)
+    import pdb;pdb.set_trace()
+    w.SetFileName(outputfile)
+    w.SetInputData(image)
+    w.Write()
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
