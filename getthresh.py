@@ -9,12 +9,9 @@ import timeit
 def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:d:u:", ["ifile=","ofile=","sx=","ex=","sy=","ez=","dataset=","comp="])
-        print opts
     except getopt.GetoptError as err:
         print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset -comptype'
         print (str(err))
-    print ("Opts are: ")
-    print (opts)
     for opt, arg in opts:
         if opt == '-h':
             print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
@@ -39,13 +36,19 @@ def main(argv):
             dataset = str(arg)
         elif opt in ("-u", "--du"):
             comptype = str(arg)
-    print ("Loading h5 file, %s" % inputfile)
-    #read in file
-    rs = timeit.default_timer()
-    data_file = h5py.File(inputfile, 'r')
-    vel = np.array(data_file[dataset])
-    data_file.close()
-    re = timeit.default_timer()
+    print ("Loading file, %s" % inputfile)
+    #Determine if file is h5 or numpy
+    if (inputfile.split(".")[1] == "npy"):
+        rs = timeit.default_timer()
+        vel = np.load(inputfile)
+        re = timeit.default_timer()
+    else:
+        #read in file
+        rs = timeit.default_timer()
+        data_file = h5py.File(inputfile, 'r')
+        vel = np.array(data_file[dataset])
+        data_file.close()
+        re = timeit.default_timer()
 
     cs = timeit.default_timer()
     #convert numpy array to vtk

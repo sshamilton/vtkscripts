@@ -2596,3 +2596,67 @@ Write 28.5715560913
 Total time: 248.46591115
 
 
+ZFP Compression 512 cube Isotropic:
+H5 file size: 1418990720
+Final size:    177244261
+Read time: 39.5545210838
+Convert to vtk: 0.967512130737
+Write 47.5459749699
+Total time: 88.0680100918
+
+
+Loading h5 file, mhd2-000.h5
+H5 file size: 1439939264
+Final size:    113517413
+Read time: 40.0918529034
+Convert to vtk: 0.96529006958
+Write 41.8947460651
+Total time: 82.9518890381
+
+
+Convert h5 to numpy:
+Loading h5 file, iso2-111.h5
+H5 file size: 1426791248
+Read time: 20.2406129837
+Write time: 0.798268079758
+Total time: 21.0388810635
+
+
+compress iso 512 using numpy array load:
+Original File, iso2-111.npy
+Final size of vti: 189246277
+Read time: 0.808709144592
+Convert to vtk: 0.973588943481
+Write 47.3705420494
+Total time: 49.1528410912
+
+qcriterion 512 iso numpy array load:
+Results:
+Read time: 0.736708879471
+Convert to vtk: 0.895009040833
+Vorticity Computation: 122.983864069
+Vorticity Magnitude: 50.6828529835
+Threshold: 8.00613498688
+Write 28.7349100113
+Total time: 212.039614916
+
+#Attempting to use vtk with mpi support.  
+Results:
+Read time: 39.2799890041
+Convert to vtk: 0.677703857422
+Vorticity Computation: 134.497229099
+Vorticity Magnitude: 50.6949129105
+Threshold: 8.08525395393
+Write 28.3797888756
+Total time: 261.615017891
+
+#using numpy array
+Read time: 2.76741194725
+Convert to vtk: 0.69943189621
+Vorticity Computation: 121.933952093
+Vorticity Magnitude: 50.6641490459
+Threshold: 7.9095761776
+Write 28.6959528923
+Total time: 212.670665979
+
+
