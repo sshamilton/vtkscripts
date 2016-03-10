@@ -8,10 +8,10 @@ import timeit
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:d:", ["ifile=","ofile=","sx=","ex=","sy=","ez=","dataset="])
+        opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:d:u:", ["ifile=","ofile=","sx=","ex=","sy=","ez=","dataset=","comp="])
         print opts
     except getopt.GetoptError as err:
-        print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
+        print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset -comptype'
         print (str(err))
     print ("Opts are: ")
     print (opts)
@@ -37,7 +37,9 @@ def main(argv):
             ez = int(arg)
         elif opt in ("-d", "--dataset"):
             dataset = str(arg)
-    print ("Loading h5 file, %s", inputfile)
+        elif opt in ("-u", "--du"):
+            comptype = str(arg)
+    print ("Loading h5 file, %s" % inputfile)
     #read in file
     rs = timeit.default_timer()
     data_file = h5py.File(inputfile, 'r')
@@ -53,16 +55,27 @@ def main(argv):
     image = vtk.vtkImageData()
     image.GetPointData().SetVectors(vtkdata)
     image.SetExtent(sx,ex,sy,ey,sz,ez)
+    #NOTE: Hardcoding Spacing
+
+    image.SetSpacing(.006135923, .006135923, .006135923)
+    print ("Doing q or vort computation")
     ce = timeit.default_timer()
-
     vs = timeit.default_timer()
-    vorticity = vtk.vtkCellDerivatives()
-    vorticity.SetVectorModeToComputeVorticity()
-    vorticity.SetTensorModeToPassTensors()
-    vorticity.SetInputData(image)
-    vorticity.Update()
+    if (comptype == "v"):
+        vorticity = vtk.vtkCellDerivatives()
+        vorticity.SetVectorModeToComputeVorticity()
+        vorticity.SetTensorModeToPassTensors()
+        vorticity.SetInputData(image)
+        vorticity.Update()
+    elif (comptype == "q"):
+        vorticity = vtk.vtkGradientFilter()
+        vorticity.SetInputData(image)
+        vorticity.SetInputScalars(image.FIELD_ASSOCIATION_POINTS,"Velocity")
+        vorticity.ComputeQCriterionOn()
+        vorticity.SetComputeGradient(0)
+        vorticity.Update()
     ve = timeit.default_timer()
-
+    print ("Generating magnitude")
     ms = timeit.default_timer()
     mag = vtk.vtkImageMagnitude()
     cp = vtk.vtkCellDataToPointData()
@@ -73,6 +86,7 @@ def main(argv):
     mag.Update()
     me = timeit.default_timer()
 
+    print ("Thresholding.")
     #Remove dense velocity field
     m = mag.GetOutput()
     m.GetPointData().RemoveArray("Velocity")
@@ -82,6 +96,8 @@ def main(argv):
     t.SetInputData(m)
     t.SetInputArrayToProcess(0,0,0, mag.GetOutput().FIELD_ASSOCIATION_POINTS, "Magnitude")
     t.ThresholdByUpper(89.58) #44.79)
+    if (comptype == "q"):
+        t.ThresholdByUpper(7.0)
     #Set values in range to 1 and values out of range to 0
     t.SetInValue(1)
     t.SetOutValue(0)

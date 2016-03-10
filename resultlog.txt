@@ -1,0 +1,2598 @@
+256 Cube threshold mhd shared drive:
+Read time: 4.97810292244
+Convert to vtk: 0.0721459388733
+Vorticity Computation: 23.6566569805
+Vorticity Magnitude: 10.1191530228
+Threshold: 1.05151295662
+Write 3.5101890564
+
+
+512 cube threshold nvme isotropic 89.58 threshold
+Read time: 39.6942210197
+Convert to vtk: 0.647169828415
+Vorticity Computation: 189.905949116
+Vorticity Magnitude: 82.0918221474
+Threshold: 8.19452500343
+Write 28.7468001842
+Total time: 349.280565977
+
+256 cube threshold nvme mhd 89.58 threshold
+Results:
+Read time: 4.96241784096
+Convert to vtk: 0.0713801383972
+Vorticity Computation: 24.101954937
+Vorticity Magnitude: 10.1120381355
+Threshold: 1.04190182686
+Write 3.49079298973
+Total time: 43.7805659771
+
+64 cube threshold nvme iso 89.58 threshold
+Read time: 0.126072883606
+Convert to vtk: 0.00123810768127
+Vorticity Computation: 0.459278106689
+Vorticity Magnitude: 0.185799837112
+Threshold: 0.0283710956573
+Write 0.0623919963837
+Total time: 0.863195896149
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+64 cube Q criterion 1.0:
+Results:
+Read time: 0.124482870102
+Convert to vtk: 0.00119996070862
+Vorticity Computation: 0.29135799408
+Vorticity Magnitude: 0.12212395668
+Threshold: 0.033567905426
+Write 0.0730020999908
+Total time: 0.645781993866
+
+256 cube:
+Results:
+Read time: 4.94970989227
+Convert to vtk: 0.0715909004211
+Vorticity Computation: 15.2038547993
+Vorticity Magnitude: 6.31810593605
+Threshold: 1.02719783783
+Write 3.80814886093
+Total time: 31.3786878586
+
+512 cube:
+Results:
+Read time: 39.1232938766
+Convert to vtk: 0.612878084183
+Vorticity Computation: 121.993913889
+Vorticity Magnitude: 50.6227509975
+Threshold: 5.2501270771
+Write 106.883919954
+Total time: 324.486959934
+
+512 cube 7.0 q:
+Results:
+Read time: 38.8740570545
+Convert to vtk: 0.60747218132
+Vorticity Computation: 121.986984015
+Vorticity Magnitude: 50.5426168442
+Threshold: 7.8831140995
+Write 28.5715560913
+Total time: 248.46591115
+
+
