@@ -5,37 +5,19 @@ from vtk.util import numpy_support
 import h5py
 import numpy as np
 import timeit
+from multiprocessing import Pool
 
-def main(argv):
-    try:
-        opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:d:u:", ["ifile=","ofile=","sx=","ex=","sy=","ez=","dataset=","comp="])
-    except getopt.GetoptError as err:
-        print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset -comptype'
-        print (str(err))
-    for opt, arg in opts:
-        if opt == '-h':
-            print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
-            sys.exit()
-        elif opt in ("-i", "--ifile"):
-            inputfile = arg
-        elif opt in ("-o", "--ofile"):
-            outputfile = arg
-        elif opt in ("-x", "--sx"):
-            sx = int(arg)
-        elif opt in ("-a", "--ex"):
-            ex = int(arg)
-        elif opt in ("-y", "--sy"):
-            sy = int(arg)
-        elif opt in ("-b", "--ey"):
-            ey = int(arg)
-        elif opt in ("-z", "--sz"):
-            sz = int(arg)
-        elif opt in ("-c", "--ez"):
-            ez = int(arg)
-        elif opt in ("-d", "--dataset"):
-            dataset = str(arg)
-        elif opt in ("-u", "--du"):
-            comptype = str(arg)
+def getthresh(args):
+    inputfile = args[0] 
+    outputfile = args[1]
+    sx = args[2]
+    ex = args[3]
+    sy = args[4]
+    ey = args[5]
+    sz = args[6]
+    ez = args[7]
+    dataset = args[8]
+    comptype = args[9]
     print ("Loading file, %s" % inputfile)
     #Determine if file is h5 or numpy
     if (inputfile.split(".")[1] == "npy"):
@@ -98,7 +80,7 @@ def main(argv):
     #t = vtk.vtkThreshold() #sparse representation
     t.SetInputData(m)
     t.SetInputArrayToProcess(0,0,0, mag.GetOutput().FIELD_ASSOCIATION_POINTS, "Magnitude")
-    t.ThresholdByUpper(44.79) #44.79)
+    t.ThresholdByUpper(89.48) #44.79)
     if (comptype == "q"):
         t.ThresholdByUpper(7.0)
     #Set values in range to 1 and values out of range to 0
@@ -154,7 +136,50 @@ def main(argv):
     print ("Total time: %s" % str(we-rs))
     #Try unstructured grid
     #wu = vtk.vtkXMLUnstructuredGridWriter()
-   
+
+def main(argv):
+    try:
+        opts, args = getopt.getopt(argv,"hi:o:x:a:y:b:z:c:d:u:", ["ifile=","ofile=","sx=","ex=","sy=","ez=","dataset=","comp="])
+    except getopt.GetoptError as err:
+        print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset -comptype'
+        print (str(err))
+    for opt, arg in opts:
+        if opt == '-h':
+            print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
+            sys.exit()
+        elif opt in ("-i", "--ifile"):
+            inputfile = arg
+        elif opt in ("-o", "--ofile"):
+            outputfile = arg
+        elif opt in ("-x", "--sx"):
+            sx = int(arg)
+        elif opt in ("-a", "--ex"):
+            ex = int(arg)
+        elif opt in ("-y", "--sy"):
+            sy = int(arg)
+        elif opt in ("-b", "--ey"):
+            ey = int(arg)
+        elif opt in ("-z", "--sz"):
+            sz = int(arg)
+        elif opt in ("-c", "--ez"):
+            ez = int(arg)
+        elif opt in ("-d", "--dataset"):
+            dataset = str(arg)
+        elif opt in ("-u", "--du"):
+            comptype = str(arg)
+
+    cubes = 6
+    args = []
+    for i in range(1,cubes+1):
+        inputfile = "iso256cube" + str(i) + ".npy"
+        outputfile = "iso256cube" + str(i) + ".vti"
+        args.append([inputfile, outputfile, sx, ex, sy, ey, sz, ez, dataset, comptype])
+
+    p = Pool(cubes)
+    p.map(getthresh, args)
+
+    #getthresh(inputfile, outputfile, sx, ex, sy, ey, sz, ez, dataset, comptype)
+    print("Complete")  
 
 if __name__ == "__main__":
     main(sys.argv[1:])

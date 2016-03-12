@@ -1,0 +1,844 @@
+Day 2.  Metrics for 256 cube cutout.
+
+Results:
+Read time: 0.14671087265
+Convert to vtk: 0.149389982224
+Vorticity Computation: 15.6213750839
+Vorticity Magnitude: 6.39204096794
+Threshold: 1.03914093971
+Write 3.5285680294
+Total time: 26.8773698807
+
+Read time: 0.147685050964
+Convert to vtk: 0.146216869354
+Vorticity Computation: 24.4508070946
+Vorticity Magnitude: 10.3190190792
+Threshold: 1.06310892105
+Write 4.12950396538
+Total time: 40.2564849854
+
+Read time: 0.150989055634
+Convert to vtk: 0.146366119385
+Q Computation: 15.6988480091
+Q Magnitude: 6.39709496498
+Threshold: 1.05090999603
+Write 3.50768017769
+Total time: 26.9528801441
+
+*******
+First run of 16 parallel
+Results:
+Read time: 0.290829181671
+Convert to vtk: 0.318332910538
+Q Computation: 36.0686211586
+Q Magnitude: 14.6817669868
+Threshold: 5.63367795944
+Write 15.5296750069
+Total time: 72.5230472088
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2a00be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.294418096542
+Convert to vtk: 0.253726959229
+Q Computation: 37.1701769829
+Q Magnitude: 16.2874159813
+Threshold: 5.16347193718
+Write 14.0973799229
+Total time: 73.266726017
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x4025c10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.39107298851
+Convert to vtk: 0.493240118027
+Q Computation: 35.617552042
+Q Magnitude: 15.8172059059
+Threshold: 5.73242497444
+Write 15.1262290478
+Total time: 73.1929080486
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x26efc10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.468137979507
+Convert to vtk: 0.242725133896
+Q Computation: 35.8651320934
+Q Magnitude: 15.0575389862
+Threshold: 5.90763688087
+Write 15.8579127789
+Total time: 73.3992388248
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x36c4be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.269576072693
+Convert to vtk: 0.242340803146
+Q Computation: 37.2968189716
+Q Magnitude: 15.5184669495
+Threshold: 5.46069502831
+Write 15.3483810425
+Total time: 74.1364321709
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x26ebbe0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.300868034363
+Convert to vtk: 0.413146018982
+Q Computation: 37.4186000824
+Q Magnitude: 16.1479029655
+Threshold: 4.99478197098
+Write 14.714673996
+Total time: 73.9901230335
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x331dbe0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.294420957565
+Convert to vtk: 0.365694999695
+Q Computation: 37.8656988144
+Q Magnitude: 17.7575440407
+Threshold: 4.12465596199
+Write 13.4833209515
+Total time: 73.8914878368
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2cbabe0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.260571956635
+Convert to vtk: 0.289222002029
+Q Computation: 38.8488090038
+Q Magnitude: 21.4483571053
+Threshold: 4.98680400848
+Write 9.1225810051
+Total time: 74.956485033
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3832be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.435038805008
+Convert to vtk: 0.254958868027
+Q Computation: 38.4493720531
+Q Magnitude: 20.4053781033
+Threshold: 4.78225493431
+Write 10.4477231503
+Total time: 74.7815229893
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2d4bbe0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.393221139908
+Convert to vtk: 0.224092960358
+Q Computation: 37.8230941296
+Q Magnitude: 21.5778169632
+Threshold: 5.21828198433
+Write 9.69634985924
+Total time: 74.9329960346
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x286dc10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.518395185471
+Convert to vtk: 0.396137952805
+Q Computation: 36.7449429035
+Q Magnitude: 19.978386879
+Threshold: 4.4181368351
+Write 13.1130728722
+Total time: 75.1692240238
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2511be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.451709032059
+Convert to vtk: 0.395646095276
+Q Computation: 38.5484309196
+Q Magnitude: 25.7222571373
+Threshold: 3.6815328598
+Write 6.77422904968
+Total time: 75.5739679337
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x330dbe0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.450227975845
+Convert to vtk: 0.275506019592
+Q Computation: 39.4312298298
+Q Magnitude: 23.1500790119
+Threshold: 4.6691699028
+Write 7.72482395172
+Total time: 75.7011768818
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2cd4be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.52376294136
+Convert to vtk: 0.211870908737
+Q Computation: 39.6615071297
+Q Magnitude: 22.7164628506
+Threshold: 4.47940182686
+Write 8.09080314636
+Total time: 75.6942400932
+**********************Final Total time: 81.2058031559
+(venv)[randalburns@cn119 nvme1]$ Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3518be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.328995943069
+Convert to vtk: 0.397675037384
+Q Computation: 39.4833230972
+Q Magnitude: 22.8301980495
+Threshold: 4.65102982521
+Write 8.30447888374
+Total time: 76.0022289753
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2946be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.438352823257
+Convert to vtk: 0.304132938385
+Q Computation: 41.3464488983
+Q Magnitude: 26.1507630348
+Threshold: 2.84879302979
+Write 5.81180214882
+Total time: 76.9004449844
+
+*************************
+2nd run 8 parallel
+Results:
+Read time: 0.805307149887
+Convert to vtk: 0.207751989365
+Q Computation: 16.6210620403
+Q Magnitude: 6.91913104057
+Threshold: 3.59436607361
+Write 4.04776406288
+Total time: 32.1955010891
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2238c10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.852061033249
+Convert to vtk: 0.189367055893
+Q Computation: 16.6358931065
+Q Magnitude: 6.98004198074
+Threshold: 3.51713609695
+Write 4.02166795731
+Total time: 32.1963140965
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2c07ca0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.848572969437
+Convert to vtk: 0.192882061005
+Q Computation: 16.674986124
+Q Magnitude: 7.1630718708
+Threshold: 3.42162179947
+Write 5.32170915604
+Total time: 33.6229810715
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x269fc10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.854000091553
+Convert to vtk: 0.230418920517
+Q Computation: 16.681650877
+Q Magnitude: 7.35126590729
+Threshold: 3.29335784912
+Write 5.29038095474
+Total time: 33.7012190819
+**********************Final Total time: 38.4072339535
+(venv)[randalburns@cn119 nvme1]$ Thresholding.
+Thresholding.
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x29010b0): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x23f28a0): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Thresholding.
+Thresholding.
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x39cefa0): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x3fa78a0): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x29010b0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.834800958633
+Convert to vtk: 0.225042819977
+Q Computation: 29.0509021282
+Q Magnitude: 6.81034994125
+Threshold: 1.85438609123
+Write 4.85003089905
+Total time: 43.6256489754
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x23f28a0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.841928958893
+Convert to vtk: 0.189166069031
+Q Computation: 29.2500729561
+Q Magnitude: 6.93996191025
+Threshold: 1.74505496025
+Write 4.78870010376
+Total time: 43.7550299168
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x39cefa0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.849878072739
+Convert to vtk: 0.243077993393
+Q Computation: 30.4797961712
+Q Magnitude: 8.19497704506
+Threshold: 1.86535310745
+Write 3.76289010048
+Total time: 45.3961231709
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3fa78a0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.818736076355
+Convert to vtk: 0.240091085434
+Q Computation: 30.7523169518
+Q Magnitude: 8.32690191269
+Threshold: 1.69994997978
+Write 3.64010691643
+Total time: 45.4782569408
+
+************************
+12 processes
+
+Results:
+Read time: 0.32120680809
+Convert to vtk: 0.259004831314
+Q Computation: 28.2233541012
+Q Magnitude: 11.3713610172
+Threshold: 9.01254916191
+Write 7.1989428997
+Total time: 56.3865778446
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3732be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.324271917343
+Convert to vtk: 0.257305145264
+Q Computation: 28.3522510529
+Q Magnitude: 11.6174139977
+Threshold: 8.84240198135
+Write 7.02525496483
+Total time: 56.4190459251
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x33d3be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.578783988953
+Convert to vtk: 0.171377182007
+Q Computation: 28.2232499123
+Q Magnitude: 11.8332049847
+Threshold: 8.632791996
+Write 7.12773895264
+Total time: 56.5672910213
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2698c10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.568791866302
+Convert to vtk: 0.172732830048
+Q Computation: 28.2666628361
+Q Magnitude: 12.0126769543
+Threshold: 8.57400202751
+Write 7.15150499344
+Total time: 56.7465679646
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2403be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.321131944656
+Convert to vtk: 0.275749921799
+Q Computation: 28.6171491146
+Q Magnitude: 14.0506279469
+Threshold: 6.9622130394
+Write 6.55206203461
+Total time: 56.7792778015
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2536be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.314237117767
+Convert to vtk: 0.254776954651
+Q Computation: 28.2324771881
+Q Magnitude: 11.416079998
+Threshold: 9.1005589962
+Write 7.43839907646
+Total time: 56.7566540241
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x208cc10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.587641000748
+Convert to vtk: 0.192885875702
+Q Computation: 28.5915031433
+Q Magnitude: 15.4544250965
+Threshold: 5.59895896912
+Write 6.3831050396
+Total time: 56.8086719513
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x30e8be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.327018022537
+Convert to vtk: 0.25554394722
+Q Computation: 28.6465229988
+Q Magnitude: 14.3346328735
+Threshold: 6.67239904404
+Write 6.61740398407
+Total time: 56.8538489342
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3e67c10): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.246590852737
+Convert to vtk: 0.203084945679
+Q Computation: 28.4877710342
+Q Magnitude: 12.5645849705
+Threshold: 8.25457596779
+Write 7.12755799294
+Total time: 56.8843178749
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x27b7be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.563186168671
+Convert to vtk: 0.202476024628
+Q Computation: 28.2991468906
+Q Magnitude: 12.1755750179
+Threshold: 8.58858799934
+Write 7.14138007164
+Total time: 56.9705181122
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2e5dbe0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.307000875473
+Convert to vtk: 0.235316038132
+Q Computation: 28.6018490791
+Q Magnitude: 13.5110599995
+Threshold: 7.51938796043
+Write 6.77143216133
+Total time: 56.9462070465
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2328be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.317045927048
+Convert to vtk: 0.261905908585
+Q Computation: 28.6121170521
+Q Magnitude: 13.723099947
+Threshold: 7.27515602112
+Write 6.82238101959
+Total time: 57.0118639469
+**********************Final Total time: 61.1988179684
+
+
+One process
+
+Read time: 0.16015291214
+Convert to vtk: 0.150802850723
+Q Computation: 15.5266649723
+Q Magnitude: 6.38629508018
+Threshold: 1.0399210453
+Write 3.67685103416
+Total time: 26.9408540726
+**********************Final Total time: 29.7928340435
+
+Four processes
+
+Results:
+Read time: 0.176903963089
+Convert to vtk: 0.162549972534
+Q Computation: 16.0255720615
+Q Magnitude: 6.6468629837
+Threshold: 3.16782593727
+Write 3.71142983437
+Total time: 29.8912808895
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x292e8a0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.183921813965
+Convert to vtk: 0.161251068115
+Q Computation: 16.0840489864
+Q Magnitude: 6.75038504601
+Threshold: 2.96727204323
+Write 3.84202504158
+Total time: 29.9890480042
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x287a8a0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.178798913956
+Convert to vtk: 0.158853054047
+Q Computation: 16.0856130123
+Q Magnitude: 6.82627105713
+Threshold: 2.94316601753
+Write 3.8150780201
+Total time: 30.0078940392
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x28788a0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.17689704895
+Convert to vtk: 0.160574197769
+Q Computation: 16.013646841
+Q Magnitude: 8.24253797531
+Threshold: 1.91699910164
+Write 3.68280696869
+Total time: 30.1936230659
+**********************Final Total time: 32.9311599731
+
+
+6 Processes (last two seem slow):
+
+Results:
+Read time: 0.202793836594
+Convert to vtk: 0.174567937851
+Q Computation: 16.6568598747
+Q Magnitude: 6.91259789467
+Threshold: 3.37557315826
+Write 3.83450198174
+Total time: 31.1570589542
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3cb1be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.202172994614
+Convert to vtk: 0.17989397049
+Q Computation: 16.6912710667
+Q Magnitude: 7.05728602409
+Threshold: 3.24857401848
+Write 3.88144111633
+Total time: 31.2607600689
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3109c70): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.197039842606
+Convert to vtk: 0.179600954056
+Q Computation: 16.6982159615
+Q Magnitude: 6.9897840023
+Threshold: 3.30819010735
+Write 3.96136689186
+Total time: 31.3343338966
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3684be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.155766010284
+Convert to vtk: 0.152829170227
+Q Computation: 16.6711030006
+Q Magnitude: 8.16132807732
+Threshold: 2.09193181992
+Write 3.8145108223
+Total time: 31.0476119518
+Thresholding.
+Thresholding.
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x3a38fb0): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x2ba58a0): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3a38fb0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.187137842178
+Convert to vtk: 0.180322885513
+Q Computation: 23.4830729961
+Q Magnitude: 9.38057303429
+Threshold: 1.69845890999
+Write 3.67805981636
+Total time: 38.6077778339
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2ba58a0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.155328035355
+Convert to vtk: 0.152485132217
+Q Computation: 23.5695309639
+Q Magnitude: 9.23625206947
+Threshold: 1.60835194588
+Write 3.60856699944
+Total time: 38.3356060982
+**********************Final Total time: 41.4358041286
+
+
+
+5
+Results:
+Read time: 0.190768957138
+Convert to vtk: 0.169549942017
+Q Computation: 16.6965379715
+Q Magnitude: 7.09299612045
+Threshold: 3.60746097565
+Write 3.91939210892
+Total time: 31.6768569946
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3e1f8a0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.188895940781
+Convert to vtk: 0.166221141815
+Q Computation: 16.6595270634
+Q Magnitude: 6.94176316261
+Threshold: 3.89441990852
+Write 3.83289504051
+Total time: 31.6838479042
+**********************Final Total time: 34.479072094
+(venv)[randalburns@cn119 nvme1]$ Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2c7c870): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.185769081116
+Convert to vtk: 0.167116880417
+Q Computation: 16.6628007889
+Q Magnitude: 6.93896985054
+Threshold: 3.83119416237
+Write 4.02522683144
+Total time: 31.8112208843
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x30f98d0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.189406871796
+Convert to vtk: 0.170950174332
+Q Computation: 16.696117878
+Q Magnitude: 7.0638229847
+Threshold: 3.8096511364
+Write 3.99658489227
+Total time: 31.926666975
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2ccd8d0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.18994808197
+Convert to vtk: 0.16871213913
+Q Computation: 16.7036340237
+Q Magnitude: 8.97096800804
+Threshold: 2.17802596092
+Write 3.83152699471
+Total time: 32.0429480076
+
+******************************
+12 cubes using multiprocessing instead of subprocess
+Results:
+Read time: 0.321751117706
+Convert to vtk: 0.288816928864
+Q Computation: 28.4520959854
+Q Magnitude: 11.5734632015
+Threshold: 8.98696923256
+Write 7.15806388855
+Total time: 56.7813220024
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d4ec0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.303148031235
+Convert to vtk: 0.275688886642
+Q Computation: 28.6443939209
+Q Magnitude: 12.1273579597
+Threshold: 8.76400709152
+Write 6.85030198097
+Total time: 56.9650669098
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d7de0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.357716083527
+Convert to vtk: 0.26704287529
+Q Computation: 28.452586174
+Q Magnitude: 11.6578979492
+Threshold: 9.1680598259
+Write 7.15720295906
+Total time: 57.0606510639
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d5730): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.32865190506
+Convert to vtk: 0.281543016434
+Q Computation: 28.707285881
+Q Magnitude: 12.6121580601
+Threshold: 8.02038216591
+Write 7.17008590698
+Total time: 57.1202709675
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d7770): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.359444856644
+Convert to vtk: 0.26247882843
+Q Computation: 28.4654099941
+Q Magnitude: 11.6404008865
+Threshold: 9.06955599785
+Write 7.3322789669
+Total time: 57.1297309399
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d7160): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.328042984009
+Convert to vtk: 0.276053905487
+Q Computation: 28.7625229359
+Q Magnitude: 13.9661741257
+Threshold: 7.02243304253
+Write 6.87865304947
+Total time: 57.2340419292
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d5e00): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.321412086487
+Convert to vtk: 0.286706209183
+Q Computation: 28.4892890453
+Q Magnitude: 11.7648370266
+Threshold: 9.06854104996
+Write 7.31884121895
+Total time: 57.2497692108
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d91d0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.301059007645
+Convert to vtk: 0.289062023163
+Q Computation: 28.8640680313
+Q Magnitude: 14.2907271385
+Threshold: 6.75726985931
+Write 6.8318169117
+Total time: 57.3341698647
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d9840): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.323529005051
+Convert to vtk: 0.270051002502
+Q Computation: 28.856730938
+Q Magnitude: 14.1835231781
+Threshold: 6.89824795723
+Write 6.89118695259
+Total time: 57.4234259129
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d84f0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.314414024353
+Convert to vtk: 0.286562919617
+Q Computation: 28.8728461266
+Q Magnitude: 14.4416890144
+Threshold: 6.77023792267
+Write 6.74857211113
+Total time: 57.4346661568
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d67d0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.332458972931
+Convert to vtk: 0.279359817505
+Q Computation: 28.896625042
+Q Magnitude: 14.4253048897
+Threshold: 6.82502388954
+Write 6.68682599068
+Total time: 57.44592309
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x35d8b60): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.308840036392
+Convert to vtk: 0.293477058411
+Q Computation: 28.8582248688
+Q Magnitude: 14.1653311253
+Threshold: 7.12562203407
+Write 6.73753404617
+Total time: 57.4894080162
+Complete
+
+
+**********
+6 cubes
+Results:
+Read time: 0.191617965698
+Convert to vtk: 0.173769950867
+Q Computation: 16.5959858894
+Q Magnitude: 6.98624897003
+Threshold: 3.35892391205
+Write 3.85006690025
+Total time: 31.1567630768
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3f0ab00): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.171582937241
+Convert to vtk: 0.174651145935
+Q Computation: 16.6138129234
+Q Magnitude: 6.98521113396
+Threshold: 3.35889291763
+Write 3.87787508965
+Total time: 31.1821820736
+Thresholding.
+Thresholding.
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3dbf750): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.176322221756
+Convert to vtk: 0.173295974731
+Q Computation: 16.6483659744
+Q Magnitude: 7.01740598679
+Threshold: 3.33305215836
+Write 4.32338094711
+Total time: 31.6719501019
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x3dbe680): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 692
+vtkXMLImageDataWriter (0x3dbf9e0): Block size not changed.   class name was: vtkZLibDataCompressor
+
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3dbea70): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.17943406105
+Convert to vtk: 0.170403957367
+Q Computation: 16.613257885
+Q Magnitude: 7.0548491478
+Threshold: 3.32119011879
+Write 6.44122695923
+Total time: 33.7804510593
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3dbe680): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.181114912033
+Convert to vtk: 0.175080060959
+Q Computation: 19.8112690449
+Q Magnitude: 11.0160589218
+Threshold: 1.84915685654
+Write 3.68654704094
+Total time: 36.7194108963
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x3dbf9e0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.194033145905
+Convert to vtk: 0.171131849289
+Q Computation: 19.9620289803
+Q Magnitude: 11.0535061359
+Threshold: 1.78726506233
+Write 3.69924211502
+Total time: 36.8673651218
+Complete
+
+
+
