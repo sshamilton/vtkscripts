@@ -841,4 +841,174 @@ Total time: 36.8673651218
 Complete
 
 
+***********************************
+Using release vtk
+
+Results:
+Read time: 0.184080839157
+Convert to vtk: 0.17867398262
+Q Computation: 6.66051101685
+Q Magnitude: 1.77935791016
+Threshold: 1.72375702858
+Write 1.24344301224
+Total time: 11.7699289322
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2ef7be0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.184203147888
+Convert to vtk: 0.17373585701
+Q Computation: 6.66065192223
+Q Magnitude: 1.84572792053
+Threshold: 1.71835803986
+Write 1.20955491066
+Total time: 11.7923569679
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2ef9610): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.17818403244
+Convert to vtk: 0.174991130829
+Q Computation: 6.69373297691
+Q Magnitude: 1.84947896004
+Threshold: 1.68271517754
+Write 1.21988081932
+Total time: 11.799120903
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2ef8860): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.184010028839
+Convert to vtk: 0.173593997955
+Q Computation: 6.6596698761
+Q Magnitude: 1.8611330986
+Threshold: 1.72928714752
+Write 1.21614003181
+Total time: 11.8239729404
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2ef6fd0): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.181133031845
+Convert to vtk: 0.17538690567
+Q Computation: 6.7241871357
+Q Magnitude: 1.96763181686
+Threshold: 1.59461808205
+Write 1.1852118969
+Total time: 11.8282740116
+Warning: In /home/randalburns/ssh/vtk-source/IO/XML/vtkXMLWriter.cxx, line 961
+vtkXMLImageDataWriter (0x2ef9000): Closing file with tag and optional zfp info
+
+Results:
+Read time: 0.177585840225
+Convert to vtk: 0.174820184708
+Q Computation: 6.76468896866
+Q Magnitude: 2.25000286102
+Threshold: 1.31998300552
+Write 1.19001317024
+Total time: 11.877218008
+Complete
+
+***************2nd run
+Results:
+Read time: 0.185086965561
+Convert to vtk: 0.178885936737
+Q Computation: 6.66538500786
+Q Magnitude: 1.81018805504
+Threshold: 1.19313597679
+Write 1.62669014931
+Total time: 11.6594860554
+Results:
+Read time: 0.190018892288
+Convert to vtk: 0.173870801926
+Q Computation: 6.65983915329
+Q Magnitude: 1.77214789391
+Threshold: 1.20157718658
+Write 1.73972702026
+Total time: 11.7373080254
+Results:
+Read time: 0.192864894867
+Convert to vtk: 0.17857503891
+Q Computation: 6.71914887428
+Q Magnitude: 1.87307691574
+Threshold: 1.14667487144
+Write 1.63581585884
+Total time: 11.746270895
+Results:
+Read time: 0.190272092819
+Convert to vtk: 0.175289154053
+Q Computation: 6.8180949688
+Q Magnitude: 2.3348929882
+Threshold: 0.716636180878
+Write 1.71752285957
+Total time: 11.9528200626
+Results:
+Read time: 0.185394048691
+Convert to vtk: 0.174957036972
+Q Computation: 6.70641899109
+Q Magnitude: 3.44396209717
+Threshold: 0.791843891144
+Write 1.16691398621
+Total time: 12.4695940018
+Results:
+Read time: 0.191977024078
+Convert to vtk: 0.179074048996
+Q Computation: 6.74428796768
+Q Magnitude: 3.63057017326
+Threshold: 0.647505998611
+Write 1.13119292259
+Total time: 12.5247178078
+Complete
+
+
+******* Trying Vorticity *******
+Read time: 0.18191409111
+Convert to vtk: 0.18113899231
+Vorticity Computation: 6.02838897705
+Vorticity Magnitude: 3.03923416138
+Threshold: 1.39737391472
+Write 2.40655303001
+Total time: 13.234855175
+Results:
+Read time: 0.181088924408
+Convert to vtk: 0.195094823837
+Vorticity Computation: 6.05745387077
+Vorticity Magnitude: 3.13601398468
+Threshold: 1.36792898178
+Write 2.39480113983
+Total time: 13.3325231075
+Results:
+Read time: 0.18737411499
+Convert to vtk: 0.178560972214
+Vorticity Computation: 6.06695389748
+Vorticity Magnitude: 3.12080478668
+Threshold: 1.38941597939
+Write 2.46136593819
+Total time: 13.4048130512
+Results:
+Read time: 0.180773973465
+Convert to vtk: 0.18217587471
+Vorticity Computation: 6.05291199684
+Vorticity Magnitude: 3.11659193039
+Threshold: 1.39883303642
+Write 2.56374907494
+Total time: 13.4951651096
+Results:
+Read time: 0.182279109955
+Convert to vtk: 0.180729866028
+Vorticity Computation: 7.99895501137
+Vorticity Magnitude: 4.7210650444
+Threshold: 0.827414989471
+Write 2.06890082359
+Total time: 15.979501009
+Results:
+Read time: 0.182690858841
+Convert to vtk: 0.18722820282
+Vorticity Computation: 8.04164791107
+Vorticity Magnitude: 4.70719695091
+Threshold: 0.824111938477
+Write 2.05671882629
+Total time: 15.9997148514
+Complete
+
 
