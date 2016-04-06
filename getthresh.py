@@ -14,7 +14,7 @@ def main(argv):
         print (str(err))
     for opt, arg in opts:
         if opt == '-h':
-            print 'compresstozfp.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
+            print 'getthresh.py -i <inputfile.h5> -o <outputfile.vti> -sx -ex -sy -ey -sz -ez -dataset'
             sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
@@ -78,7 +78,25 @@ def main(argv):
         vorticity.SetComputeGradient(0)
         vorticity.Update()
     ve = timeit.default_timer()
-    print ("Generating magnitude")
+    #Generate contour for comparison
+    c = vtk.vtkContourFilter()
+    c.SetValue(0,1128)
+    if (comptype == "q"):
+        image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetVectors("Q-criterion"))
+    else:
+        image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetVectors())
+        
+    c.SetInputData(image)
+    
+    c.Update()
+    w = vtk.vtkXMLPolyDataWriter()
+    w.SetEncodeAppendedData(0) #turn of base 64 encoding for fast write
+    w.SetFileName("contour.vtp")
+    w.SetInputData(c.GetOutput())
+    ws = timeit.default_timer()
+    w.Write()
+
+
     ms = timeit.default_timer()
     if (comptype == "v"):
         mag = vtk.vtkImageMagnitude()
@@ -93,36 +111,38 @@ def main(argv):
     else:
         image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetVectors("Q-criterion"))
     me = timeit.default_timer()
-
     print ("Thresholding.")
-    #Remove dense velocity field
     ts = timeit.default_timer()
     t = vtk.vtkImageThreshold()
     #t = vtk.vtkThreshold() #sparse representation
-    t.SetInputData(image)
+
     if (comptype == "q"):
-        t.ThresholdByUpper(2511)
+        t.SetInputData(image)
+        t.ThresholdByUpper(500) #.25*67.17^2 = 1127
         #t.SetInputArrayToProcess(0,0,0, vorticity.GetOutput().FIELD_ASSOCIATION_POINTS, "Q-criterion")
         print("q criterion")
     else:
+        t.SetInputData(m)
         t.SetInputArrayToProcess(0,0,0, mag.GetOutput().FIELD_ASSOCIATION_POINTS, "Magnitude")
-        t.ThresholdByUpper(67.17) #44.79)
+        t.ThresholdByUpper(44.79) #44.79)
     #Set values in range to 1 and values out of range to 0
     t.SetInValue(1)
     t.SetOutValue(0)
     #t.ReplaceInOn()
     #t.ReplaceOutOn()
+    print("Update thresh")
     t.Update()
-    wt = vtk.vtkXMLImageDataWriter()
-    wt.SetInputData(t.GetOutput())
-    wt.SetFileName("qthresh.vti")
-    wt.Write()
+    #wt = vtk.vtkXMLImageDataWriter()
+    #wt.SetInputData(t.GetOutput())
+    #wt.SetFileName("thresh.vti")
+    #wt.Write()
 
     d = vtk.vtkImageDilateErode3D()
     d.SetInputData(t.GetOutput())
-    d.SetKernelSize(2,2,2)
+    d.SetKernelSize(3,3,3)
     d.SetDilateValue(1)
     d.SetErodeValue(0)
+    print ("Update dilate")
     d.Update()
 
     iis = vtk.vtkImageToImageStencil()
@@ -134,21 +154,29 @@ def main(argv):
     #image.GetPointData().RemoveArray("Vorticity")
     #Set scalars to velocity so it can be cut by the stencil
     image.GetPointData().SetScalars(image.GetPointData().GetVectors())
-    if (comptype == "q"): #add q-criterion back in?
-        image.GetPointData().AddArray(vorticity.GetOutput().GetPointData().GetVectors("Q-criterion"))
-    #m.GetPointData().RemoveArray("Magnitude")
+    #if (comptype == "q"):  #Use this to get just q-criterion data instead of velocity data.  Do we need both?
+    #    image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetScalars("Q-criterion"))
     stencil.SetInputData(image)
+    print ("Update stencil")
+    import pdb;pdb.set_trace()
     stencil.Update()
-
     te = timeit.default_timer()
-
+    print("Setting up write")
     ws = timeit.default_timer()
     w = vtk.vtkXMLImageDataWriter()
-    #w.SetCompressorTypeToZLib()
+    w.SetCompressorTypeToZLib()
     #w.SetCompressorTypeToNone() Need to figure out why this fails.
     w.SetEncodeAppendedData(0) #turn of base 64 encoding for fast write
     w.SetFileName(outputfile)
     w.SetInputData(stencil.GetOutput())
+    if (0):
+        w.SetCompressorTypeToZfp()
+        w.GetCompressor().SetNx(ex-sx+1)
+        w.GetCompressor().SetNy(ey-sy+1)
+        w.GetCompressor().SetNz(ez-sz+1)
+        w.GetCompressor().SetTolerance(1e-2)
+        w.GetCompressor().SetNumComponents(3)
+
     w.Write()
     we = timeit.default_timer()
 
