@@ -69,27 +69,45 @@ def main(argv):
     ms = timeit.default_timer()
     mag = vtk.vtkImageMagnitude()
 
-    for x in range (1,4):
+    for x in range (1,2):
         start = timeit.default_timer()
-        threshold = (22.39 + x)
+        threshold = (22.39 * (x+.5))
         if (comptype == "q"):
-            threshold= (100 + x*5)
-        q = vtk.vtkGradientFilter()
-        q.SetInputData(image)
-        q.SetInputScalars(image.FIELD_ASSOCIATION_POINTS,"Velocity")
-        q.ComputeQCriterionOn()
-        q.Update()
-        ni = vtk.vtkImageData()
-        ni.SetSpacing(.006135923, .006135923, .006135923)
-        ni.SetExtent(sx,ex,sy,ey,sz,ez)
-        ni.GetPointData().SetScalars(q.GetOutput().GetPointData().GetVectors("Q-criterion"))
+            threshold= (783.3)
+            vort = vtk.vtkGradientFilter()
+            vort.SetInputData(image)
+            vort.SetInputScalars(image.FIELD_ASSOCIATION_POINTS,"Velocity")
+            vort.ComputeQCriterionOn()
+            vort.Update()
+            image.GetPointData().SetScalars(vort.GetOutput().GetPointData().GetVectors("Q-criterion"))
+        else:
+            v = vtk.vtkCellDerivatives()
+            v.SetVectorModeToComputeVorticity()
+            v.SetTensorModeToPassTensors()
+            v.SetInputData(image)
+            v.Update()
+            vort = vtk.vtkImageMagnitude()
+            cp = vtk.vtkCellDataToPointData()
+            cp.SetInputData(v.GetOutput())
+            cp.Update()
+            image.GetPointData().SetScalars(cp.GetOutput().GetPointData().GetVectors())
+            vort.SetInputData(image)
+            vort.Update()
+        #ni = vtk.vtkImageData()
+        #ni.SetSpacing(.006135923, .006135923, .006135923)
+        #ni.SetExtent(sx,ex,sy,ey,sz,ez)
+        #ni.GetPointData().SetScalars(q.GetOutput().GetPointData().GetVectors("Q-criterion"))
         mend = timeit.default_timer()
         me = mend
         comptime = mend-start
         print("Magnitude Computation time: " + str(comptime) + "s")
         c = vtk.vtkContourFilter()
         c.SetValue(0,threshold)
-        c.SetInputData(ni)
+        if (comptype == "q"):
+            c.SetInputData(image)
+        else:
+            c.SetInputData(vort.GetOutput())
+            
         print("Computing Contour with threshold", threshold)
         c.Update()
         w = vtk.vtkXMLPolyDataWriter()
