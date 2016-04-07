@@ -69,9 +69,9 @@ def main(argv):
     ms = timeit.default_timer()
     mag = vtk.vtkImageMagnitude()
 
-    for x in range (1,2):
+    for x in range (0,1):
         start = timeit.default_timer()
-        threshold = (22.39 * (x+.5))
+        threshold = (22.39 * (2.5))
         if (comptype == "q"):
             threshold= (783.3)
             vort = vtk.vtkGradientFilter()

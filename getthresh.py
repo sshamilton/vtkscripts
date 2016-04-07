@@ -118,7 +118,7 @@ def main(argv):
 
     if (comptype == "q"):
         t.SetInputData(image)
-        t.ThresholdByUpper(500) #.25*67.17^2 = 1127
+        t.ThresholdByUpper(783.3) #.25*67.17^2 = 1127
         #t.SetInputArrayToProcess(0,0,0, vorticity.GetOutput().FIELD_ASSOCIATION_POINTS, "Q-criterion")
         print("q criterion")
     else:
@@ -139,7 +139,7 @@ def main(argv):
 
     d = vtk.vtkImageDilateErode3D()
     d.SetInputData(t.GetOutput())
-    d.SetKernelSize(3,3,3)
+    d.SetKernelSize(4,4,4)
     d.SetDilateValue(1)
     d.SetErodeValue(0)
     print ("Update dilate")
@@ -157,18 +157,21 @@ def main(argv):
     #if (comptype == "q"):  #Use this to get just q-criterion data instead of velocity data.  Do we need both?
     #    image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetScalars("Q-criterion"))
     stencil.SetInputData(image)
-    print ("Update stencil")
-    import pdb;pdb.set_trace()
+    print ("Update stencil")    
     stencil.Update()
     te = timeit.default_timer()
     print("Setting up write")
     ws = timeit.default_timer()
+    #Make velocity a vector again
+    velarray = stencil.GetOutput().GetPointData().GetScalars()
+    image.GetPointData().RemoveArray("Velocity")
+    image.GetPointData().SetVectors(velarray)
     w = vtk.vtkXMLImageDataWriter()
     w.SetCompressorTypeToZLib()
     #w.SetCompressorTypeToNone() Need to figure out why this fails.
     w.SetEncodeAppendedData(0) #turn of base 64 encoding for fast write
     w.SetFileName(outputfile)
-    w.SetInputData(stencil.GetOutput())
+    w.SetInputData(image)
     if (0):
         w.SetCompressorTypeToZfp()
         w.GetCompressor().SetNx(ex-sx+1)
