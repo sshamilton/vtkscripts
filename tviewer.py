@@ -3,10 +3,10 @@ import vtk
 from vtk.util import numpy_support
 import h5py
 import numpy as np
-import timeit
+import timeit, time
 
 def main(argv):
-    #Just get something working for testing...
+   #Just get something working for testing...
     try:
         opts, args = getopt.getopt(argv,"hi:", ["ifile="])
     except getopt.GetoptError as err:
@@ -24,35 +24,74 @@ def main(argv):
     reader.SetFileName(inputfile)
     reader.Update()
 
-    #Convert to polydata (Do we need to do this?)
-    #imageDGF = vtk.vtkImageDataGeometryFilter()
-    #imageDGF.SetInputConnection(reader.GetOutputPort())
-    #imageDGF.Update()
-    lut = vtk.vtkLookupTable()
-    lut.SetNumberOfColors(256)
-    lut.SetHueRange(-1.0, 1.667)
-    lut.Build()
+    #lut = vtk.vtkLookupTable()
+    #lut.SetNumberOfColors(65535)
+    #lut.SetHueRange(0.0, 2.667)
+    
+    #lut.SetVectorMode(vtk.vtkScalarsToColors.MAGNITUDE)
+    #lut.Build()
 
     image = reader.GetOutput()
-    image.GetPointData().SetScalars(image.GetPointData().GetVectors())
-    mapper = vtk.vtkVolumeTextureMapper3D()
-    mapper.SetInputData(image)
+    #image.GetPointData().SetScalars(image.GetPointData().GetVectors())
+    #Compute Q Criterion for texture mapping
+    vorticity = vtk.vtkGradientFilter()
+    vorticity.SetInputData(image)
+    vorticity.SetInputScalars(image.FIELD_ASSOCIATION_POINTS,"Velocity")
+    vorticity.ComputeQCriterionOn()
+    #vorticity.SetComputeGradient(0)
+    vorticity.Update()
+    #Generate contour for comparison
+    c = vtk.vtkContourFilter()
+    c.SetValue(0,1128)
+    image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetVectors("Q-criterion"))
+    c.SetInputData(image)
+    c.Update()
+    contour = c.GetOutput()
+    #contour.GetCellData().SetScalars(image.GetPointData().GetVectors("Velocity"))
+    normals = vtk.vtkPolyDataNormals()
+    normals.SetInputData(contour)
+
+    normals.SetFeatureAngle(45) #?
+    normals.Update()
+    print normals.GetOutput()
+    mapper = vtk.vtkPolyDataMapper()
+    mapper.SetInputData(normals.GetOutput())
+    mapper.ScalarVisibilityOn()
+    mapper.SetScalarRange(-1,1)
+    mapper.SetScalarModeToUsePointFieldData()
+    mapper.ColorByArrayComponent("Velocity", 0)
+    #print image
+    #print contour
+
+    #mapper.SelectColorArray("Q-criterion")
     #mapper.SetLookupTable(lut)
 
-    actor = vtk.vtkVolume()
+    print mapper
+    actor = vtk.vtkActor()
     actor.SetMapper(mapper)
     
     ren = vtk.vtkRenderer()
     ren.AddActor(actor)
-    #ren.SetBackground(1,1,1)
+    ren.SetBackground(1,1,1)
     ren.ResetCamera()
 
     renWin = vtk.vtkRenderWindow()
     renWin.AddRenderer(ren)
     iren = vtk.vtkRenderWindowInteractor()
+    def MouseMove(self, data):
+        print("Load Cache %s" % data )
+        print ("Iren data")
+        print iren
+
+ 
+    iren.AddObserver("LeftButtonPressEvent", MouseMove)
+
     iren.SetRenderWindow(renWin)
     iren.Initialize()
     iren.Start()
+    #time.sleep(2)
+    print("adding another cube")
+    
 
 
 
