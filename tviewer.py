@@ -82,6 +82,7 @@ def main(argv):
         print("Load Cache %s" % data )
         print ("Iren data")
         print iren
+        print iren.GetEventPositions()
 
  
     iren.AddObserver("LeftButtonPressEvent", MouseMove)
