@@ -42,7 +42,8 @@ def main(argv):
     vorticity.Update()
     #Generate contour for comparison
     c = vtk.vtkContourFilter()
-    c.SetValue(0,1128)
+    #c.SetValue(0,1128)
+    c.SetValue(0,.5)
     image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetVectors("Q-criterion"))
     c.SetInputData(image)
     c.Update()
@@ -76,13 +77,36 @@ def main(argv):
     ren.ResetCamera()
 
     renWin = vtk.vtkRenderWindow()
+    renWin.SetSize(600,600)
     renWin.AddRenderer(ren)
     iren = vtk.vtkRenderWindowInteractor()
     def MouseMove(self, data):
         print("Load Cache %s" % data )
         print ("Iren data")
-        print iren
-        print iren.GetEventPositions()
+        #print iren
+        #addcube
+        #print ren
+        print ren.GetViewPoint()
+        print ren.GetDisplayPoint()
+        print ren.WorldToView()
+        print ren.ComputeVisiblePropBounds()
+        ysize = renWin.GetSize()[1]
+        c.SetValue(0,ysize)
+        c.Update()
+        normals = vtk.vtkPolyDataNormals()
+        normals.SetInputData(c.GetOutput())
+
+        normals.SetFeatureAngle(45) #?
+        normals.Update()
+        mapper2 = vtk.vtkPolyDataMapper()
+        mapper2.SetInputData(normals.GetOutput())
+        mapper2.ScalarVisibilityOn()
+        mapper2.SetScalarRange(-.5,1)
+        mapper2.SetScalarModeToUsePointFieldData()
+        mapper2.ColorByArrayComponent("Velocity", 0)
+        actor2 = vtk.vtkActor()
+        actor2.SetMapper(mapper2)
+        ren.AddActor(actor2)
 
  
     iren.AddObserver("LeftButtonPressEvent", MouseMove)
