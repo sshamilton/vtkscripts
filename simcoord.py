@@ -19,8 +19,8 @@ try:
     # Send zfp request to compress
     p = simmodules.Packet #Used to define the packet
     p["ptype"] = 1
-    p["message"] = "zfp"
-    p["action"] = 1 #1 is to compress using zfp. 
+    p["message"] = "test"
+    p["action"] = 100 #1 is to compress using zfp. 
     p["inputfile"] = "data/cutout.npy"
     p["outputfile"] = "testzfpout.vti"
     p["sx"] = 0
@@ -38,23 +38,23 @@ finally:
     sock.close()
 
 #Now we go to server mode to listen for results
-server_address = ('localhost', 4096)
-print >>sys.stderr, 'starting up coordinator on %s port %s' % server_address
-serversock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#server_address = ('localhost', 4096)
+#print >>sys.stderr, 'starting up coordinator on %s port %s' % server_address
+#serversock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-while True:
-    serversock.bind(server_address)
-    serversock.listen(5)
-    while True:
-        connection, client_address = serversock.accept()
-        try: 
-            while True:
-                print >>sys.stderr, 'connection from', client_address
-                data = connection.recv(256)
-                amount_received = len(data)
-                print >>sys.stderr, 'received "%s"' % data
-                break
-        finally:
-            print >>sys.stderr, 'closing socket'
-            sock.close()            
+#while True:
+#    serversock.bind(server_address)
+#    serversock.listen(5)
+#    while True:
+#        connection, client_address = serversock.accept()
+#        try: 
+#            while True:
+#                print >>sys.stderr, 'connection from', client_address
+#                data = connection.recv(256)
+#                amount_received = len(data)
+#                print >>sys.stderr, 'received "%s"' % data
+#                break
+#        finally:
+#            print >>sys.stderr, 'closing socket'
+#            sock.close()            
 

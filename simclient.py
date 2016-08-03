@@ -3,20 +3,24 @@ import sys
 import simmodules
 import json
 import time
+import httplib
 sys.path.append('modules/')
 from mod_zfpcompress import zfpcompress
+from mod_test import testmod
+
+fecserver = "localhost:8000"
 
 def return_success():
-    port = 4096
-    server_address = ('localhost', port)
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(server_address)
     p = simmodules.Packet
     p["type"] = 2
     p["message"] = "Success"
     p["cubescomplete"] = 1
-    sock.sendall(json.dumps(p))
-    print ("Sent success to %s" % port)
+    hfec = httplib.HTTPConnection(fecserver)
+    hfec.request('PUT', '/fec/', json.dumps(p))
+    response = hfec.getresponse()
+    print ("Sent success to %s" % fecserver)
+    print ("Result: %s" % response.read())
+    print ("Reason: %s" % response.reason)
 
 def return_fail():
     port = 4096
@@ -54,17 +58,21 @@ while True:
                 p = json.loads(data)
                 time.sleep(3) #simulate bigger run
                 print p #for debugging
-                if p["ptype"] ==1: #Request to do some work.
+                if p["ptype"] == 1: #Request to do some work.
                     if p["action"] == 1: #compress using ZFP
                         result = zfpcompress(p["inputfile"], p["outputfile"], p["sx"], p["ex"], p["sy"], p["ey"], p["sz"], p["ez"], p["dataset"])
-                        if (result):
-                            return_success()                            
-                        else:
-                            return_fail()
                     elif p["action"] == 2: #vorticity mesh vtk
                         #not implemented yet
                         return_success()
+                    elif p["action"] == 100:
+                        result = testmod(p["inputfile"], p["outputfile"], p["sx"], p["ex"], p["sy"], p["ey"], p["sz"], p["ez"], p["dataset"])
+                    #Use result to determine success or fail.
+                    if (result):
+                            return_success()                            
+                    else:
+                            return_fail()
                     break
+                
 
                 else:
                     print >>sys.stderr, 'no more data from', client_address

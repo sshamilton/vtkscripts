@@ -1,0 +1,17 @@
+55.975 for vorticity
+Q should be 783.3
+
+
+
+
+import sys
+import vtk
+from vtk.util import numpy_support
+
+threshold= (783.3)
+vort = vtk.vtkGradientFilter()
+vort.SetInputData(image)
+vort.SetInputScalars(image.FIELD_ASSOCIATION_POINTS,"Velocity")
+vort.ComputeQCriterionOn()
+vort.Update()
+image.GetPointData().SetScalars(vort.GetOutput().GetPointData().GetVectors("Q-criterion"))
