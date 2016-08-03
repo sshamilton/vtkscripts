@@ -32,7 +32,7 @@ def main(argv):
     #lut.Build()
 
     image = reader.GetOutput()
-    image.SetSpacing(1,1,1)
+    #image.SetSpacing(1,1,1)
     #image.GetPointData().SetScalars(image.GetPointData().GetVectors())
     #Compute Q Criterion for texture mapping
     vorticity = vtk.vtkGradientFilter()
@@ -44,7 +44,7 @@ def main(argv):
     #Generate contour for comparison
     c = vtk.vtkContourFilter()
     #c.SetValue(0,1128)
-    c.SetValue(0,.5)
+    c.SetValue(0,450)
     image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetVectors("Q-criterion"))
     c.SetInputData(image)
     c.Update()
@@ -96,15 +96,16 @@ def main(argv):
         c.Update()
         normals = vtk.vtkPolyDataNormals()
         normals.SetInputData(c.GetOutput())
-
-        normals.SetFeatureAngle(45) #?
+        normals.SetFeatureAngle(25) #?
         normals.Update()
+
         mapper2 = vtk.vtkPolyDataMapper()
         mapper2.SetInputData(normals.GetOutput())
         mapper2.ScalarVisibilityOn()
         mapper2.SetScalarRange(-.5,1)
         mapper2.SetScalarModeToUsePointFieldData()
         mapper2.ColorByArrayComponent("Velocity", 0)
+
         actor2 = vtk.vtkActor()
         actor2.SetMapper(mapper2)
         ren.AddActor(actor2)
