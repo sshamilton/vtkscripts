@@ -32,7 +32,10 @@ def main(argv):
     #lut.Build()
 
     image = reader.GetOutput()
+<<<<<<< HEAD
     #image.SetSpacing(1,1,1)
+=======
+>>>>>>> face5ee9af0799cec4ca4990be61f6283743e6e2
     #image.GetPointData().SetScalars(image.GetPointData().GetVectors())
     #Compute Q Criterion for texture mapping
     vorticity = vtk.vtkGradientFilter()
@@ -99,20 +102,19 @@ def main(argv):
         normals.SetFeatureAngle(25) #?
         normals.Update()
 
-        normals.SetFeatureAngle(45) #?
-        normals.Update()
         mapper2 = vtk.vtkPolyDataMapper()
         mapper2.SetInputData(normals.GetOutput())
         mapper2.ScalarVisibilityOn()
         mapper2.SetScalarRange(-.5,1)
         mapper2.SetScalarModeToUsePointFieldData()
         mapper2.ColorByArrayComponent("Velocity", 0)
+
         actor2 = vtk.vtkActor()
         actor2.SetMapper(mapper2)
         ren.AddActor(actor2)
 
  
-    iren.AddObserver("MiddleButtonPressEvent", MouseMove)
+    iren.AddObserver("LeftButtonPressEvent", MouseMove)
 
     iren.SetRenderWindow(renWin)
     iren.Initialize()

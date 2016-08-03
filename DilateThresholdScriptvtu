@@ -1,0 +1,72 @@
+Dialted Threshold Test
+
+import vtk
+r = vtk.vtkXMLImageDataReader()
+
+r.SetFileName("/home/stephen/courses/turbulence/Playground/isocube.vti")
+r.Update()
+image = r.GetOutput()
+
+vorticity = vtk.vtkCellDerivatives()
+vorticity.SetVectorModeToComputeVorticity()
+vorticity.SetTensorModeToPassTensors()
+
+vorticity.SetInputData(image)
+vorticity.Update()
+mag = vtk.vtkImageMagnitude()
+cp = vtk.vtkCellDataToPointData()
+cp.SetInputData(vorticity.GetOutput())
+
+cp.Update()
+image.GetPointData().SetScalars(cp.GetOutput().GetPointData().GetVectors())
+mag.SetInputData(image)
+mag.Update()
+
+#Remove velocity field
+m = mag.GetOutput()
+m.GetPointData().RemoveArray("Velocity")
+
+t = vtk.vtkImageThreshold()
+t.SetInputData(m.GetOutput())
+t.SetInputArrayToProcess(0,0,0, mag.GetOutput().FIELD_ASSOCIATION_POINTS, "Magnitude")
+t.ThresholdByUpper(44.79)
+#Set values in range to 1 and values out of range to 0
+#t.SetInValue(1)
+t.SetOutValue(0)
+#t.ReplaceInOn()
+t.ReplaceOutOn()
+t.Update()
+
+rt = t.GetOutput()
+#rt.GetPointData().RemoveArray("Velocity")
+
+tout = vtk.vtkXMLImageDataWriter()
+tout.SetInputData(rt)
+tout.SetFileName("/home/stephen/courses/turbulence/Playground/thresh.vti")
+tout.Write()
+
+d = vtk.vtkImageDilateErode3D()
+d.SetInputData(t.GetOutput())
+d.SetKernelSize(3,3,3)
+d.SetDilateValue(1)
+d.SetErodeValue(0)
+d.Update()
+
+iis = vtk.vtkImageToImageStencil()
+iis.SetInputData(d.GetOutput())
+iis.ThresholdByUpper(1)
+stencil = vtk.vtkImageStencil()
+stencil.SetInputConnection(2, iis.GetOutputPort())
+m = mag.GetOutput()
+#m.GetPointData().RemoveArray("Magnitude")
+stencil.SetInputData(m)
+stencil.Update()
+
+out = vtk.vtkXMLImageDataWriter()
+out.SetInputData(stencil.GetOutput())
+out.SetFileName("/home/stephen/courses/turbulence/Playground/dilated-kernel3.vti")
+
+out.Write()
+
+
+
