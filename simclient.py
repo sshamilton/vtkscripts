@@ -64,7 +64,7 @@ while True:
                     elif p["action"] == 2: #vorticity mesh vtk
                         #not implemented yet
                         return_success()
-                    elif p["action"] == 100:
+                    elif p["action"] == 4:
                         result = testmod(p["inputfile"], p["outputfile"], p["sx"], p["ex"], p["sy"], p["ey"], p["sz"], p["ez"], p["dataset"])
                     #Use result to determine success or fail.
                     if (result):
