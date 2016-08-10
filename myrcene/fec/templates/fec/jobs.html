@@ -1,0 +1,9 @@
+Choose a job to start:
+
+<br />
+<ul>
+{% for job in jobs %}
+     <li>Job: <a href = '/fec/spawnjob/{{job.id}}'>{{job.name}}</a></li>
+{% endfor %}
+</li>
+</ul>
