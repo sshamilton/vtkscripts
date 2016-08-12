@@ -8,31 +8,29 @@ sys.path.append('modules/')
 from mod_zfpcompress import zfpcompress
 from mod_test import testmod
 
-fecserver = "localhost:8000"
-
-def return_success():
+def return_success(server_address):
     p = simmodules.Packet
     p["type"] = 2
     p["message"] = "Success"
     p["cubescomplete"] = 1
-    hfec = httplib.HTTPConnection(fecserver)
+    hfec = httplib.HTTPConnection(server_address)
     hfec.request('PUT', '/fec/', json.dumps(p))
     response = hfec.getresponse()
     print ("Sent success to %s" % fecserver)
     print ("Result: %s" % response.read())
     print ("Reason: %s" % response.reason)
 
-def return_fail():
-    port = 4096
-    server_address = ('localhost', port)
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(server_address)
+def return_fail(server_address):
     p = simmodules.Packet
     p["type"] = 2
-    p["message"] = "Fail"
-    p["cubescomplete"] = 0
-    sock.sendall(json.dumps(p))
-    print ("Sent success to %s" % port)
+    p["message"] = "Success"
+    p["cubescomplete"] = 1
+    hfec = httplib.HTTPConnection(server_address)
+    hfec.request('PUT', '/fec/', json.dumps(p))
+    response = hfec.getresponse()
+    print ("Sent success to %s" % fecserver)
+    print ("Result: %s" % response.read())
+    print ("Reason: %s" % response.reason)
 
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -68,9 +66,9 @@ while True:
                         result = testmod(p["inputfile"], p["outputfile"], p["sx"], p["ex"], p["sy"], p["ey"], p["sz"], p["ez"], p["dataset"])
                     #Use result to determine success or fail.
                     if (result):
-                            return_success()                            
+                            return_success(p["server_address"])                            
                     else:
-                            return_fail()
+                            return_fail(p["server_address"])
                     break
                 
 

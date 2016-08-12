@@ -33,6 +33,8 @@ class Task(models.Model):
     completed_cubes = models.IntegerField(default=0)
     input_file = models.CharField(max_length=200)
     output_file = models.CharField(max_length=200)
+    spawned = models.BooleanField(default=False)
+    
 
 class Result(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)

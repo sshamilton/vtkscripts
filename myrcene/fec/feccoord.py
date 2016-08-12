@@ -19,16 +19,21 @@ class Tasker:
         self.sz = 0
         self.ez = 63
         self.dataset = "u00000" #not needed for npy. 
-
+        self.taskid = 0
+        self.server_address = "192.168.1.197:8000" #Update this to the address of the webserver so clients can respond
+        self.client_address = "" #Set by task
 
     def run(self):
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Connect the socket to the port where the server is listening
-        server_address = ('localhost', self.port)
-        print >>sys.stderr, 'connecting to %s port %s' % server_address
-        sock.connect(server_address)
+        c_address = (self.client_address, self.port)
+        print >>sys.stderr, 'connecting to %s port %s' % c_address
+        try:
+            sock.connect(c_address)
+        except:
+            return False
         #Get clients going.
         try:
             
@@ -39,6 +44,8 @@ class Tasker:
             p["action"] = self.action #1 is to compress using zfp. 
             p["inputfile"] = self.inputfile
             p["outputfile"] = self.outputfile
+            p["server_address"] = self.server_address 
+            p["taskid"] = self.taskid
             p["sx"] = self.sx
             p["ex"] = self.ex
             p["sy"] = self.sy
@@ -48,7 +55,9 @@ class Tasker:
             p["dataset"] = self.dataset #not needed for npy. 
             print >>sys.stderr, 'sending "%s"' % p
             sock.sendall(json.dumps(p))
-
+            return True
+        except:
+            return False
         finally:
             print >>sys.stderr, 'closing socket'
             sock.close()
