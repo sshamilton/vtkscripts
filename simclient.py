@@ -8,19 +8,16 @@ sys.path.append('modules/')
 from mod_zfpcompress import zfpcompress
 from mod_test import testmod
 
-def return_success(server_address):
-    p = simmodules.Packet
-    p["type"] = 2
+def return_success(p):
     p["message"] = "Success"
-    p["cubescomplete"] = 1
-    hfec = httplib.HTTPConnection(server_address)
+    hfec = httplib.HTTPConnection(p["server_address")
     hfec.request('PUT', '/fec/', json.dumps(p))
     response = hfec.getresponse()
     print ("Sent success to %s" % fecserver)
     print ("Result: %s" % response.read())
     print ("Reason: %s" % response.reason)
 
-def return_fail(server_address):
+def return_fail(p):
     p = simmodules.Packet
     p["type"] = 2
     p["message"] = "Success"
@@ -58,17 +55,17 @@ while True:
                 print p #for debugging
                 if p["ptype"] == 1: #Request to do some work.
                     if p["action"] == 1: #compress using ZFP
-                        result = zfpcompress(p["inputfile"], p["outputfile"], p["sx"], p["ex"], p["sy"], p["ey"], p["sz"], p["ez"], p["dataset"])
+                        result = zfpcompress(p)
                     elif p["action"] == 2: #vorticity mesh vtk
                         #not implemented yet
                         return_success()
                     elif p["action"] == 4:
-                        result = testmod(p["inputfile"], p["outputfile"], p["sx"], p["ex"], p["sy"], p["ey"], p["sz"], p["ez"], p["dataset"])
+                        result = testmod(p)
                     #Use result to determine success or fail.
                     if (result):
-                            return_success(p["server_address"])                            
+                            return_success(p)
                     else:
-                            return_fail(p["server_address"])
+                            return_fail(p)
                     break
                 
 

@@ -14,10 +14,11 @@ from feccoord import Tasker
 def index(request):
     if request.method=='PUT':
         data = json.loads(request.body)
-        print ("Got json:  %s" % received_json_data)
+        print ("Got json:  %s" % data)
         #Add result to the list.
         newresult = Result()
-        task = models.ForeignKey(Task, on_delete=models.CASCADE)
+        #task = models.ForeignKey(Task, on_delete=models.CASCADE)
+        newresult.task_id = data['taskid']
         first_cube = models.IntegerField(default=0)
         last_cube = models.IntegerField(default=0)
         total_time = models.IntegerField(default=0)
