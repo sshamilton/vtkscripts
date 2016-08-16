@@ -1,0 +1,20 @@
+Results for job x
+<br />
+Tasks:
+
+<ul>
+{% for result in results %}
+     <li>Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}</li>
+        
+{% endfor %}
+
+</ul>
+
+--All results<br />
+<ul>
+{% for result in allresults %}
+     <li>Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}</li>
+        
+{% endfor %}
+
+</ul>
