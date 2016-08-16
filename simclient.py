@@ -13,10 +13,10 @@ from mod_test import testmod
 
 def return_success(p):
     p["message"] = "Success"
-    hfec = httplib.HTTPConnection(p["server_address")
+    hfec = httplib.HTTPConnection(p["server_address"])
     hfec.request('PUT', '/fec/', json.dumps(p))
     response = hfec.getresponse()
-    print ("Sent success to %s" % server_address)
+    print ("Sent success to %s" % p["server_address"])
     print ("Result: %s" % response.read())
     print ("Reason: %s" % response.reason)
 
@@ -25,10 +25,10 @@ def return_fail(p):
     p["type"] = 2
     p["message"] = "Success"
     p["cubescomplete"] = 1
-    hfec = httplib.HTTPConnection(server_address)
+    hfec = httplib.HTTPConnection(p["server_address"])
     hfec.request('PUT', '/fec/', json.dumps(p))
     response = hfec.getresponse()
-    print ("Sent success to %s" % server_address)
+    print ("Sent success to %s" % p["server_address"])
     print ("Result: %s" % response.read())
     print ("Reason: %s" % response.reason)
 
