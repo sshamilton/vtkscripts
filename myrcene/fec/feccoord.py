@@ -22,6 +22,7 @@ class Tasker:
         self.taskid = 0
         self.server_address = "10.161.159.182:8000" #Update this to the address of the webserver so clients can respond
         self.client_address = "" #Set by task
+        self.numcubes = 0 #set by task
 
     def run(self):
         # Create a TCP/IP socket
@@ -53,6 +54,7 @@ class Tasker:
             p["sz"] = self.sz
             p["ez"] = self.ez
             p["dataset"] = self.dataset #not needed for npy. 
+            p["numcubes"] = self.numcubes
             print >>sys.stderr, 'sending "%s"' % p
             sock.sendall(json.dumps(p))
             return True

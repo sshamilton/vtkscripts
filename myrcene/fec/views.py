@@ -54,6 +54,7 @@ def spawnjob(request, webargs):
         tasker.ez = task.job.zlen
         #self.dataset = "u00000" #not needed for npy.
         tasker.client_address = task.host.name
+        tasker.numcubes = task.cube_end - task.cube_start
         #Run the task and collect results
         task.spawned = tasker.run()
 
