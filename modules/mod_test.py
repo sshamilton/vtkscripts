@@ -4,11 +4,14 @@ import os
 import time
 
 #Dataset is only required for HDF5 files. Not for numpy arrays.  Detection is based on file ext.
-def testmod(inputfile, outputfile, sx, ex, sy, ey, sz, ez, dataset):
-    print ("Not Loading file, %s" % inputfile)
+def testmod(p, cubenum):
+    print ("Not Loading file, %s" % p["inputfile"])
     #Determine if file is h5 or numpy
+    start = timeit.default_timer()
     time.sleep(4) #Wait as if we did some work.
     result = 1  
-    print ("Result %s" %result)
-    return result
+    print ("Result %s for cube %s" %(result, cubenum))
+    p["message"] = "Success"
+    p["computetime"] = timeit.default_timer()-start
+    return p
 
