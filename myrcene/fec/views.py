@@ -6,24 +6,29 @@ from .models import Job
 from .models import Result
 from .models import Task
 import json
+#from datetime import datetime
+from django.utils import timezone
 from feccoord import Tasker
+from django.db.models.query import QuerySet
+from itertools import chain
 
 # Create your views here.
 
 @csrf_exempt
 def index(request):
     if request.method=='PUT':
+        #In the future we pull the record if we are updating it, right now we are only creating a new one.
         data = json.loads(request.body)
         print ("Got json:  %s" % data)
         #Add result to the list.
         newresult = Result()
         #task = models.ForeignKey(Task, on_delete=models.CASCADE)
         newresult.task_id = data['taskid']
-        first_cube = models.IntegerField(default=0)
-        last_cube = models.IntegerField(default=0)
-        total_time = models.IntegerField(default=0)
-        created_at = models.DateTimeField('created at')
-        modified_at = models.DateTimeField('modified at')
+        newresult.total_time = data['computetime'] #May need to change the name of this.  
+        newresult.created_at = timezone.now()
+        newresult.modified_at = timezone.now() #Will be used when we update a record with times.
+        newresult.save()
+
         return HttpResponse("Got ya coach!")
     elif request.method=='GET':
         return HttpResponse("Post client results to this page!")
@@ -54,6 +59,19 @@ def spawnjob(request, webargs):
 
 
     response = HttpResponse(template.render({'job': job, 'tasks': tasks}, request))
+    return response
+
+def results(request, webargs):
+    template = loader.get_template('fec/results.html/')
+    jobid = webargs[0]
+    job = Job.objects.get(pk=webargs[0])
+    #results = job.task_set.result_set.all()
+    tasks = job.task_set.all()
+    results = tasks[0].result_set.all()
+    allresults = Result.objects.all()
+    for task in tasks:
+        results = list(chain(results,task.result_set.all()))
+    response = HttpResponse(template.render({'results': results, 'allresults': allresults}, request))
     return response
 
 def jobs(request):
