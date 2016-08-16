@@ -6,6 +6,7 @@ import json
 import time
 import httplib
 import timeit
+from multiprocessing import Pool
 
 sys.path.append('modules/')
 from mod_zfpcompress import zfpcompress
@@ -63,6 +64,8 @@ while True:
                 print ("Result to be sent to: %s" % p["server_address"])
                 print p #for debugging
                 start = timeit.default_timer()
+                for i in range(1,p["numcubes"]):
+                    args.append([p, i]) #Setup args for each parallel run
                 if p["ptype"] == 1: #Request to do some work.
                     if p["action"] == 1: #compress using ZFP
                         result = zfpcompress(p)
@@ -70,7 +73,9 @@ while True:
                         #not implemented yet
                         result = True
                     elif p["action"] == 4:
-                        result = testmod(p)
+                        p = Pool(p["numcubes"])
+                        p.map(testmod, args)
+                        
                     #Use result to determine success or fail.
                     if (result):
                             return_success(p)
