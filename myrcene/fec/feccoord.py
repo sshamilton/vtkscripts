@@ -20,7 +20,7 @@ class Tasker:
         self.ez = 63
         self.dataset = "u00000" #not needed for npy. 
         self.taskid = 0
-        self.server_address = "192.168.1.201:8000" #Update this to the address of the webserver so clients can respond
+        self.server_address = "10.161.159.182:8000" #Update this to the address of the webserver so clients can respond
         self.client_address = "" #Set by task
 
     def run(self):

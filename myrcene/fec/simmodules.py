@@ -7,6 +7,7 @@ Packet = {
     "server_address" : "",
     "action" : "", #1 = compress zfp, 2 = extract vortcity, assign 3, 4, and 5 later.
     "cubescomplete" : 0,
+    "numcubes" : 0,  #Number of cubes to be processed in parallel at each node.
     "inputfile" : "",
     "outputfile" : "",
     "sx" : 0,
