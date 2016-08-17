@@ -23,6 +23,11 @@ class Tasker:
         self.server_address = "10.161.159.182:8000" #Update this to the address of the webserver so clients can respond
         self.client_address = "" #Set by task
         self.numcubes = 0 #set by task
+        self.param1 = ""
+        self.param2 = ""
+        self.param3 = ""
+        self.param4 = ""
+        self.param5 = ""
 
     def run(self):
         # Create a TCP/IP socket

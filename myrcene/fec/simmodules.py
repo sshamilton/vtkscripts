@@ -18,5 +18,10 @@ Packet = {
     "ez" : 0,
     "dataset" : "",
     "computetime" : 0, #Time in seconds to perform the computation.
+    "param1" : "", #Generic parameter for module specific stuff
+    "param2" : "", #Generic parameter for module specific stuff
+    "param3" : "", #Generic parameter for module specific stuff
+    "param4" : "", #Generic parameter for module specific stuff
+    "param5" : "", #Generic parameter for module specific stuff
 }
 
