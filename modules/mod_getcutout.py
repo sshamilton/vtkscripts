@@ -12,15 +12,14 @@ def getcutoutmod(args):
     #Determine if file is h5 or numpy
     start = timeit.default_timer()
     sx= int(p["sx"])
-    xl = int(p["ex"])-int(p["sx"]) + 1
+    xl = p["ex"] #int(p["ex"])-int(p["sx"]) + 1
     sy= int(p["sy"])
-    yl = int(p["ey"])-int(p["sy"]) + 1
+    yl = p["ey"] #int(p["ey"])-int(p["sy"]) + 1
     sz= int(p["sz"])
-    zl = int(p["ez"])-int(p["sz"]) + 1
-    #t = int(p["param1"])
-    t = 1
+    zl = p["ez"] #int(p["ez"])-int(p["sz"]) + 1
+    t = cubenum #Since the cubes are the same, the cube num is the time.
     url = "http://dsp033.pha.jhu.edu/jhtdb/getcutout/edu.jhu.ssh-c11eeb58/isotropic1024coarse/u/" + str(t) + ",1/" + str(sx) + "," +  str(xl)+ "/" + str(sy) + "," + str(yl) + "/" +str(sz) + "," + str(zl) + "/"
-    file_name = p["outputfile"] + str(cubenum)
+    file_name = p["outputfile"] + str(cubenum) + ".h5"
     print url
     u = urllib2.urlopen(url)
     f = open(file_name, 'wb')
