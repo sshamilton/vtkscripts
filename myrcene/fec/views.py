@@ -28,8 +28,28 @@ def index(request):
         newresult.created_at = timezone.now()
         newresult.modified_at = timezone.now() #Will be used when we update a record with times.
         newresult.save()
+        thistask = Task.objects.get(pk=data['taskid'])
+        if (data['message'] == "Success"):
+            thistask.completed = 1
+            thistask.save() 
+            #Grab host id and job id for this task
+            hostid = thistask.host_id
+            jobid = thistask.job_id
+            #Mark task as complete and spawn new job if any exist
+            task = Task.objects.filter(completed=0, spawned=False, job_id = jobid, host_id=hostid ).first() 
+            #Grab first job that isn't spawned or completed 
+            if (task):           
+                response="Sending new task"
+                tasker = Tasker(task)
+                task.spawned = tasker.run(task)
 
-        return HttpResponse("Got ya coach!")
+            else:
+                response="All tasks complete"
+        else:
+            response ="Something went wrong: " + data['message']
+        return HttpResponse(response)
+
+
     elif request.method=='GET':
         return HttpResponse("Post client results to this page!")
 
@@ -38,28 +58,16 @@ def spawnjob(request, webargs):
     #Load the job requested.
     jobid = webargs[0]
     job = Job.objects.get(pk=webargs[0])
-    tasks = job.task_set.all()
-    for task in tasks:
-        tasker = Tasker()        
-        tasker.message = task.modules.name
-        tasker.action = task.modules_id #1 is to compress using zfp.  4 is test now.
-        tasker.inputfile = task.input_file
-        tasker.outputfile = task.output_file
-        tasker.taskid = task.id
-        #self.sx = 0
-        tasker.ex = task.job.xlen
-        #self.sy = 0
-        tasker.ey = task.job.ylen
-        #self.sz = 0
-        tasker.ez = task.job.zlen
-        #self.dataset = "u00000" #not needed for npy.
-        tasker.client_address = task.host.name
-        tasker.numcubes = task.cube_end - task.cube_start
-        #Run the task and collect results
-        task.spawned = tasker.run()
+    task = job.task_set.filter(completed=0, spawned=False).first() #Grab first job that isn't spawned or completed
+    #for task in tasks:
+    #Only fire off first job, success or fail will result in spawning next job
+    tasker = Tasker(task)
+    #Run the task and collect results
+    task.spawned = tasker.run(task) #Include the task so we can update it if it spawns properly or not.
+    task.save()
+    alltasks = job.task_set.all()
 
-
-    response = HttpResponse(template.render({'job': job, 'tasks': tasks}, request))
+    response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
     return response
 
 def results(request, webargs):

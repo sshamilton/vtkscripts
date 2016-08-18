@@ -5,31 +5,31 @@ import json
 
 
 class Tasker:
-    def __init__(self):
+    def __init__(self, task):
         self.port = 2048
         self.ptype = 1
-        self.message = "test"
-        self.action = 100 #1 is to compress using zfp. 
-        self.inputfile = "data/cutout.npy"
-        self.outputfile = "testzfpout.vti"
-        self.sx = 0
-        self.ex = 63
-        self.sy = 0
-        self.ey = 63
-        self.sz = 0
-        self.ez = 63
-        self.dataset = "u00000" #not needed for npy. 
-        self.taskid = 0
+        self.message = task.modules.name
+        self.action = task.modules_id
+        self.inputfile = task.input_file
+        self.outputfile = task.output_file
+        self.sx = task.sx
+        self.ex = task.job.xlen
+        self.sy = task.sy
+        self.ey = task.job.ylen
+        self.sz = task.sz
+        self.ez = task.job.zlen
+        self.dataset = "u00000" #task.dataset #not needed for npy. 
+        self.taskid = task.id
         self.server_address = "10.161.159.182:8000" #Update this to the address of the webserver so clients can respond
-        self.client_address = "" #Set by task
-        self.numcubes = 0 #set by task
-        self.param1 = ""
-        self.param2 = ""
-        self.param3 = ""
-        self.param4 = ""
-        self.param5 = ""
+        self.client_address = task.host.name
+        self.numcubes = task.cube_end - task.cube_start
+        self.param1 = task.param1
+        self.param2 = task.param2
+        self.param3 = task.param3
+        self.param4 = task.param4
+        self.param5 = task.param5
 
-    def run(self):
+    def run(self, task):
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -62,6 +62,8 @@ class Tasker:
             p["numcubes"] = self.numcubes
             print >>sys.stderr, 'sending "%s"' % p
             sock.sendall(json.dumps(p))
+            #Set task to spawned
+            
             return True
         except:
             return False

@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Job(models.Model):
     name = models.CharField(max_length=100)
-    xlen = models.IntegerField(default=1)
+    xlen = models.IntegerField(default=1) #Cube size is the same for all tasks in a job
     ylen = models.IntegerField(default=1)
     zlen = models.IntegerField(default=1)
     ghostcells = models.IntegerField(default=0)
@@ -34,7 +34,14 @@ class Task(models.Model):
     input_file = models.CharField(max_length=200)
     output_file = models.CharField(max_length=200)
     spawned = models.BooleanField(default=False)
-    
+    sx = models.IntegerField(default=0)
+    sy = models.IntegerField(default=0)
+    sz = models.IntegerField(default=0)
+    param1 = models.CharField(max_length=200, default="") #multipurpose fields for module specific info
+    param2 = models.CharField(max_length=200, default="")
+    param3 = models.CharField(max_length=200, default="")
+    param4 = models.CharField(max_length=200, default="")
+    param5 = models.CharField(max_length=200, default="")    
 
 class Result(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
