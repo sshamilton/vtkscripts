@@ -12,6 +12,7 @@ sys.path.append('modules/')
 from mod_zfpcompress import zfpcompress
 from mod_test import testmod
 from mod_getcutout import getcutoutmod
+from mod_h5tonpy import h5tonpy
 
 def return_success(p):
     p["message"] = "Success"
@@ -68,49 +69,44 @@ while True:
                 start = timeit.default_timer()
                 args = []
                 modpool = Pool(p["maxpool"])
+                #modpool = Pool(1)
                 for i in range(1,p["numcubes"]):
                     args.append([p, i]) #Setup args for each parallel run
                 if p["ptype"] == 1: #Request to do some work.
                     if p["action"] == 1: #compress using ZFP
-                        result = zfpcompress(p)
+                        pool_results = modpool.map(zfpcompress, args)
                     elif p["action"] == 2: #vorticity mesh vtk
-                        #not implemented yet
                         result = True
                     elif p["action"] == 4:                        
-                        #get results from pool
-                        result = 1
                         pool_results = modpool.map(testmod, args)
-                        for p in (pool_results):
-                            
-                            if (p["message"] == "Success"):
-                                print ("success ", i)
-                            else:
-                                p["message"] = "Failed" #rework this 
-                                result = 0 #process failed
-                                print ("fail")
                     elif p["action"] == 5: 
-                        #get results from pool
                         print("Get cutout mod")
-                        result = 1
-                        #getcutoutmod(args[1])
                         pool_results = modpool.map(getcutoutmod, args)
-                        for p in (pool_results):
-                            
-                            if (p["message"] == "Success"):
-                                print ("success ", i)
-                            else:
-                                p["message"] = "Failed" #rework this 
-                                result = 0 #process failed
-                                print ("fail")
+                    elif p["action"] == 6: 
+                        print("Convert to Numpy mod")
+                        pool_results = modpool.map(h5tonpy, args)
+                        #pool_results = h5tonpy(args[0])
 
+                    result = 1 #Assume all is well, then change to 0 if anything failed.
+                    for pr in (pool_results):
+                        
+                        if (pr["message"] == "Success"):
+                            print ("success ", i)
+                        else:
+                            p["message"] = "Failed" #rework this 
+                            result = 0 #process failed
+                            print ("fail")
+                    
                     modpool.close()
                     modpool.join() #close up processes
                     #Use result to determine success or fail.
+                    #we need to average the cube times--we are just returning the last one now.
                     if (result):
-                            return_success(p)
-
+                        totaltime = timeit.default_timer()-start
+                        p["totaltime"] = float("{:.4f}".format(totaltime))
+                        return_success(p)
                     else:
-                            return_fail(p)
+                        return_fail(p)
                     break
                 
 

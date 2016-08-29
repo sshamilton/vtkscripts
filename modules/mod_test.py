@@ -16,6 +16,7 @@ def testmod(args):
     print ("Result %s for cube %s" %(result, cubenum))
 
     p["message"] = "Success"
-    p["computetime"] = timeit.default_timer()-start
+    computetime = timeit.default_timer()-start
+    p["computetime"] = float("{:.4f}".format(computetime))
     return p
 
