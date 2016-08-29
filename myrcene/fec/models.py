@@ -14,7 +14,7 @@ class Host(models.Model):
     def __unicode__(self):
         return 'Host: ' + self.name
     name = models.CharField(max_length=100)
-    maxcubes = models.IntegerField(default=10)
+    maxcubes = models.IntegerField(default=10) #max thread pool for host.
 
 class Module(models.Model):
     name = models.CharField(max_length=100)

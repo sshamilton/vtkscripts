@@ -60,6 +60,7 @@ class Tasker:
             p["ez"] = self.ez
             p["dataset"] = self.dataset #not needed for npy. 
             p["numcubes"] = self.numcubes
+            p["maxpool"] = task.host.maxcubes #maximum number of cubes to process at one time
             print >>sys.stderr, 'sending "%s"' % p
             sock.sendall(json.dumps(p))
             #Set task to spawned

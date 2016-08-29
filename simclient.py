@@ -67,7 +67,7 @@ while True:
                 print p #for debugging
                 start = timeit.default_timer()
                 args = []
-                modpool = Pool(p["numcubes"])
+                modpool = Pool(p["maxpool"])
                 for i in range(1,p["numcubes"]):
                     args.append([p, i]) #Setup args for each parallel run
                 if p["ptype"] == 1: #Request to do some work.
