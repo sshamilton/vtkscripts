@@ -13,6 +13,7 @@ from mod_zfpcompress import zfpcompress
 from mod_test import testmod
 from mod_getcutout import getcutoutmod
 from mod_h5tonpy import h5tonpy
+from mod_vortvelvolume import vortvelvolume
 
 def return_success(p):
     p["message"] = "Success"
@@ -80,7 +81,7 @@ while True:
                     elif p["action"] == 2: #vorticity mesh vtk
                         result = True
                     elif p["action"] == 3: #vorticity thresh dilated velocity volume
-                        result = True
+                        pool_results = modpool.map(vortvelvolume, args)
                     elif p["action"] == 4:                        
                         pool_results = modpool.map(testmod, args)
                     elif p["action"] == 5: 
