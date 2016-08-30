@@ -7,7 +7,30 @@ import timeit
 import os
 
 #Dataset is only required for HDF5 files. Not for numpy arrays.  Detection is based on file ext.
-def zfpcompress(inputfile, outputfile, sx, ex, sy, ey, sz, ez, dataset):
+def zfpcompress(args):
+    #inputfile, outputfile, sx, ex, sy, ey, sz, ez, dataset):
+    p = args[0]
+    cubenum = args[1]
+    print("Cube", cubenum)
+    #Check for additonal parameters
+    if (p["param1"] != ""):
+        extension = p["param1"]
+    else:
+        extension = "npy" #Default to numpy array
+    if (p["param2"] != ""):
+        tolerance = float(p["param2"])
+    else:
+        tolerance = 1e-1
+
+    inputfile = p["inputfile"] +str(cubenum) + "." + extension #Used so we can set either npy input or h5 input
+    outputfile = p["outputfile"] + str(cubenum) + ".vti" #always VTK Image Data for this.
+    sx = p["sx"]
+    sy = p["sy"]
+    sz = p["sz"]
+    ex = p["ex"]
+    ey = p["ey"]
+    ez = p["ez"]
+        
     print ("Loading file, %s" % inputfile)
     #Determine if file is h5 or numpy
     if (inputfile.split(".")[1] == "npy"):
@@ -18,6 +41,8 @@ def zfpcompress(inputfile, outputfile, sx, ex, sy, ey, sz, ez, dataset):
         #read in file
         rs = timeit.default_timer()
         data_file = h5py.File(inputfile, 'r')
+        att = data_file.keys()
+        dataset = att[4] #grab the dataset name -- this changes depending on timestep
         vel = np.array(data_file[dataset])
         data_file.close()
         re = timeit.default_timer()
@@ -54,5 +79,10 @@ def zfpcompress(inputfile, outputfile, sx, ex, sy, ey, sz, ez, dataset):
     print ("Write %s" % str(we-ws))
     print ("Total time: %s" % str(we-rs))
     print ("Result %s" %result)
-    return result
+    if (result):
+        p["message"] = "Success"
+    else:
+        p["message"] = "Failed: " + str(result)
+    p["computetime"] = str(we-rs)
+    return p #return the packet
 
