@@ -24,7 +24,8 @@ def index(request):
         newresult = Result()
         #task = models.ForeignKey(Task, on_delete=models.CASCADE)
         newresult.task_id = data['taskid']
-        newresult.total_time = data['computetime'] #May need to change the name of this.  
+        newresult.total_time = data['totaltime']   
+        newresult.avg_time = data['computetime']
         newresult.created_at = timezone.now()
         newresult.modified_at = timezone.now() #Will be used when we update a record with times.
         newresult.save()
@@ -42,6 +43,8 @@ def index(request):
                 response="Sending new task"
                 tasker = Tasker(task)
                 task.spawned = tasker.run(task)
+                task.save()
+                print ("Spawn result should be: ", task.spawned)
 
             else:
                 response="All tasks complete"
@@ -61,13 +64,17 @@ def spawnjob(request, webargs):
     task = job.task_set.filter(completed=0, spawned=False).first() #Grab first job that isn't spawned or completed
     #for task in tasks:
     #Only fire off first job, success or fail will result in spawning next job
-    tasker = Tasker(task)
-    #Run the task and collect results
-    task.spawned = tasker.run(task) #Include the task so we can update it if it spawns properly or not.
-    task.save()
-    alltasks = job.task_set.all()
+    if (task):
+        tasker = Tasker(task)
+        #Run the task and collect results
+        task.spawned = tasker.run(task) #Include the task so we can update it if it spawns properly or not.
+        task.save()
+        alltasks = job.task_set.all()
 
-    response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
+        response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
+    else:
+        alltasks = job.task_set.all()
+        response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
     return response
 
 def results(request, webargs):

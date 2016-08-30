@@ -23,7 +23,8 @@ class Module(models.Model):
 
 class Task(models.Model):
     def __unicode__(self):
-        return self.job.name
+        return 'Name: ' + self.name
+    name = models.CharField(max_length=200, default="")
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     host = models.ForeignKey(Host, on_delete=models.CASCADE)
     modules = models.ForeignKey(Module, on_delete=models.CASCADE)
@@ -37,17 +38,18 @@ class Task(models.Model):
     sx = models.IntegerField(default=0)
     sy = models.IntegerField(default=0)
     sz = models.IntegerField(default=0)
-    param1 = models.CharField(max_length=200, default="") #multipurpose fields for module specific info
-    param2 = models.CharField(max_length=200, default="")
-    param3 = models.CharField(max_length=200, default="")
-    param4 = models.CharField(max_length=200, default="")
-    param5 = models.CharField(max_length=200, default="")    
+    param1 = models.CharField(max_length=200, default="", blank=True) #multipurpose fields for module specific info
+    param2 = models.CharField(max_length=200, default="", blank=True)
+    param3 = models.CharField(max_length=200, default="", blank=True)
+    param4 = models.CharField(max_length=200, default="", blank=True)
+    param5 = models.CharField(max_length=200, default="", blank=True)    
 
 class Result(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     first_cube = models.IntegerField(default=0)
     last_cube = models.IntegerField(default=0)
-    total_time = models.IntegerField(default=0)
+    total_time = models.FloatField(default=0.0)
+    avg_cube_time = models.FloatField(default=0.0)
     created_at = models.DateTimeField('created at')
     modified_at = models.DateTimeField('modified at')
 
