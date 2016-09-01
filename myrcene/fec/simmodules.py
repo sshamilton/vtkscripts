@@ -7,7 +7,8 @@ Packet = {
     "server_address" : "",
     "action" : "", #1 = compress zfp, 2 = extract vortcity, assign 3, 4, and 5 later.
     "cubescomplete" : 0,
-    "numcubes" : 0,  #Number of cubes to be processed in parallel at each node.
+    "cube_start" : 0, 
+    "cube_end" : 0,
     "inputfile" : "",
     "outputfile" : "",
     "sx" : 0,
@@ -17,7 +18,8 @@ Packet = {
     "sz" : 0,
     "ez" : 0,
     "dataset" : "",
-    "computetime" : 0, #Time in seconds to perform the computation.
+    "computetime" : 0.0, #Time in seconds to perform the computation.
+    "totaltime" : 0.0,
     "param1" : "", #Generic parameter for module specific stuff
     "param2" : "", #Generic parameter for module specific stuff
     "param3" : "", #Generic parameter for module specific stuff

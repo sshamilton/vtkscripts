@@ -22,7 +22,8 @@ class Tasker:
         self.taskid = task.id
         self.server_address = "10.161.159.182:8000" #Update this to the address of the webserver so clients can respond
         self.client_address = task.host.name
-        self.numcubes = task.cube_end - task.cube_start
+        self.cube_start = task.cube_start
+        self.cube_end = task.cube_end
         self.param1 = task.param1
         self.param2 = task.param2
         self.param3 = task.param3
@@ -59,7 +60,8 @@ class Tasker:
             p["sz"] = self.sz
             p["ez"] = self.ez
             p["dataset"] = self.dataset #not needed for npy. 
-            p["numcubes"] = self.numcubes
+            p["cube_start"] = self.cube_start
+            p["cube_end"] = self.cube_end
             p["maxpool"] = task.host.maxcubes #maximum number of cubes to process at one time
             print >>sys.stderr, 'sending "%s"' % p
             sock.sendall(json.dumps(p))
