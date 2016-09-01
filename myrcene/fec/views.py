@@ -62,21 +62,17 @@ def spawnjob(request, webargs):
     jobid = int(webargs.split('/')[0])
     #import pdb;pdb.set_trace()
     job = Job.objects.get(pk=jobid)
-
-    task = job.task_set.filter(completed=0, spawned=False).first() #Grab first job that isn't spawned or completed
-    #for task in tasks:
+    #Changing it so all tasks go at the same time. 
+    #task = job.task_set.filter(completed=0, spawned=False).first() #Grab first job that isn't spawned or completed
     #Only fire off first job, success or fail will result in spawning next job
-    if (task):
+    for task in tasks:
         tasker = Tasker(task)
         #Run the task and collect results
         task.spawned = tasker.run(task) #Include the task so we can update it if it spawns properly or not.
         task.save()
-        alltasks = job.task_set.all()
+    alltasks = job.task_set.all()
+    response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
 
-        response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
-    else:
-        alltasks = job.task_set.all()
-        response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
     return response
 
 def results(request, webargs):
