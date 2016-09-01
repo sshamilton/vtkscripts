@@ -71,6 +71,7 @@ def main(argv):
     w.GetCompressor().SetNumComponents(3)
     w.SetFileName(outputfile)
     w.SetInputData(image)
+    w.SetEncodeAppendedData(0)
     w.Write()
     we = timeit.default_timer()
  
