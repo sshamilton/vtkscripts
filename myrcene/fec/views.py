@@ -65,6 +65,7 @@ def spawnjob(request, webargs):
     #Changing it so all tasks go at the same time. 
     #task = job.task_set.filter(completed=0, spawned=False).first() #Grab first job that isn't spawned or completed
     #Only fire off first job, success or fail will result in spawning next job
+    tasks = Task.objects.all()
     for task in tasks:
         tasker = Tasker(task)
         #Run the task and collect results
