@@ -43,8 +43,6 @@ class Tasker:
             return False
         #Get clients going.
         try:
-            
-            # Send zfp request to compress
             p = simmodules.Packet #Used to define the packet
             p["ptype"] = self.ptype
             p["message"] = self.message
@@ -63,6 +61,11 @@ class Tasker:
             p["cube_start"] = self.cube_start
             p["cube_end"] = self.cube_end
             p["maxpool"] = task.host.maxcubes #maximum number of cubes to process at one time
+            p["param1"] = self.param1
+            p["param2"] = self.param2
+            p["param3"] = self.param3
+            p["param4"] = self.param4
+            p["param5"] = self.param5
             print >>sys.stderr, 'sending "%s"' % p
             sock.sendall(json.dumps(p))
             #Set task to spawned

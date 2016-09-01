@@ -59,8 +59,10 @@ def index(request):
 def spawnjob(request, webargs):
     template = loader.get_template('fec/spawnjob.html')
     #Load the job requested.
-    jobid = webargs[0]
-    job = Job.objects.get(pk=webargs[0])
+    jobid = int(webargs.split('/')[0])
+    #import pdb;pdb.set_trace()
+    job = Job.objects.get(pk=jobid)
+
     task = job.task_set.filter(completed=0, spawned=False).first() #Grab first job that isn't spawned or completed
     #for task in tasks:
     #Only fire off first job, success or fail will result in spawning next job
