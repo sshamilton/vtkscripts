@@ -121,7 +121,7 @@ def getthresh(args):
 
     d = vtk.vtkImageDilateErode3D()
     d.SetInputData(t.GetOutput())
-    d.SetKernelSize(4,4,4)
+    d.SetKernelSize(3,3,3)
     d.SetDilateValue(1)
     d.SetErodeValue(0)
     print ("Update dilate")
@@ -159,7 +159,7 @@ def getthresh(args):
         w.GetCompressor().SetNx(ex-sx+1)
         w.GetCompressor().SetNy(ey-sy+1)
         w.GetCompressor().SetNz(ez-sz+1)
-        w.GetCompressor().SetTolerance(1e-2)
+        w.GetCompressor().SetTolerance(1e-1)
         w.GetCompressor().SetNumComponents(3)
 
     w.Write()
@@ -211,7 +211,7 @@ def main(argv):
         elif opt in ("-u", "--du"):
             comptype = str(arg)
 
-    cubes = 6
+    cubes = 6 #6
     args = []
     for i in range(1,cubes+1):
         inputfile = "iso256cube" + str(i) + ".npy"
