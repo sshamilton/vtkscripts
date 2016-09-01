@@ -13,16 +13,16 @@ def vortvelvolume(args):
     cubenum = args[1]
     print("Cube", cubenum)
     #Check for additonal parameters
-    if (p["param1"] != ""):
+    if (p["param1"] != ''):
         comptype = p["param1"]
     else:
         comptype = "q" #Default to q criterion
-    if (p["param2"] != ""):
+    if (p["param2"] != ''):
         thresh = float(p["param2"])
     else:
         thresh = 783.3 #Default for q threshold on isotropic data
 
-    inputfile = p["inputfile"] +str(cubenum) + "." + extension #Used so we can set either npy input or h5 input
+    inputfile = p["inputfile"] +str(cubenum) + ".npy" 
     outputfile = p["outputfile"] + str(cubenum) + ".vti" #always VTK Image Data for this.
     sx = p["sx"]
     sy = p["sy"]
@@ -86,13 +86,13 @@ def vortvelvolume(args):
 
     if (comptype == "q"):
         t.SetInputData(image)
-        t.ThresholdByUpper(783.3) #.25*67.17^2 = 1127
+        t.ThresholdByUpper(thresh) #.25*67.17^2 = 1127
         #t.SetInputArrayToProcess(0,0,0, vorticity.GetOutput().FIELD_ASSOCIATION_POINTS, "Q-criterion")
         print("q criterion")
     else:
         t.SetInputData(m)
         t.SetInputArrayToProcess(0,0,0, mag.GetOutput().FIELD_ASSOCIATION_POINTS, "Magnitude")
-        t.ThresholdByUpper(44.79) #44.79)
+        t.ThresholdByUpper(thresh) #44.79)
     #Set values in range to 1 and values out of range to 0
     t.SetInValue(1)
     t.SetOutValue(0)
@@ -148,7 +148,7 @@ def vortvelvolume(args):
         w.GetCompressor().SetTolerance(1e-2)
         w.GetCompressor().SetNumComponents(3)
 
-    w.Write()
+    result = w.Write()
     we = timeit.default_timer()
 
     print("Results:")
@@ -163,5 +163,8 @@ def vortvelvolume(args):
     print ("Threshold: %s" % str(te-ts))
     print ("Write %s" % str(we-ws))
     print ("Total time: %s" % str(we-rs))
+    if (result):
+        p["message"] = "Success"
+        p["computetime"] = str(we-rs)
     return p #return the packet
 

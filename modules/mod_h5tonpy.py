@@ -10,8 +10,7 @@ def h5tonpy(args):
     p = args[0]
     cubenum = args[1]
     print("Cube", cubenum)
-    
-    #Determine if file is h5 or numpy
+
     start = timeit.default_timer()
     file_name = p["outputfile"] + str(cubenum) + ".npy"
     print ("Output file is ", file_name)

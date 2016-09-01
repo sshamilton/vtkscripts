@@ -14,6 +14,7 @@ from mod_test import testmod
 from mod_getcutout import getcutoutmod
 from mod_h5tonpy import h5tonpy
 from mod_vortvelvolume import vortvelvolume
+from mod_vortmesh import vortmesh
 
 def return_success(p):
     p["message"] = "Success"
@@ -25,14 +26,13 @@ def return_success(p):
     print ("Reason: %s" % response.reason)
 
 def return_fail(p):
-    p = simmodules.Packet
     p["type"] = 2
-    p["message"] = "Success"
-    p["cubescomplete"] = 1
+    p["message"] = "Fail"
+    p["cubescomplete"] = 0
     hfec = httplib.HTTPConnection(p["server_address"])
     hfec.request('PUT', '/fec/', json.dumps(p))
     response = hfec.getresponse()
-    print ("Sent success to %s" % p["server_address"])
+    print ("Sent fail to %s" % p["server_address"])
     print ("Result: %s" % response.read())
     print ("Reason: %s" % response.reason)
 
@@ -79,7 +79,7 @@ while True:
                     if p["action"] == 1: #compress using ZFP
                         pool_results = modpool.map(zfpcompress, args)
                     elif p["action"] == 2: #vorticity mesh vtk
-                        result = True
+                        pool_results = modpool.map(vortmesh, args)
                     elif p["action"] == 3: #vorticity thresh dilated velocity volume
                         pool_results = modpool.map(vortvelvolume, args)
                     elif p["action"] == 4:                        
@@ -109,6 +109,7 @@ while True:
                     if (result):
                         totaltime = timeit.default_timer()-start
                         p["totaltime"] = float("{:.4f}".format(totaltime))
+                        p["cubescomplete"] = (p["cube_end"]-p["cube_start"] +1)
                         return_success(p)
                     else:
                         return_fail(p)
