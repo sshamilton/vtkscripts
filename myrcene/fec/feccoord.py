@@ -20,7 +20,7 @@ class Tasker:
         self.ez = task.job.zlen
         self.dataset = "u00000" #task.dataset #not needed for npy. 
         self.taskid = task.id
-        self.server_address = "cn66:8000" #Update this to the address of the webserver so clients can respond
+        self.server_address = "cn11:8000" #Update this to the address of the webserver so clients can respond TODO: make automatic
         self.client_address = task.host.name
         self.cube_start = task.cube_start
         self.cube_end = task.cube_end
