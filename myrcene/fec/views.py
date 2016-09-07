@@ -65,20 +65,19 @@ def spawnjob(request, webargs):
     #Changing it so all tasks go at the same time. 
     #task = job.task_set.filter(completed=0, spawned=False).first() #Grab first job that isn't spawned or completed
     #Only fire off first job, success or fail will result in spawning next job
-    tasks = Task.objects.all()
-    for task in tasks:
+    alltasks = job.task_set.all()
+    for task in alltasks:
         tasker = Tasker(task)
         #Run the task and collect results
         task.spawned = tasker.run(task) #Include the task so we can update it if it spawns properly or not.
         task.save()
-    alltasks = job.task_set.all()
     response = HttpResponse(template.render({'job': job, 'tasks': alltasks}, request))
 
     return response
 
 def results(request, webargs):
     template = loader.get_template('fec/results.html/')
-    jobid = webargs[0]
+    jobid = webargs[0] 
     job = Job.objects.get(pk=webargs[0])
     #results = job.task_set.result_set.all()
     tasks = job.task_set.all()
