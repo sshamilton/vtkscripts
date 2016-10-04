@@ -100,6 +100,8 @@ while True:
                         else:
                             p["message"] = "Failed" #rework this 
                             result = 0 #process failed
+                            #Go to debug mode to see if we can figure out what happened
+                            import pdb;pdb.set_trace()
                             print ("fail")
                     
                     modpool.close()
