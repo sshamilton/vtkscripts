@@ -2,7 +2,7 @@ import socket
 import sys
 import simmodules
 import json
-
+from django.conf import settings
 
 class Tasker:
     def __init__(self, task):
@@ -20,7 +20,7 @@ class Tasker:
         self.ez = task.job.zlen
         self.dataset = "u00000" #task.dataset #not needed for npy. 
         self.taskid = task.id
-        self.server_address = "darwin-fe2:8000" #Update this to the address of the webserver so clients can respond TODO: make automatic
+        self.server_address = settings.HOSTNAME #set in settings.py
         self.client_address = task.host.name
         self.cube_start = task.cube_start
         self.cube_end = task.cube_end

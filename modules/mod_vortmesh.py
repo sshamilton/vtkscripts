@@ -50,7 +50,7 @@ def vortmesh(args):
     image = vtk.vtkImageData()
     image.GetPointData().SetVectors(vtkdata)
     image.SetExtent(sx,ex,sy,ey,sz,ez)
-    #NOTE: Hardcoding Spacing
+    #NOTE: Hardcoding Spacing TODO: Add to parameters
 
     image.SetSpacing(.006135923, .006135923, .006135923)
     ce = timeit.default_timer()
