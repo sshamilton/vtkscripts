@@ -1,0 +1,177 @@
+('Cube', 3)
+Loading file, nvme1/isotropic-3.npy
+('Cube', 6)
+Loading file, nvme1/isotropic-6.npy
+('Cube', 9)
+Loading file, nvme1/isotropic-9.npy
+('Cube', 1)
+Loading file, nvme1/isotropic-1.npy
+('Cube', 11)
+Loading file, nvme1/isotropic-11.npy
+('Cube', 7)
+Loading file, nvme1/isotropic-7.npy
+('Cube', 12)
+Loading file, nvme1/isotropic-12.npy
+('Cube', 10)
+Loading file, nvme1/isotropic-10.npy
+('Cube', 4)
+Loading file, nvme1/isotropic-4.npy
+('Cube', 13)
+Loading file, nvme1/isotropic-13.npy
+('Cube', 2)
+Loading file, nvme1/isotropic-2.npy
+('Cube', 8)
+Loading file, nvme1/isotropic-8.npy
+('Cube', 15)
+Loading file, nvme1/isotropic-15.npy
+('Cube', 5)
+Loading file, nvme1/isotropic-5.npy
+('Cube', 14)
+Loading file, nvme1/isotropic-14.npy
+('Cube', 16)
+Loading file, nvme1/isotropic-16.npy
+Original File, nvme1/isotropic-9.npy
+Final size of vti: 24682265
+Read time: 0.309201002121
+Convert to vtk: 0.109465837479
+Write 1.39760994911
+Total time: 1.81627893448
+Result 1
+Original File, nvme1/isotropic-3.npy
+Final size of vti: 24705241
+Read time: 0.177341938019
+Convert to vtk: 0.10333609581
+Write 1.6800160408
+Total time: 1.96069693565
+Result 1
+Original File, nvme1/isotropic-6.npy
+Final size of vti: 24693937
+Read time: 0.175069093704
+Convert to vtk: 0.104589939117
+Write 1.68099021912
+Total time: 1.96065115929
+Result 1
+Original File, nvme1/isotropic-16.npy
+Final size of vti: 24657649
+Read time: 0.481113910675
+Convert to vtk: 0.252310991287
+Write 1.54022789001
+Total time: 2.27365493774
+Result 1
+Original File, nvme1/isotropic-14.npy
+Final size of vti: 24662297
+Read time: 0.487120866776
+Convert to vtk: 0.246542930603
+Write 1.60046601295
+Total time: 2.3341319561
+Result 1
+Original File, nvme1/isotropic-1.npy
+Final size of vti: 24706289
+Read time: 0.319780826569
+Convert to vtk: 0.133224010468
+Write 1.6475918293
+Total time: 2.10060381889
+Result 1
+Original File, nvme1/isotropic-13.npy
+Final size of vti: 24663897
+Read time: 0.437482118607
+Convert to vtk: 0.259786128998
+Write 1.67498588562
+Total time: 2.37225604057
+Result 1
+Original File, nvme1/isotropic-4.npy
+Final size of vti: 24702201
+Read time: 0.440129041672
+Convert to vtk: 0.257584095001
+Write 1.67606902122
+Total time: 2.37378501892
+Result 1
+Original File, nvme1/isotropic-7.npy
+Final size of vti: 24690565
+Read time: 0.445098161697
+Convert to vtk: 0.192233085632
+Write 1.68639302254
+Total time: 2.32372713089
+Result 1
+Original File, nvme1/isotropic-11.npy
+Final size of vti: 24674513
+Read time: 0.436386108398
+Convert to vtk: 0.179998159409
+Write 1.44746398926
+Total time: 2.06385016441
+Result 1
+Original File, nvme1/isotropic-2.npy
+Final size of vti: 24707589
+Read time: 0.446917057037
+Convert to vtk: 0.251923084259
+Write 1.67560791969
+Total time: 2.37444996834
+Result 1
+Original File, nvme1/isotropic-8.npy
+Final size of vti: 24684741
+Read time: 0.452467918396
+Convert to vtk: 0.255696058273
+Write 1.67440104485
+Total time: 2.38256597519
+Result 1
+Original File, nvme1/isotropic-10.npy
+Final size of vti: 24680601
+Read time: 0.436501026154
+Convert to vtk: 0.253171205521
+Write 1.70999383926
+Total time: 2.39966797829
+Result 1
+Original File, nvme1/isotropic-12.npy
+Final size of vti: 24669061
+Read time: 0.408012866974
+Convert to vtk: 0.274544000626
+Write 1.70843195915
+Total time: 2.39099097252
+Result 1
+Original File, nvme1/isotropic-15.npy
+Final size of vti: 24659589
+Read time: 0.485378026962
+Convert to vtk: 0.237279891968
+Write 1.7190849781
+Total time: 2.4417450428
+Result 1
+Original File, nvme1/isotropic-5.npy
+Final size of vti: 24698385
+Read time: 0.484361886978
+Convert to vtk: 0.242840051651
+Write 1.68751478195
+Total time: 2.41471886635
+Result 1
+('I is ', 1)
+('I is ', 2)
+('I is ', 3)
+('I is ', 4)
+('I is ', 5)
+('I is ', 6)
+('I is ', 7)
+('I is ', 8)
+('I is ', 9)
+('I is ', 10)
+('I is ', 11)
+('I is ', 12)
+('I is ', 13)
+('I is ', 14)
+('I is ', 15)
+('I is ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+{'ptype': 1, 'dataset': 'u00010', 'outputfile': '/tmp/isotropicout-', 'ey': 255, 'ex': 255, 'ez': 255, 'message': 'Test packet', 'totaltime': 2.5485, 'sz': 0, 'sy': 0, 'sx': 0, 'maxpool': 16, 'cubescomplete': 16, 'cube_start': 1, 'cube_end': 16, 'param2': '', 'param1': '', 'action': 3, 'inputfile': 'nvme1/isotropic-'}

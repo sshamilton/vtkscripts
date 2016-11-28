@@ -1,0 +1,289 @@
+('Cube', 6)
+Loading file, ../../nvme1/isotropic-6.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.248481988907
+Convert to vtk: 0.160684108734
+Q Computation: 5.14476394653
+Q Magnitude: 0.000283002853394
+Threshold: 0.291416883469
+Write 2.19990110397
+Total time: 8.04562902451
+('Cube', 13)
+Loading file, ../../nvme1/isotropic-13.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.126124858856
+Convert to vtk: 0.187314987183
+Q Computation: 5.5604288578
+Q Magnitude: 0.000142812728882
+Threshold: 0.477876901627
+Write 1.86863994598
+Total time: 8.22059583664
+('Cube', 15)
+Loading file, ../../nvme1/isotropic-15.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.126950979233
+Convert to vtk: 0.189766168594
+Q Computation: 5.04501986504
+Q Magnitude: 0.000997066497803
+Threshold: 0.354141950607
+Write 1.97215604782
+Total time: 7.6891450882
+('Cube', 7)
+Loading file, ../../nvme1/isotropic-7.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.377043962479
+Convert to vtk: 0.238890886307
+Q Computation: 5.51969194412
+Q Magnitude: 0.000379085540771
+Threshold: 0.674742937088
+Write 1.54251122475
+Total time: 8.35339307785
+('Cube', 14)
+Loading file, ../../nvme1/isotropic-14.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.12614607811
+Convert to vtk: 0.188163042068
+Q Computation: 5.55696201324
+Q Magnitude: 0.000150918960571
+Threshold: 0.438408851624
+Write 1.9362308979
+Total time: 8.24613595009
+('Cube', 11)
+Loading file, ../../nvme1/isotropic-11.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.343172073364
+Convert to vtk: 0.260591983795
+Q Computation: 5.67444300652
+Q Magnitude: 0.000132083892822
+Threshold: 0.769102096558
+Write 1.49405503273
+Total time: 8.54156017303
+('Cube', 5)
+Loading file, ../../nvme1/isotropic-5.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.338090896606
+Convert to vtk: 0.262047052383
+Q Computation: 5.71165418625
+Q Magnitude: 0.000143051147461
+Threshold: 0.743332862854
+Write 1.49308300018
+Total time: 8.54841780663
+('Cube', 4)
+Loading file, ../../nvme1/isotropic-4.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.3389980793
+Convert to vtk: 0.169736862183
+Q Computation: 5.28638601303
+Q Magnitude: 0.00138998031616
+Threshold: 0.504472970963
+Write 1.91282582283
+Total time: 8.21393084526
+('Cube', 16)
+Loading file, ../../nvme1/isotropic-16.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.291528940201
+Convert to vtk: 0.260008811951
+Q Computation: 5.40277218819
+Q Magnitude: 0.000280857086182
+Threshold: 0.537337064743
+Write 1.76005506516
+Total time: 8.25209712982
+('Cube', 1)
+Loading file, ../../nvme1/isotropic-1.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.329405069351
+Convert to vtk: 0.272863149643
+Q Computation: 5.75208377838
+Q Magnitude: 0.000303030014038
+Threshold: 0.774703025818
+Write 1.43488001823
+Total time: 8.56435799599
+('Cube', 3)
+Loading file, ../../nvme1/isotropic-3.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.372308969498
+Convert to vtk: 0.259916782379
+Q Computation: 5.98744702339
+Q Magnitude: 0.000160217285156
+Threshold: 0.512980937958
+Write 1.44087100029
+Total time: 8.57375097275
+('Cube', 12)
+Loading file, ../../nvme1/isotropic-12.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.337724924088
+Convert to vtk: 0.248838186264
+Q Computation: 5.87403202057
+Q Magnitude: 0.000370979309082
+Threshold: 0.677628040314
+Write 1.43256998062
+Total time: 8.57131791115
+('Cube', 2)
+Loading file, ../../nvme1/isotropic-2.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.3334608078
+Convert to vtk: 0.272171020508
+Q Computation: 5.74633598328
+Q Magnitude: 0.000174045562744
+Threshold: 0.731282949448
+Write 1.49175596237
+Total time: 8.57524490356
+('Cube', 8)
+Loading file, ../../nvme1/isotropic-8.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.378329992294
+Convert to vtk: 0.250380039215
+Q Computation: 5.6963429451
+Q Magnitude: 0.000168085098267
+Threshold: 0.759080886841
+Write 1.49824810028
+Total time: 8.58260703087
+('Cube', 10)
+Loading file, ../../nvme1/isotropic-10.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.360662937164
+Convert to vtk: 0.248625040054
+Q Computation: 6.11999797821
+Q Magnitude: 0.000334978103638
+Threshold: 0.430000066757
+Write 1.47845005989
+Total time: 8.63818693161
+('Cube', 9)
+Loading file, ../../nvme1/isotropic-9.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.379055023193
+Convert to vtk: 0.249172925949
+Q Computation: 6.0051150322
+Q Magnitude: 0.000329971313477
+Threshold: 0.509411096573
+Write 1.48224306107
+Total time: 8.6421380043
+('I is ', 1)
+('I is ', 2)
+('I is ', 3)
+('I is ', 4)
+('I is ', 5)
+('I is ', 6)
+('I is ', 7)
+('I is ', 8)
+('I is ', 9)
+('I is ', 10)
+('I is ', 11)
+('I is ', 12)
+('I is ', 13)
+('I is ', 14)
+('I is ', 15)
+('I is ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+{'ptype': 1, 'dataset': 'u00010', 'outputfile': '/tmp/isotropicout-', 'ey': 255, 'ex': 255, 'ez': 255, 'message': 'Test packet', 'totaltime': 8.7627, 'sz': 0, 'sy': 0, 'sx': 0, 'maxpool': 16, 'cubescomplete': 16, 'cube_start': 1, 'cube_end': 16, 'param2': '', 'param1': '', 'action': 3, 'inputfile': '../../nvme1/isotropic-'}

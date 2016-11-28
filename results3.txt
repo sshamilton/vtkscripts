@@ -1,0 +1,10 @@
+128 cube q criterion
+
+Read time: 0.0510358810425
+Convert to vtk: 0.0155980587006
+Q Computation: 0.874487161636
+Q Magnitude: 0.205655813217
+Threshold: 0.0666861534119
+Write 0.166753053665
+Total time: 1.38034200668
+

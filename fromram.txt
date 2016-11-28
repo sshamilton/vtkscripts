@@ -1,0 +1,289 @@
+('Cube', 16)
+Loading file, ../../ram/isotropic-16.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.367867946625
+Convert to vtk: 0.181010961533
+Q Computation: 5.30025219917
+Q Magnitude: 0.000293970108032
+Threshold: 0.476340055466
+Write 1.90430998802
+Total time: 8.23019385338
+('Cube', 15)
+Loading file, ../../ram/isotropic-15.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.409188985825
+Convert to vtk: 0.256524085999
+Q Computation: 5.45494794846
+Q Magnitude: 0.000273942947388
+Threshold: 0.597112894058
+Write 1.65127420425
+Total time: 8.36942815781
+('Cube', 8)
+Loading file, ../../ram/isotropic-8.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.407659053802
+Convert to vtk: 0.268175125122
+Q Computation: 5.53418588638
+Q Magnitude: 0.000368118286133
+Threshold: 0.668478012085
+Write 1.56392502785
+Total time: 8.44292497635
+('Cube', 4)
+Loading file, ../../ram/isotropic-4.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.238933086395
+Convert to vtk: 0.122116088867
+Q Computation: 5.53204584122
+Q Magnitude: 0.00198101997375
+Threshold: 0.414689064026
+Write 1.93268084526
+Total time: 8.24255990982
+('Cube', 14)
+Loading file, ../../ram/isotropic-14.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.376946210861
+Convert to vtk: 0.268369913101
+Q Computation: 5.62034201622
+Q Magnitude: 0.000202894210815
+Threshold: 0.840281963348
+Write 1.47310709953
+Total time: 8.57931017876
+('Cube', 7)
+Loading file, ../../ram/isotropic-7.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.305514812469
+Convert to vtk: 0.297267913818
+Q Computation: 5.69802498817
+Q Magnitude: 0.000346899032593
+Threshold: 0.848866939545
+Write 1.4662630558
+Total time: 8.61642694473
+('Cube', 10)
+Loading file, ../../ram/isotropic-10.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.404644966125
+Convert to vtk: 0.25675201416
+Q Computation: 6.02378797531
+Q Magnitude: 0.000147104263306
+Threshold: 0.504016876221
+Write 1.4708969593
+Total time: 8.66030097008
+('Cube', 2)
+Loading file, ../../ram/isotropic-2.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.106275081635
+Convert to vtk: 0.0742480754852
+Q Computation: 5.15919995308
+Q Magnitude: 0.00104784965515
+Threshold: 0.357153892517
+Write 2.00308799744
+Total time: 7.70115113258
+('Cube', 5)
+Loading file, ../../ram/isotropic-5.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.346737146378
+Convert to vtk: 0.178972959518
+Q Computation: 5.62875294685
+Q Magnitude: 0.000263929367065
+Threshold: 0.728965997696
+Write 1.57517504692
+Total time: 8.45895910263
+('Cube', 3)
+Loading file, ../../ram/isotropic-3.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.381171941757
+Convert to vtk: 0.264638900757
+Q Computation: 5.67602491379
+Q Magnitude: 0.000144004821777
+Threshold: 0.814806938171
+Write 1.49483299255
+Total time: 8.63168907166
+('Cube', 9)
+Loading file, ../../ram/isotropic-9.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.319132089615
+Convert to vtk: 0.279363155365
+Q Computation: 5.62766695023
+Q Magnitude: 0.000283002853394
+Threshold: 0.871023178101
+Write 1.47879505157
+Total time: 8.57639408112
+('Cube', 6)
+Loading file, ../../ram/isotropic-6.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.408154010773
+Convert to vtk: 0.2579870224
+Q Computation: 5.76057887077
+Q Magnitude: 0.000353097915649
+Threshold: 0.664817810059
+Write 1.45987796783
+Total time: 8.55190300941
+('Cube', 13)
+Loading file, ../../ram/isotropic-13.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.399883031845
+Convert to vtk: 0.255826950073
+Q Computation: 5.70408892632
+Q Magnitude: 0.000134944915771
+Threshold: 0.80598115921
+Write 1.48226213455
+Total time: 8.64823102951
+('Cube', 1)
+Loading file, ../../ram/isotropic-1.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.409935951233
+Convert to vtk: 0.265540122986
+Q Computation: 5.76927089691
+Q Magnitude: 0.00032901763916
+Threshold: 0.71914601326
+Write 1.46930718422
+Total time: 8.63366103172
+('Cube', 12)
+Loading file, ../../ram/isotropic-12.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.120667934418
+Convert to vtk: 0.0738320350647
+Q Computation: 5.16283607483
+Q Magnitude: 0.000277042388916
+Threshold: 0.382277965546
+Write 2.01268100739
+Total time: 7.7526807785
+('Cube', 11)
+Loading file, ../../ram/isotropic-11.npy
+Thresholding.
+q criterion
+Update thresh
+Update dilate
+Update stencil
+Setting up write
+Results:
+Read time: 0.422258138657
+Convert to vtk: 0.252830028534
+Q Computation: 6.21778988838
+Q Magnitude: 0.000322818756104
+Threshold: 0.364662885666
+Write 1.46035504341
+Total time: 8.71834516525
+('I is ', 1)
+('I is ', 2)
+('I is ', 3)
+('I is ', 4)
+('I is ', 5)
+('I is ', 6)
+('I is ', 7)
+('I is ', 8)
+('I is ', 9)
+('I is ', 10)
+('I is ', 11)
+('I is ', 12)
+('I is ', 13)
+('I is ', 14)
+('I is ', 15)
+('I is ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+{'ptype': 1, 'dataset': 'u00010', 'outputfile': '/tmp/isotropicout-', 'ey': 255, 'ex': 255, 'ez': 255, 'message': 'Test packet', 'totaltime': 8.8638, 'sz': 0, 'sy': 0, 'sx': 0, 'maxpool': 16, 'cubescomplete': 16, 'cube_start': 1, 'cube_end': 16, 'param2': '', 'param1': '', 'action': 3, 'inputfile': '../../ram/isotropic-'}

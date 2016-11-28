@@ -1,0 +1,177 @@
+('Cube', 1)
+Loading file, data/isotropic-1.npy
+('Cube', 9)
+Loading file, data/isotropic-9.npy
+('Cube', 7)
+Loading file, data/isotropic-7.npy
+('Cube', 6)
+Loading file, data/isotropic-6.npy
+('Cube', 12)
+Loading file, data/isotropic-12.npy
+('Cube', 15)
+Loading file, data/isotropic-15.npy
+('Cube', 13)
+Loading file, data/isotropic-13.npy
+('Cube', 8)
+Loading file, data/isotropic-8.npy
+('Cube', 3)
+Loading file, data/isotropic-3.npy
+('Cube', 14)
+Loading file, data/isotropic-14.npy
+('Cube', 5)
+Loading file, data/isotropic-5.npy
+('Cube', 4)
+Loading file, data/isotropic-4.npy
+('Cube', 16)
+Loading file, data/isotropic-16.npy
+('Cube', 11)
+Loading file, data/isotropic-11.npy
+('Cube', 10)
+Loading file, data/isotropic-10.npy
+('Cube', 2)
+Loading file, data/isotropic-2.npy
+Original File, data/isotropic-9.npy
+Final size of vti: 24682265
+Read time: 0.382597208023
+Convert to vtk: 0.107740879059
+Write 1.37202811241
+Total time: 1.86236810684
+Result 1
+Original File, data/isotropic-1.npy
+Final size of vti: 24706289
+Read time: 0.276849985123
+Convert to vtk: 0.123252153397
+Write 1.48284101486
+Total time: 1.88294506073
+Result 1
+Original File, data/isotropic-7.npy
+Final size of vti: 24690565
+Read time: 0.353271961212
+Convert to vtk: 0.137267112732
+Write 1.56278395653
+Total time: 2.05332493782
+Result 1
+Original File, data/isotropic-6.npy
+Final size of vti: 24693937
+Read time: 0.447801828384
+Convert to vtk: 0.145263910294
+Write 1.65560698509
+Total time: 2.24867486954
+Result 1
+Original File, data/isotropic-2.npy
+Final size of vti: 24707589
+Read time: 0.545695066452
+Convert to vtk: 0.257616043091
+Write 1.64116311073
+Total time: 2.44447803497
+Result 1
+Original File, data/isotropic-12.npy
+Final size of vti: 24669061
+Read time: 0.475332021713
+Convert to vtk: 0.203103065491
+Write 1.67287898064
+Total time: 2.35131597519
+Result 1
+Original File, data/isotropic-15.npy
+Final size of vti: 24659589
+Read time: 0.463790893555
+Convert to vtk: 0.290551900864
+Write 1.5881831646
+Total time: 2.34253001213
+Result 1
+Original File, data/isotropic-8.npy
+Final size of vti: 24684741
+Read time: 0.483645915985
+Convert to vtk: 0.281888961792
+Write 1.6909968853
+Total time: 2.45653486252
+Result 1
+Original File, data/isotropic-11.npy
+Final size of vti: 24674513
+Read time: 0.517742872238
+Convert to vtk: 0.275349855423
+Write 1.89499282837
+Total time: 2.68808984756
+Result 1
+Original File, data/isotropic-16.npy
+Final size of vti: 24657649
+Read time: 0.54092502594
+Convert to vtk: 0.24884390831
+Write 1.72951698303
+Total time: 2.51928806305
+Result 1
+Original File, data/isotropic-14.npy
+Final size of vti: 24662297
+Read time: 0.492491006851
+Convert to vtk: 0.281018018723
+Write 1.71953415871
+Total time: 2.49304413795
+Result 1
+Original File, data/isotropic-13.npy
+Final size of vti: 24663897
+Read time: 0.485141992569
+Convert to vtk: 0.28116607666
+Write 1.71675014496
+Total time: 2.48305916786
+Result 1
+Original File, data/isotropic-10.npy
+Final size of vti: 24680601
+Read time: 0.512652873993
+Convert to vtk: 0.280381917953
+Write 1.7626581192
+Total time: 2.55569601059
+Result 1
+Original File, data/isotropic-5.npy
+Final size of vti: 24698385
+Read time: 0.509282827377
+Convert to vtk: 0.269275188446
+Write 1.71656394005
+Total time: 2.49512386322
+Result 1
+Original File, data/isotropic-4.npy
+Final size of vti: 24702201
+Read time: 0.515053033829
+Convert to vtk: 0.267872095108
+Write 1.68802905083
+Total time: 2.47095608711
+Result 1
+Original File, data/isotropic-3.npy
+Final size of vti: 24705241
+Read time: 0.50242805481
+Convert to vtk: 0.272480010986
+Write 1.73057794571
+Total time: 2.50548887253
+Result 1
+('I is ', 1)
+('I is ', 2)
+('I is ', 3)
+('I is ', 4)
+('I is ', 5)
+('I is ', 6)
+('I is ', 7)
+('I is ', 8)
+('I is ', 9)
+('I is ', 10)
+('I is ', 11)
+('I is ', 12)
+('I is ', 13)
+('I is ', 14)
+('I is ', 15)
+('I is ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+('success ', 16)
+{'ptype': 1, 'dataset': 'u00010', 'outputfile': '/tmp/isotropicout-', 'ey': 255, 'ex': 255, 'ez': 255, 'message': 'Test packet', 'totaltime': 2.7462, 'sz': 0, 'sy': 0, 'sx': 0, 'maxpool': 16, 'cubescomplete': 16, 'cube_start': 1, 'cube_end': 16, 'param2': '', 'param1': '', 'action': 3, 'inputfile': 'data/isotropic-'}
