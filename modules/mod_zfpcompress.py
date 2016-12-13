@@ -55,6 +55,8 @@ def zfpcompress(args):
     image = vtk.vtkImageData()
     image.GetPointData().SetVectors(vtkdata)
     image.SetExtent(sx,ex,sy,ey,sz,ez)
+    #Note hardcoding spacing for now.  Use parameters in future
+    image.SetSpacing(.006135923, .006135923, .006135923)
     ce = timeit.default_timer()
 
     ws = timeit.default_timer()

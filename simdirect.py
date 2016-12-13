@@ -31,18 +31,18 @@ p["ez"] = 255
 p["dataset"] = "u00010"
 p["maxpool"] = 16
 p["action"] = 3
-p["inputfile"] = "ram/isotropic-"
-p["outputfile"] = "/tmp/isotropicout-"
-p["param1"] = ""
-p["param2"] = ""
+p["inputfile"] = "data/iso256-"
+p["outputfile"] = "isotropicout-783"
+p["param1"] = "q"
+p["param2"] = "783.3"
 p["cube_start"] = 1
 p["cube_end"] = 16
 modpool = Pool(p["maxpool"])
-for i in range(1, 17):
+for i in range(1, 2):
     args.append([p, i]) #Setup args for each parallel run
     print("I is ", i)
                 
-pool_results = modpool.map(zfpcompress, args)
+pool_results = modpool.map(vortvelvolume, args)
 start = timeit.default_timer()
 for pr in (pool_results):                        
     if (pr["message"] == "Success"):
