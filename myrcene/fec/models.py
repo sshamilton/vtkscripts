@@ -12,7 +12,7 @@ class Job(models.Model):
     
 class Host(models.Model):
     def __unicode__(self):
-        return 'Host: ' + self.name
+        return 'Host: ' + self.name + ' threads: ' + str(self.maxcubes)
     name = models.CharField(max_length=100)
     maxcubes = models.IntegerField(default=10) #max thread pool for host.
 
