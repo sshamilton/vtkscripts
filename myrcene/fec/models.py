@@ -23,7 +23,7 @@ class Module(models.Model):
 
 class Task(models.Model):
     def __unicode__(self):
-        return 'Name: ' + self.name
+        return 'Name: ' + self.name + ' host: ' + self.host.name + ' job: ' + self.job.name + ' module ' + self.modules.name 
     name = models.CharField(max_length=200, default="")
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     host = models.ForeignKey(Host, on_delete=models.CASCADE)
