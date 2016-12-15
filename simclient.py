@@ -111,6 +111,7 @@ while True:
                     if (result):
                         totaltime = timeit.default_timer()-start
                         p["totaltime"] = float("{:.4f}".format(totaltime))
+                        print ("Total time for task: " + str(totaltime))
                         p["cubescomplete"] = (p["cube_end"]-p["cube_start"] +1)
                         return_success(p)
                     else:
