@@ -108,13 +108,15 @@ while True:
                     modpool.join() #close up processes
                     #Use result to determine success or fail.
                     #we need to average the cube times--we are just returning the last one now.
+                    totaltime = timeit.default_timer()-start
                     if (result):
-                        totaltime = timeit.default_timer()-start
+                        #totaltime = timeit.default_timer()-start
                         p["totaltime"] = float("{:.4f}".format(totaltime))
                         print ("*Total* time for task: " + str(totaltime))
                         p["cubescomplete"] = (p["cube_end"]-p["cube_start"] +1)
                         return_success(p)
                     else:
+                        print ("Fail, but total time= " +str(totaltime))
                         return_fail(p)
                     break
                 
