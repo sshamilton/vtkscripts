@@ -45,6 +45,8 @@ class Task(models.Model):
     param5 = models.CharField(max_length=200, default="", blank=True)    
 
 class Result(models.Model):
+    def __unicode__(self):
+        return 'Result task: ' + self.task.name
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     first_cube = models.IntegerField(default=0)
     last_cube = models.IntegerField(default=0)
