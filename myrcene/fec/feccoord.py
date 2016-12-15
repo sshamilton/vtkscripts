@@ -20,7 +20,7 @@ class Tasker:
         self.ez = task.job.zlen
         self.dataset = "u00000" #task.dataset #not needed for npy. 
         self.taskid = task.id
-        self.server_address = settings.HOSTNAME #set in settings.py
+        self.server_address = settings.HOSTNAME + ":8000" #set in settings.py
         self.client_address = task.host.name
         self.cube_start = task.cube_start
         self.cube_end = task.cube_end
