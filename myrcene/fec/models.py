@@ -46,7 +46,7 @@ class Task(models.Model):
 
 class Result(models.Model):
     def __unicode__(self):
-        return 'Name,' + self.task.name + ',' + self.total_time + ','+self.created_at
+        return 'Name,' + self.task.name + ',' + str(self.total_time) + ','+ str(self.created_at)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     first_cube = models.IntegerField(default=0)
     last_cube = models.IntegerField(default=0)
