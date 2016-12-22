@@ -6,5 +6,20 @@
 #
 
 import vtk
-import sys
-import pympi
+
+
+
+c = vtk.vtkMPIController.GetGlobalController()
+
+rank = c.GetLocalProcessId()
+print ("VTK MPI Rank: " + str(rank))
+if rank == 0:
+    ssource = vtk.vtkSphereSource()
+    ssource.Update()
+    c.Send(ssource.GetOutput(), 1, 1234)
+else:
+    sphere = vtk.vtkPolyData()
+    c.Receive(sphere, 0, 1234)
+    print sphere
+
+
