@@ -6,10 +6,9 @@
 #
 
 import vtk
+from mpi4py import MPI
 
-
-
-c = vtk.vtkMPIController.GetGlobalController()
+c = vtk.vtkMultiProcessController.GetGlobalController()
 
 rank = c.GetLocalProcessId()
 print ("VTK MPI Rank: " + str(rank))
@@ -20,6 +19,6 @@ if rank == 0:
 else:
     sphere = vtk.vtkPolyData()
     c.Receive(sphere, 0, 1234)
-    print sphere
+    print (sphere)
 
 
