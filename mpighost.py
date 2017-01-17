@@ -38,6 +38,50 @@ print ("Rank is " + str(rank))
 #Find out which blocks are ours, and count their dependencies
 num_blocks = 0
 blocks = [Ghost3Dblock() for i in range(nblocks)] #list of blocks
+
+#For the example, I'm going to explicitly define neighbors
+blocks[0].data = cubes[0]
+blocks[0].neighbors.append(blocks[1])
+blocks[0].neighbors.append(blocks[2])
+blocks[0].neighbors.append(blocks[4])
+
+blocks[1].data = cubes[1]
+blocks[1].neighbors.append(blocks[0])
+blocks[1].neighbors.append(blocks[3])
+blocks[1].neighbors.append(blocks[5])
+
+blocks[2].data = cubes[2]
+blocks[2].neighbors.append(blocks[0])
+blocks[2].neighbors.append(blocks[3])
+blocks[2].neighbors.append(blocks[6])
+
+blocks[3].data = cubes[3]
+blocks[3].neighbors.append(blocks[1])
+blocks[3].neighbors.append(blocks[2])
+blocks[3].neighbors.append(blocks[7])
+
+blocks[4].data = cubes[4]
+blocks[4].neighbors.append(blocks[0])
+blocks[4].neighbors.append(blocks[5])
+blocks[4].neighbors.append(blocks[6])
+
+blocks[5].data = cubes[5]
+blocks[5].neighbors.append(blocks[1])
+blocks[5].neighbors.append(blocks[4])
+blocks[5].neighbors.append(blocks[7])
+
+blocks[6].data = cubes[6]
+blocks[6].neighbors.append(blocks[2])
+blocks[6].neighbors.append(blocks[4])
+blocks[6].neighbors.append(blocks[7])
+
+blocks[7].data = cubes[7]
+blocks[7].neighbors.append(blocks[3])
+blocks[7].neighbors.append(blocks[5])
+blocks[7].neighbors.append(blocks[6])
+
+
+
 for i in range(nblocks):
     block = blocks[i]
     if (block.proc_id == rank):
@@ -58,11 +102,50 @@ for i in range(nblocks):
 
 
 def find_next_neighbor(flow, block, dirty, unloaded_only):
-    print(1)
-    return 0
-
-
-
+    neighbor = Ghost3Dblock()
+    neighborneighbor = Ghost3Dblock()
+    neighborneighborneighbor = Ghost3Dblock()
+    
+    for k in range(flow,6,2):
+        # skip neighbors that do not exist
+        neighbor = block.neighbors[k] #Verify this
+        if (block.neighbors[k] == 0): continue
+        # skip neighbors that were visited already
+        if (neighbor.dirty == dirty): continue
+        # loop over this neighbor's neighbors
+        for l in range (flow, 6, 2):
+            # don't consider these neighbors of the neighbor
+            if (l == k): continue
+            # skip neighbor's neighbors that do not exist
+            neighborneighbor = neighbor.neighbors[l] #Verify this
+            if (neighbor.neighbors[l] == 0): continue
+            #skip neighbor's neighbors that were visited already
+            if (neighborneighbor.dirty == dirty): continue
+            # loop over this neighbor's neighbor's neighbors
+            for m in range (flow, 6, 2):
+                # don't consider these neighbors of the neighbor
+            	if ((m == k) or (m == l)): continue
+                # skip neighbor's neighbor's neighbors that do not exist
+                neighborneighborneighbor = neighborneighbor.neighbors[m] #Verify this
+            	if (neighborneighbor.neighbors[m] == 0): continue
+                # skip neighbor's neighbors that were visited already
+                if (neighborneighborneighbor.dirty == dirty): continue
+                # mark as visited
+                neighborneighborneighbor.dirty = dirty;
+                # skip neighbor's neighbor's neighbors that don't fulfill the unloaded only requirement
+                if (unloaded_only and neighborneighborneighbor.loaded): continue
+                return neighborneighborneighbor;
+            # mark as visited
+            neighborneighbor.dirty = dirty;
+            # skip neighbor's neighbors that don't fulfill the unloaded only requirement
+            if (unloaded_only and neighborneighbor.loaded): continue
+            return neighborneighbor;
+        # mark as visited
+        neighbor.dirty = dirty;
+        # skip neighbors that don't fulfill the unloaded only requirement
+        if (unloaded_only and neighbor.loaded): continue;
+        return neighbor;
+    return 0;
 
 
 
