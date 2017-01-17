@@ -101,6 +101,8 @@ for i in range(nblocks):
             block.receiving =+1
 
 
+
+
 def find_next_neighbor(flow, block, dirty, unloaded_only):
     neighbor = Ghost3Dblock()
     neighborneighbor = Ghost3Dblock()
