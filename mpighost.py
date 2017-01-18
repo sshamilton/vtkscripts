@@ -23,10 +23,10 @@ import collections
 
 class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
     def  __init__(self):
-
+        self.LOG_FILE_OUTPUT = True
         #Find out which blocks are ours, and count their dependencies
-        num_blocks = 0
-        rank = comm.Get_rank()
+        self.num_blocks = 0
+        self.rank = comm.Get_rank()
         print ("Rank is " + str(rank))
         # passing MPI datatypes explicitly
 
@@ -57,14 +57,14 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
             if (block.proc_id == rank):
                 candidate_queue[block.wait_on].append([block])
 
-        num_processed_blocks = 0
-        selected_block = 0
-        waiting_block = 0
-        necessary_queue = collections.deque();
-        dirty = nblocks
-        num_allocated_blocks = 0
-        max_num_allocated_blocks = 0
-        num_loaded_blocks = 0
+        self.num_processed_blocks = 0
+        self.selected_block = 0
+        self.waiting_block = 0
+        self.necessary_queue = collections.deque();
+        self.dirty = nblocks
+        self.num_allocated_blocks = 0
+        self.max_num_allocated_blocks = 0
+        self.num_loaded_blocks = 0
 
 
 
@@ -120,84 +120,195 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
             return -1
 
         #return the id of a block that was selected previously
-        if (selected_block != 0):
+        if (self.selected_block != 0):
             print( "WARNING: block already selected. need to call processBlock() first.")
-            return selected_block.id;
+            return self.selected_block.id;
 
         #maybe we need to look for a new waiting block (and fill the necessary queue accordingly)
-        if (waiting_block == 0 and necessary_queue.size() == 0):
+        if (self.waiting_block == 0 and self.necessary_queue.size() == 0):
             #if there was no waiting block we need to look for a new one in the queue
             i = 0
-            while (waiting_block == 0):
-                while (candidate_queue[i].size()): #verify this is correct
-                    waiting_block = candidate_queue[i].pop()
+            while (self.waiting_block == 0):
+                while (self.candidate_queue[i].size()): #verify this is correct
+                    self.waiting_block = self.candidate_queue[i].pop()
                     # has this block already been processed
-                    if (waiting_block.processed):
-                        waiting_block = 0
+                    if (self.waiting_block.processed):
+                        self.waiting_block = 0
                     else:
-                        assert(i == waiting_block.wait_on)
+                        assert(i == self.waiting_block.wait_on)
                         break
                 i =+1
                 assert(i < 27)
         # add the on/off processor blocks to the back/front of the necessary queue
-        dirty =+1
-        for i in range (0,waiting_block.wait_off + waiting_block.wait_on):
+        self.dirty =+1
+        for i in range (0,self.waiting_block.wait_off + self.waiting_block.wait_on):
             if (nlayers == 1):
-                selected_block = find_next_neighbor(1, waiting_block, dirty, true)
+                self.selected_block = find_next_neighbor(1, self.waiting_block, self.dirty, true)
             else:
-                selected_block = find_next_neighbor(waiting_block, dirty, true)
-            assert(selected_block);
-            if (selected_block.proc_id == waiting_block.proc_id):
-                necessary_queue.append(selected_block)
+                self.selected_block = find_next_neighbor(self.waiting_block, self.dirty, true)
+            assert(self.selected_block);
+            if (self.selected_block.proc_id == self.waiting_block.proc_id):
+                self.necessary_queue.append(selected_block)
             else:
-                necessary_queue->appendleft(selected_block)
+                self.necessary_queue->appendleft(selected_block)
         # maybe we need to load the necessary blocks for a waiting block
-        if (necessary_queue.size())
-            selected_block = necessary_queue.pop()
-            return selected_block.id
+        if (self.necessary_queue.size())
+            self.selected_block = self.necessary_queue.pop()
+            return self.selected_block.id
 
         # otherwise its finally the turn for the waiting block
-        assert(waiting_block)
-        assert(waiting_block.wait_on == 0)
-        assert(waiting_block.wait_off == 0)
-        selected_block = waiting_block
-        waiting_block = 0
-        return selected_block.id   
-}
+        assert(self.waiting_block)
+        assert(self.waiting_block.wait_on == 0)
+        assert(self.waiting_block.wait_off == 0)
+        self.selected_block = self.waiting_block
+        self.waiting_block = 0
+        return self.selected_block.id   
 
+    def processBlock(data_in, origin_out, size_out):
+        if (self.selected_block == 0):
+            print( "ERROR: no block selected. need to call selectBlock() first.")
+            return 0
 
+        block = self.selected_block;
+        selected_block = 0;
 
+        if (block.loaded):
+            if (data_in):
+                print( "ERROR: block was already loaded and data_in is not zero");
+                exit(1)
+        else:   
+            if (data_in == 0)
+                print( "ERROR: block was not yet loaded and data_in is zero");
+                exit(1)
+        # allocate memory for the block
+        num_loaded_blocks++;
+        if (self.LOG_FILE_OUTPUT):
+            f = open('logfile' + str(rank), 'a')  #append to log file        
+            f.write("loaded block ",block.id)
+            f.close
+        self.num_allocated_blocks =+1
+        if (self.num_allocated_blocks > self.max_num_allocated_blocks):
+            self.max_num_allocated_blocks = self.num_allocated_blocks
+        #Not sure we need the following. No need to allocate in python.
+        #block.data = #new unsigned char[dsize*block->size[0]*block->size[1]*block->size[2]];
+        // copy the block
+        self.copy_block(data_in, block.origin, block.size, block.data, block.origin, block.size);
+        #mark the block as loaded
+        block.loaded = true;
+        # update all the wait counters of blocks waiting for this block
+        wait_block = Ghost3Dblock()
+        self.dirty++;
+        for i in range(block.sending):
+            if (nlayers == 1):
+                wait_block = find_next_neighbor(0, block, self.dirty, false);
+	    else:
+	        wait_block = find_next_neighbor(block, self.dirty, false);
+            assert (wait_block)
+        while (wait_block->proc_id != rank):
+            if (block->proc_id == rank):
+	            assert (wait_block.wait_on > 0)
+	            wait_block.wait_on =-1
+	            self.candidate_queue[wait_block.wait_on].append([wait_block])
+            else:
+                assert (wait_block.wait_off > 0)
+            	wait_block->wait_off =-1;
+        if (waiting_block):
+            # copying the block into memory and updating the wait counters is all we do here
+            return 0
+        else:
+            # actually grow the block and return it
 
+            // in how many directions can we grow and what do we output
+            int block_size[3];
+            int block_origin[3];
+            for i in range(3):
+                block_size[i] = block.size[i];
+                block_origin[i] = block.origin[i];
+            # always grow in the inflow direction
+            for i in range(1,6,2):
+                if (block.neighbors[i]):
+        	        block_size[i/2] += nlayers; #verify syntax
+            # if more than one layer then also grow in the outflow direction
+            if (nlayers > 1):
+                for i in range(1,6,2):
+	        if (block.neighbors[i]):
+                block_size[i/2] += nlayers
+                block_origin[i/2] -= nlayers
 
-#Previous code for reference.
-#rank 0
-#Copy right face of cube and send it
-#Receive right ghost cells from rank 1
-#if rank == 0:
-#    cubeslice = cube1[0:cubesize,0:cubesize,cubesize-1] #X Edge of cube
-#    comm.isend(cubeslice, dest=1, tag=11)
-#    req = comm.irecv(source=1, tag=11)
-#    recvslice = req.wait()
-#    print ("rank 0 received")
-#    print recvslice
+        # create the output block
+        #unsigned char* block_data = new unsigned char[dsize*block_size[0]*block_size[1]*block_size[2]];
+        # fill the original block
+        #TODO instead of copying, we need to extend the existing block.  
+        block_data = np.zeroes(
+        copy_block(block->data, block->origin, block->size, block_data, block_origin, block_size);
 
-#rank 1
-#copy left face of cube and send it
-#receive left ghost cells from rank 0
-#elif rank == 1:
-#    cubeslice = cube2[0:cubesize,0:cubesize,cubesize-1] #X Edge of cube
-#
-#    comm.isend(cubeslice, dest=0, tag=11)
-#    req = comm.irecv(source=0, tag=11)
-#    recvslice = req.wait()
-#    print ("rank 1 received")
-#    print recvslice
+        // fill in from neighboring blocks
+        Ghost3Dblock* copy_from_block;
+        unsigned int filled = 0;
+        dirty++;
+        if (nlayers == 1) // only from inflow direction
+        {
+          while ((copy_from_block = find_next_neighbor(1, block, dirty, false)))
+          {
+        assert(copy_from_block->data);
+        assert(copy_from_block->sending > 0);
+        // fill 
+        filled++;
+        copy_block(copy_from_block->data, copy_from_block->origin, copy_from_block->size, block_data, block_origin, block_size);
+        // decrement counter 
+        copy_from_block->sending--;
+        // if counter reaches zero we can deallocate the data
+        if (copy_from_block->sending == 0 && (copy_from_block->processed || copy_from_block->proc_id != rank))
+        {
+          if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] deleted block %d\n",rank, copy_from_block->id); fflush(NULL);}
+          num_allocated_blocks--;
+          delete [] copy_from_block->data;
+          copy_from_block->data = 0;
+        }
+          }
+        }
+        else // both directions
+        {
+          while ((copy_from_block = find_next_neighbor(block, dirty, false)))
+          {
+        assert(copy_from_block->data);
+        assert(copy_from_block->sending > 0);
+        // fill 
+        filled++;
+        copy_block(copy_from_block->data, copy_from_block->origin, copy_from_block->size, block_data, block_origin, block_size);
+        // decrement counter 
+        copy_from_block->sending--;
+        // if counter reaches zero we can deallocate the data
+        if (copy_from_block->sending == 0 && (copy_from_block->processed || copy_from_block->proc_id != rank))
+        {
+          if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] deleted block %d\n",rank, copy_from_block->id); fflush(NULL);}
+          num_allocated_blocks--;
+          delete [] copy_from_block->data;
+          copy_from_block->data = 0;
+        }
+          }
+        }
+        assert(filled == block->receiving);
 
+        if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] has block %d\n",rank, block->id); fflush(NULL);}
+        num_processed_blocks++;
+        block->processed = true;
 
+        if (block->sending == 0) // if nobody is waiting for this data
+        {
+          if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] deleted block %d\n",rank, block->id); fflush(NULL);}
+          num_allocated_blocks--;
+          delete [] block->data;
+          block->data = 0;      
+        }
 
+        // copy result to output
+        for (i = 0; i < 3; i++)
+        {
+          origin_out[i] = block_origin[i];
+          size_out[i] = block_size[i];
+        }
 
-
-
-
+        return block_data;
 
 
