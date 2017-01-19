@@ -50,8 +50,8 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                     else:
                         block.wait_off =+ 1
                     block.receiving =+1
-            else:
-                print("not our block")
+                print("Selected block", block.id)
+             
 
         for i in range(27): #Find out why 27.
             self.candidate_queue.append([collections.deque()])
@@ -88,8 +88,6 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 # don't consider these neighbors of the neighbor
                 if (l == k): continue
                 # skip neighbor's neighbors that do not exist
-                print ("Setting neghborneighbor to ", l)
-                print ("nn", neighbor.neighbors)
                 neighborneighbor = neighbor.neighbors[l] #Verify this
                 if (neighbor.neighbors[l] == 0): continue
                 #skip neighbor's neighbors that were visited already
@@ -219,7 +217,6 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
 	            wait_block.wait_on =-1
 	            self.candidate_queue[wait_block.wait_on].append([wait_block])
             else:
-                print ("about to assert: ", wait_block.wait_off)
                 assert (wait_block.wait_off > 0)
               	wait_block.wait_off =-1;
 
