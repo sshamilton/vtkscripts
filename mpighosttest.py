@@ -73,11 +73,12 @@ blocks[7].neighbors.append(blocks[6])
 
 ghost = Ghost3Dmodule_free(comm, blocks, nblocks, nlayers)
 
+
 selectedblock = ghost.selectBlock()
 
 origin_out =  0
 size_out = 0
-blockdata = ghost.processBlock(selectedbock, orgin_out, size_out)
+blockdata = ghost.processBlock(selectedblock, origin_out, size_out)
 
 print ("Block data ", blockdata)
 print("Complete")

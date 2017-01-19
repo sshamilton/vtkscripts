@@ -21,19 +21,20 @@ from ghost3dblock import Ghost3Dblock
 #for the deque
 import collections
 
-class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
-    def  __init__(self):
+class Ghost3Dmodule_free(): #dsize here too maybe?
+    def  __init__(self, comm, blocks, nblocks, nlayers):
+
         self.LOG_FILE_OUTPUT = True
         #Find out which blocks are ours, and count their dependencies
         self.num_blocks = 0
         self.rank = comm.Get_rank()
-        print ("Rank is " + str(rank))
+        print ("Rank is " + str(self.rank))
         # passing MPI datatypes explicitly
-
+        self.candidate_queue = []
 
         for i in range(nblocks):
             block = blocks[i]
-            if (block.proc_id == rank):
+            if (block.proc_id == self.rank):
                 num_blocks +=1
                 neighbors = -1 #initial value
                 while(neighbors !=0): #when no neighbors left to process we are done.
@@ -43,19 +44,19 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
                         neighbor = find_next_neighbor(block, i, false)
                     if (neighbor != 0):
                         neighbor.sending =+ 1
-                    if (neighbor.proc_id == rank):
+                    if (neighbor.proc_id == self.rank):
                         block.wait_on =+ 1
                     else:
                         block.wait_off =+ 1
                     block.receiving =+1
 
-        for i in range(27): #Find out why 27.
-            candidate_queue[i] = collections.deque()
+        #for i in range(27): #Find out why 27.
+        #    self.candidate_queue[i] = collections.deque()
 
         for i in range(nblocks):
             block = blocks[i]
-            if (block.proc_id == rank):
-                candidate_queue[block.wait_on].append([block])
+            if (block.proc_id == self.rank):
+                self.candidate_queue[block.wait_on].append([block])
 
         self.num_processed_blocks = 0
         self.selected_block = 0
@@ -114,9 +115,9 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
             return neighbor;
         return 0;
 
-    def selectBlock():
+    def selectBlock(self):
         #return -1 if all blocks are processed
-        if (num_processed_blocks == num_blocks):
+        if (self.num_processed_blocks == self.num_blocks):
             return -1
 
         #return the id of a block that was selected previously
@@ -164,7 +165,7 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
         self.waiting_block = 0
         return self.selected_block.id   
 
-    def processBlock(data_in, origin_out, size_out): #I don't think we need size_out since we have shape 
+    def processBlock(self, data_in, origin_out, size_out): #I don't think we need size_out since we have shape 
         if (self.selected_block == 0):
             print( "ERROR: no block selected. need to call selectBlock() first.")
             return 0
