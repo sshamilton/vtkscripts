@@ -33,6 +33,7 @@ blocks[0].neighbors.append(0)
 blocks[0].neighbors.append(0)
 
 blocks[0].proc_id = 0
+blocks[0].id = 0
 
 blocks[1].data = cubes[1]
 blocks[1].neighbors.append(blocks[0])
@@ -42,7 +43,8 @@ blocks[1].neighbors.append(0)
 blocks[1].neighbors.append(0)
 blocks[1].neighbors.append(0)
 
-blocks[0].proc_id = 0
+blocks[1].proc_id = 0
+blocks[1].id = 1
 
 blocks[2].data = cubes[2]
 blocks[2].neighbors.append(blocks[0])
@@ -51,7 +53,8 @@ blocks[2].neighbors.append(blocks[6])
 blocks[2].neighbors.append(0)
 blocks[2].neighbors.append(0)
 blocks[2].neighbors.append(0)
-blocks[0].proc_id = 0
+blocks[2].proc_id = 0
+blocks[2].id = 2
 
 blocks[3].data = cubes[3]
 blocks[3].neighbors.append(blocks[1])
@@ -60,7 +63,8 @@ blocks[3].neighbors.append(blocks[7])
 blocks[3].neighbors.append(0)
 blocks[3].neighbors.append(0)
 blocks[3].neighbors.append(0)
-blocks[0].proc_id = 0
+blocks[3].proc_id = 0
+blocks[3].id = 3
 
 blocks[4].data = cubes[4]
 blocks[4].neighbors.append(blocks[0])
@@ -69,7 +73,8 @@ blocks[4].neighbors.append(blocks[6])
 blocks[4].neighbors.append(0)
 blocks[4].neighbors.append(0)
 blocks[4].neighbors.append(0)
-blocks[0].proc_id = 1
+blocks[4].proc_id = 1
+blocks[4].id = 4
 
 blocks[5].data = cubes[5]
 blocks[5].neighbors.append(blocks[1])
@@ -78,7 +83,8 @@ blocks[5].neighbors.append(blocks[7])
 blocks[5].neighbors.append(0)
 blocks[5].neighbors.append(0)
 blocks[5].neighbors.append(0)
-blocks[0].proc_id = 1
+blocks[5].proc_id = 1
+blocks[5].id = 5
 
 blocks[6].data = cubes[6]
 blocks[6].neighbors.append(blocks[2])
@@ -87,7 +93,8 @@ blocks[6].neighbors.append(blocks[7])
 blocks[6].neighbors.append(0)
 blocks[6].neighbors.append(0)
 blocks[6].neighbors.append(0)
-blocks[0].proc_id = 1
+blocks[6].proc_id = 1
+blocks[6].id = 6
 
 blocks[7].data = cubes[7]
 blocks[7].neighbors.append(blocks[3])
@@ -96,7 +103,8 @@ blocks[7].neighbors.append(blocks[6])
 blocks[7].neighbors.append(0)
 blocks[7].neighbors.append(0)
 blocks[7].neighbors.append(0)
-blocks[0].proc_id = 1
+blocks[7].proc_id = 1
+blocks[7].id = 7
 
 #Algorithm
 # 1. Select. Select for processing a block that is owned by the selected processor, has a nonzero receive counter, has no additional dependency (its dependency pointer is zero, or the dependency is already resolved because the block it points to is already processed), and passes the corner rule.
@@ -108,12 +116,11 @@ blocks[0].proc_id = 1
 
 ghost = Ghost3Dmodule_free(comm, blocks, nblocks, nlayers)
 
-
-selectedblock = ghost.selectBlock()
-
 origin_out =  0
 size_out = 0
-blockdata = ghost.processBlock(selectedblock, origin_out, size_out)
+selected_block = ghost.selectBlock()
+
+blockdata = ghost.processBlock(selected_block, origin_out, size_out)
 
 print ("Block data ", blockdata)
 print("Complete")
