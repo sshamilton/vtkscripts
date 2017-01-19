@@ -91,10 +91,10 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
                 # loop over this neighbor's neighbor's neighbors
                 for m in range (flow, 6, 2):
                     # don't consider these neighbors of the neighbor
-                	if ((m == k) or (m == l)): continue
+                    if ((m == k) or (m == l)): continue
                     # skip neighbor's neighbor's neighbors that do not exist
                     neighborneighborneighbor = neighborneighbor.neighbors[m] #Verify this
-                	if (neighborneighbor.neighbors[m] == 0): continue
+                    if (neighborneighbor.neighbors[m] == 0): continue
                     # skip neighbor's neighbors that were visited already
                     if (neighborneighborneighbor.dirty == dirty): continue
                     # mark as visited
@@ -150,9 +150,9 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
             if (self.selected_block.proc_id == self.waiting_block.proc_id):
                 self.necessary_queue.append(selected_block)
             else:
-                self.necessary_queue->appendleft(selected_block)
+                self.necessary_queue.appendleft(selected_block)
         # maybe we need to load the necessary blocks for a waiting block
-        if (self.necessary_queue.size())
+        if (self.necessary_queue.size()):
             self.selected_block = self.necessary_queue.pop()
             return self.selected_block.id
 
@@ -164,7 +164,7 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
         self.waiting_block = 0
         return self.selected_block.id   
 
-    def processBlock(data_in, origin_out, size_out):
+    def processBlock(data_in, origin_out, size_out): #I don't think we need size_out since we have shape 
         if (self.selected_block == 0):
             print( "ERROR: no block selected. need to call selectBlock() first.")
             return 0
@@ -177,11 +177,11 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
                 print( "ERROR: block was already loaded and data_in is not zero");
                 exit(1)
         else:   
-            if (data_in == 0)
+            if (data_in == 0):
                 print( "ERROR: block was not yet loaded and data_in is zero");
                 exit(1)
-        # allocate memory for the block
-        num_loaded_blocks++;
+
+        num_loaded_blocks +=1
         if (self.LOG_FILE_OUTPUT):
             f = open('logfile' + str(rank), 'a')  #append to log file        
             f.write("loaded block ",block.id)
@@ -191,36 +191,37 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
             self.max_num_allocated_blocks = self.num_allocated_blocks
         #Not sure we need the following. No need to allocate in python.
         #block.data = #new unsigned char[dsize*block->size[0]*block->size[1]*block->size[2]];
-        // copy the block
-        self.copy_block(data_in, block.origin, block.size, block.data, block.origin, block.size);
+        # copy the block  It is unclear if we need to do this copy. 
+        #self.copy_block(data_in, block.origin, block.size, block.data, block.origin, block.size);
         #mark the block as loaded
+        block.data = data_in #using this to replace copy block. 
         block.loaded = true;
         # update all the wait counters of blocks waiting for this block
         wait_block = Ghost3Dblock()
-        self.dirty++;
+        self.dirty +=1
         for i in range(block.sending):
             if (nlayers == 1):
-                wait_block = find_next_neighbor(0, block, self.dirty, false);
+                wait_block = find_next_neighbor(0, block, self.dirty, false)
 	    else:
-	        wait_block = find_next_neighbor(block, self.dirty, false);
+	        wait_block = find_next_neighbor(block, self.dirty, false)
             assert (wait_block)
-        while (wait_block->proc_id != rank):
-            if (block->proc_id == rank):
+        while (wait_block.proc_id != rank):
+            if (block.proc_id == rank):
 	            assert (wait_block.wait_on > 0)
 	            wait_block.wait_on =-1
 	            self.candidate_queue[wait_block.wait_on].append([wait_block])
             else:
                 assert (wait_block.wait_off > 0)
-            	wait_block->wait_off =-1;
+            	wait_block.wait_off =-1;
         if (waiting_block):
             # copying the block into memory and updating the wait counters is all we do here
             return 0
         else:
             # actually grow the block and return it
 
-            // in how many directions can we grow and what do we output
-            int block_size[3];
-            int block_origin[3];
+            # in how many directions can we grow and what do we output
+            block_size = [0,0,0];
+            block_origin = [0,0,0];
             for i in range(3):
                 block_size[i] = block.size[i];
                 block_origin[i] = block.origin[i];
@@ -231,84 +232,82 @@ class Ghost3Dmodule_free(comm, blocks, nblocks, nlayers): #dsize here too maybe?
             # if more than one layer then also grow in the outflow direction
             if (nlayers > 1):
                 for i in range(1,6,2):
-	        if (block.neighbors[i]):
-                block_size[i/2] += nlayers
-                block_origin[i/2] -= nlayers
+                    if (block.neighbors[i]):
+                        block_size[i/2] += nlayers
+                        block_origin[i/2] -= nlayers
 
         # create the output block
         #unsigned char* block_data = new unsigned char[dsize*block_size[0]*block_size[1]*block_size[2]];
         # fill the original block
-        #TODO instead of copying, we need to extend the existing block.  
-        block_data = np.zeroes(
-        copy_block(block->data, block->origin, block->size, block_data, block_origin, block_size);
+        
+        #copy_block(block.data, block.origin, block.size, block_data, block_origin, block_size);
+        
 
-        // fill in from neighboring blocks
-        Ghost3Dblock* copy_from_block;
-        unsigned int filled = 0;
-        dirty++;
-        if (nlayers == 1) // only from inflow direction
-        {
-          while ((copy_from_block = find_next_neighbor(1, block, dirty, false)))
-          {
-        assert(copy_from_block->data);
-        assert(copy_from_block->sending > 0);
-        // fill 
-        filled++;
-        copy_block(copy_from_block->data, copy_from_block->origin, copy_from_block->size, block_data, block_origin, block_size);
-        // decrement counter 
-        copy_from_block->sending--;
-        // if counter reaches zero we can deallocate the data
-        if (copy_from_block->sending == 0 && (copy_from_block->processed || copy_from_block->proc_id != rank))
-        {
-          if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] deleted block %d\n",rank, copy_from_block->id); fflush(NULL);}
-          num_allocated_blocks--;
-          delete [] copy_from_block->data;
-          copy_from_block->data = 0;
-        }
-          }
-        }
-        else // both directions
-        {
-          while ((copy_from_block = find_next_neighbor(block, dirty, false)))
-          {
-        assert(copy_from_block->data);
-        assert(copy_from_block->sending > 0);
-        // fill 
-        filled++;
-        copy_block(copy_from_block->data, copy_from_block->origin, copy_from_block->size, block_data, block_origin, block_size);
-        // decrement counter 
-        copy_from_block->sending--;
-        // if counter reaches zero we can deallocate the data
-        if (copy_from_block->sending == 0 && (copy_from_block->processed || copy_from_block->proc_id != rank))
-        {
-          if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] deleted block %d\n",rank, copy_from_block->id); fflush(NULL);}
-          num_allocated_blocks--;
-          delete [] copy_from_block->data;
-          copy_from_block->data = 0;
-        }
-          }
-        }
-        assert(filled == block->receiving);
+        # fill in from neighboring blocks
+        copy_from_block = Ghost3Dblock()
+        filled = 0;
+        dirty +=1
+        if (nlayers == 1): # only from inflow direction
+        #{  
+            while (find_next_neighbor(1, block, dirty, false)):
+            #{
+                copy_from_block = find_next_neighbor(1, block, dirty, false)
+                assert(copy_from_block.data)
+                assert(copy_from_block.sending > 0);
+                # fill 
+                filled +=1
+                #copy_block(copy_from_block->data, copy_from_block->origin, copy_from_block->size, block_data, block_origin, block_size);
+                block_data = copy_from_block.data
+                # decrement counter 
+                copy_from_block.sending -=1 
+                # if counter reaches zero we can deallocate the data
+                if (copy_from_block.sending == 0 and (copy_from_block.processed or copy_from_block.proc_id != rank)):
+                #{
+                    if (self.LOG_FILE_OUTPUT):
+                        f = open('logfile' + str(rank), 'a')  #append to log file        
+                        f.write("deleted block ",copy_from_block.id)
+                        f.close
+                    num_allocated_blocks -=1
+                    copy_from_block.data = 0
+        else: # both directions
+            copy_from_block = find_next_neighbor(block, dirty, false)
+            while (copy_from_block):
+                assert(copy_from_block.data)
+                assert(copy_from_block.sending > 0)
+                # fill 
+                filled +=1
+                #copy_block(copy_from_block->data, copy_from_block->origin, copy_from_block->size, block_data, block_origin, block_size);
+                block_data = copy_from_block.data
+                # decrement counter 
+                copy_from_block.sending -=1
+                # if counter reaches zero we can deallocate the data
+                if (copy_from_block.sending == 0 and (copy_from_block.processed or copy_from_block.proc_id != rank)):
+                    if (self.LOG_FILE_OUTPUT):
+                        f = open('logfile' + str(rank), 'a')  #append to log file        
+                        f.write("deleted block ",copy_from_block.id)
+                        f.close
+                    num_allocated_blocks -=1
+                    #del copy_from_block.data  work on deallocation in the future.
+                    copy_from_block.data = 0
+                copy_from_block = find_next_neighbor(block, dirty, false)
+        assert(filled == block.receiving)
+        if (self.LOG_FILE_OUTPUT):
+            f = open('logfile' + str(rank), 'a')  #append to log file        
+            f.write("has block ",block.id)
+            f.close
+        num_processed_blocks +=1
+        block.processed = True
 
-        if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] has block %d\n",rank, block->id); fflush(NULL);}
-        num_processed_blocks++;
-        block->processed = true;
-
-        if (block->sending == 0) // if nobody is waiting for this data
-        {
-          if (LOG_FILE_OUTPUT) {fprintf(logfile, "[%d] deleted block %d\n",rank, block->id); fflush(NULL);}
-          num_allocated_blocks--;
-          delete [] block->data;
-          block->data = 0;      
-        }
-
-        // copy result to output
-        for (i = 0; i < 3; i++)
-        {
-          origin_out[i] = block_origin[i];
-          size_out[i] = block_size[i];
-        }
-
+        if (block.sending == 0): # if nobody is waiting for this data
+            if (self.LOG_FILE_OUTPUT):
+                f = open('logfile' + str(rank), 'a')  #append to log file        
+                f.write("deleted block ",block.id)
+                f.close
+            num_allocated_blocks -=1
+            block.data = 0;      
+        # copy result to output
+        for i in range(3):
+            origin_out[i] = block_origin[i];
+            size_out[i] = block_size[i];
         return block_data;
-
 

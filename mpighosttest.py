@@ -63,4 +63,24 @@ blocks[7].neighbors.append(blocks[3])
 blocks[7].neighbors.append(blocks[5])
 blocks[7].neighbors.append(blocks[6])
 
+#Algorithm
+# 1. Select. Select for processing a block that is owned by the selected processor, has a nonzero receive counter, has no additional dependency (its dependency pointer is zero, or the dependency is already resolved because the block it points to is already processed), and passes the corner rule.
+# 2. Read. Read the selected block from disk.
+# 3. Grow. Absorb from each edge-adjacent neighbor (local and remote) edge data that has already been processed to grow the block; then discard these edges.
+# 4. Keep. Allocate and copy edge data for each edge-adjacent neighbor that hasn't yet been processed. If the neighbor is local, keep the edge in memory for later; if the neighbor is remote, send the edge to the corresponding processor.
+# 5. Write. Output the block for immediate consumption to another process (or-less preferred-for storage on disk), and discard it. The data along the output block's boundary is now ghost data (unless it coincides with the domain boundary).
+# 6. Receive. Check for edges received from other processors. For each such edge, update the block data structure. Associate the edge with the remote neighbor that it's from, mark the neighbor as already processed, and decrement the receive counter of the block that was waiting for this edge.
+
+ghost = Ghost3Dmodule_free(comm, blocks, nblocks, nlayers)
+
+selectedblock = ghost.selectBlock()
+
+origin_out =  0
+size_out = 0
+blockdata = ghost.processBlock(selectedbock, orgin_out, size_out)
+
+print ("Block data ", blockdata)
+print("Complete")
+
+
 
