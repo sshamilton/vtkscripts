@@ -23,45 +23,80 @@ for i in range(nblocks):
     cubes[i][0:cubesize,0:cubesize,0:cubesize] = i+1
 
 #For the example, I'm going to explicitly define neighbors
+#We need to set all 6 neighbors to prevent null issue.
 blocks[0].data = cubes[0]
 blocks[0].neighbors.append(blocks[1])
 blocks[0].neighbors.append(blocks[2])
 blocks[0].neighbors.append(blocks[4])
+blocks[0].neighbors.append(0)
+blocks[0].neighbors.append(0)
+blocks[0].neighbors.append(0)
+
+blocks[0].proc_id = 0
 
 blocks[1].data = cubes[1]
 blocks[1].neighbors.append(blocks[0])
 blocks[1].neighbors.append(blocks[3])
 blocks[1].neighbors.append(blocks[5])
+blocks[1].neighbors.append(0)
+blocks[1].neighbors.append(0)
+blocks[1].neighbors.append(0)
+
+blocks[0].proc_id = 0
 
 blocks[2].data = cubes[2]
 blocks[2].neighbors.append(blocks[0])
 blocks[2].neighbors.append(blocks[3])
 blocks[2].neighbors.append(blocks[6])
+blocks[2].neighbors.append(0)
+blocks[2].neighbors.append(0)
+blocks[2].neighbors.append(0)
+blocks[0].proc_id = 0
 
 blocks[3].data = cubes[3]
 blocks[3].neighbors.append(blocks[1])
 blocks[3].neighbors.append(blocks[2])
 blocks[3].neighbors.append(blocks[7])
+blocks[3].neighbors.append(0)
+blocks[3].neighbors.append(0)
+blocks[3].neighbors.append(0)
+blocks[0].proc_id = 0
 
 blocks[4].data = cubes[4]
 blocks[4].neighbors.append(blocks[0])
 blocks[4].neighbors.append(blocks[5])
 blocks[4].neighbors.append(blocks[6])
+blocks[4].neighbors.append(0)
+blocks[4].neighbors.append(0)
+blocks[4].neighbors.append(0)
+blocks[0].proc_id = 1
 
 blocks[5].data = cubes[5]
 blocks[5].neighbors.append(blocks[1])
 blocks[5].neighbors.append(blocks[4])
 blocks[5].neighbors.append(blocks[7])
+blocks[5].neighbors.append(0)
+blocks[5].neighbors.append(0)
+blocks[5].neighbors.append(0)
+blocks[0].proc_id = 1
 
 blocks[6].data = cubes[6]
 blocks[6].neighbors.append(blocks[2])
 blocks[6].neighbors.append(blocks[4])
 blocks[6].neighbors.append(blocks[7])
+blocks[6].neighbors.append(0)
+blocks[6].neighbors.append(0)
+blocks[6].neighbors.append(0)
+blocks[0].proc_id = 1
 
 blocks[7].data = cubes[7]
 blocks[7].neighbors.append(blocks[3])
 blocks[7].neighbors.append(blocks[5])
 blocks[7].neighbors.append(blocks[6])
+blocks[7].neighbors.append(0)
+blocks[7].neighbors.append(0)
+blocks[7].neighbors.append(0)
+blocks[0].proc_id = 1
 
 #Algorithm
 # 1. Select. Select for processing a block that is owned by the selected processor, has a nonzero receive counter, has no additional dependency (its dependency pointer is zero, or the dependency is already resolved because the block it points to is already processed), and passes the corner rule.

@@ -35,32 +35,35 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         for i in range(nblocks):
             block = blocks[i]
             if (block.proc_id == self.rank):
-                num_blocks +=1
+                self.num_blocks +=1
                 neighbors = -1 #initial value
                 while(neighbors !=0): #when no neighbors left to process we are done.
                     if (nlayers == 1): #Unclear why we are doing this right now.
-                        neighbor = find_next_neighbor(1, block, i, false)
+                        neighbor = self.find_next_neighbor(1, block, i, False)
                     else:
-                        neighbor = find_next_neighbor(block, i, false)
+                        neighbor = self.find_next_neighbor(block, i, False)
                     if (neighbor != 0):
-                        neighbor.sending =+ 1
+                        break                    
+                    neighbor.sending =+ 1
                     if (neighbor.proc_id == self.rank):
                         block.wait_on =+ 1
                     else:
                         block.wait_off =+ 1
                     block.receiving =+1
+            else:
+                print("not our block")
 
-        #for i in range(27): #Find out why 27.
-        #    self.candidate_queue[i] = collections.deque()
+        for i in range(27): #Find out why 27.
+            self.candidate_queue.append([collections.deque()])
 
         for i in range(nblocks):
             block = blocks[i]
             if (block.proc_id == self.rank):
                 self.candidate_queue[block.wait_on].append([block])
-
+        print ("num_blocks: ", self.num_blocks)
         self.num_processed_blocks = 0
-        self.selected_block = 0
-        self.waiting_block = 0
+        self.selected_block = Ghost3Dblock()
+        self.waiting_block = Ghost3Dblock()
         self.necessary_queue = collections.deque();
         self.dirty = nblocks
         self.num_allocated_blocks = 0
@@ -69,7 +72,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
 
 
 
-    def find_next_neighbor(flow, block, dirty, unloaded_only):
+    def find_next_neighbor(self, flow, block, dirty, unloaded_only):
         neighbor = Ghost3Dblock()
         neighborneighbor = Ghost3Dblock()
         neighborneighborneighbor = Ghost3Dblock()
@@ -85,6 +88,8 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 # don't consider these neighbors of the neighbor
                 if (l == k): continue
                 # skip neighbor's neighbors that do not exist
+                print ("Setting neghborneighbor to ", l)
+                print ("nn", neighbor.neighbors)
                 neighborneighbor = neighbor.neighbors[l] #Verify this
                 if (neighbor.neighbors[l] == 0): continue
                 #skip neighbor's neighbors that were visited already
@@ -116,6 +121,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         return 0;
 
     def selectBlock(self):
+        print ("selecting block")
         #return -1 if all blocks are processed
         if (self.num_processed_blocks == self.num_blocks):
             return -1
@@ -126,11 +132,11 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
             return self.selected_block.id;
 
         #maybe we need to look for a new waiting block (and fill the necessary queue accordingly)
-        if (self.waiting_block == 0 and self.necessary_queue.size() == 0):
+        if (self.waiting_block == 0 and len(self.necessary_queue) == 0):
             #if there was no waiting block we need to look for a new one in the queue
             i = 0
             while (self.waiting_block == 0):
-                while (self.candidate_queue[i].size()): #verify this is correct
+                while (len(self.candidate_queue[i])): #verify this is correct
                     self.waiting_block = self.candidate_queue[i].pop()
                     # has this block already been processed
                     if (self.waiting_block.processed):
@@ -163,6 +169,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         assert(self.waiting_block.wait_off == 0)
         self.selected_block = self.waiting_block
         self.waiting_block = 0
+        print ("Selected block id: ", self.selected_block.id)
         return self.selected_block.id   
 
     def processBlock(self, data_in, origin_out, size_out): #I don't think we need size_out since we have shape 
@@ -182,10 +189,10 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 print( "ERROR: block was not yet loaded and data_in is zero");
                 exit(1)
 
-        num_loaded_blocks +=1
+        self.num_loaded_blocks +=1
         if (self.LOG_FILE_OUTPUT):
-            f = open('logfile' + str(rank), 'a')  #append to log file        
-            f.write("loaded block ",block.id)
+            f = open('logfile' + str(self.rank), 'a')  #append to log file        
+            f.write("loaded block %s" % str(block.id))
             f.close
         self.num_allocated_blocks =+1
         if (self.num_allocated_blocks > self.max_num_allocated_blocks):
@@ -196,25 +203,27 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         #self.copy_block(data_in, block.origin, block.size, block.data, block.origin, block.size);
         #mark the block as loaded
         block.data = data_in #using this to replace copy block. 
-        block.loaded = true;
+        block.loaded = True;
         # update all the wait counters of blocks waiting for this block
         wait_block = Ghost3Dblock()
         self.dirty +=1
         for i in range(block.sending):
-            if (nlayers == 1):
-                wait_block = find_next_neighbor(0, block, self.dirty, false)
-	    else:
-	        wait_block = find_next_neighbor(block, self.dirty, false)
-            assert (wait_block)
-        while (wait_block.proc_id != rank):
-            if (block.proc_id == rank):
+            while (wait_block.proc_id != self.rank):
+                if (nlayers == 1):
+                    wait_block = find_next_neighbor(0, block, self.dirty, False)
+                else:
+                    wait_block = find_next_neighbor(block, self.dirty, False)
+                    assert (wait_block)
+            if (block.proc_id == self.rank):
 	            assert (wait_block.wait_on > 0)
 	            wait_block.wait_on =-1
 	            self.candidate_queue[wait_block.wait_on].append([wait_block])
             else:
+                print ("about to assert: ", wait_block.wait_off)
                 assert (wait_block.wait_off > 0)
-            	wait_block.wait_off =-1;
-        if (waiting_block):
+              	wait_block.wait_off =-1;
+
+        if (self.waiting_block):
             # copying the block into memory and updating the wait counters is all we do here
             return 0
         else:
@@ -250,7 +259,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         dirty +=1
         if (nlayers == 1): # only from inflow direction
         #{  
-            while (find_next_neighbor(1, block, dirty, false)):
+            while (find_next_neighbor(self, 1, block, dirty, false)):
             #{
                 copy_from_block = find_next_neighbor(1, block, dirty, false)
                 assert(copy_from_block.data)
@@ -262,11 +271,11 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 # decrement counter 
                 copy_from_block.sending -=1 
                 # if counter reaches zero we can deallocate the data
-                if (copy_from_block.sending == 0 and (copy_from_block.processed or copy_from_block.proc_id != rank)):
+                if (copy_from_block.sending == 0 and (copy_from_block.processed or copy_from_block.proc_id != self.rank)):
                 #{
                     if (self.LOG_FILE_OUTPUT):
-                        f = open('logfile' + str(rank), 'a')  #append to log file        
-                        f.write("deleted block ",copy_from_block.id)
+                        f = open('logfile' + str(self.rank), 'a')  #append to log file        
+                        f.write("deleted block %s "% str(copy_from_block.id))
                         f.close
                     num_allocated_blocks -=1
                     copy_from_block.data = 0
@@ -282,9 +291,9 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 # decrement counter 
                 copy_from_block.sending -=1
                 # if counter reaches zero we can deallocate the data
-                if (copy_from_block.sending == 0 and (copy_from_block.processed or copy_from_block.proc_id != rank)):
+                if (copy_from_block.sending == 0 and (copy_from_block.processed or copy_from_block.proc_id != self.rank)):
                     if (self.LOG_FILE_OUTPUT):
-                        f = open('logfile' + str(rank), 'a')  #append to log file        
+                        f = open('logfile' + str(self.rank), 'a')  #append to log file        
                         f.write("deleted block ",copy_from_block.id)
                         f.close
                     num_allocated_blocks -=1
@@ -293,7 +302,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 copy_from_block = find_next_neighbor(block, dirty, false)
         assert(filled == block.receiving)
         if (self.LOG_FILE_OUTPUT):
-            f = open('logfile' + str(rank), 'a')  #append to log file        
+            f = open('logfile' + str(self.rank), 'a')  #append to log file        
             f.write("has block ",block.id)
             f.close
         num_processed_blocks +=1
@@ -301,7 +310,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
 
         if (block.sending == 0): # if nobody is waiting for this data
             if (self.LOG_FILE_OUTPUT):
-                f = open('logfile' + str(rank), 'a')  #append to log file        
+                f = open('logfile' + str(self.rank), 'a')  #append to log file        
                 f.write("deleted block ",block.id)
                 f.close
             num_allocated_blocks -=1
