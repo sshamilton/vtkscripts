@@ -31,6 +31,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         print ("Rank is " + str(self.rank))
         # passing MPI datatypes explicitly
         self.candidate_queue = []
+        self.nlayers = nlayers #adding this
 
         for i in range(nblocks):
             block = blocks[i]
@@ -62,7 +63,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 self.candidate_queue[block.wait_on].append([block])
         print ("num_blocks: ", self.num_blocks)
         self.num_processed_blocks = 0
-        self.selected_block = Ghost3Dblock()
+        self.selected_block = 0
         self.waiting_block = Ghost3Dblock()
         self.necessary_queue = collections.deque();
         self.dirty = nblocks
@@ -147,10 +148,10 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         # add the on/off processor blocks to the back/front of the necessary queue
         self.dirty =+1
         for i in range (0,self.waiting_block.wait_off + self.waiting_block.wait_on):
-            if (nlayers == 1):
-                self.selected_block = find_next_neighbor(1, self.waiting_block, self.dirty, true)
+            if (self.nlayers == 1):
+                self.selected_block = self.find_next_neighbor(1, self.waiting_block, self.dirty, True)
             else:
-                self.selected_block = find_next_neighbor(self.waiting_block, self.dirty, true)
+                self.selected_block = self.find_next_neighbor(self.waiting_block, self.dirty, True)
             assert(self.selected_block);
             if (self.selected_block.proc_id == self.waiting_block.proc_id):
                 self.necessary_queue.append(selected_block)
