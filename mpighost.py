@@ -80,8 +80,10 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         
         for k in range(flow,6,2):
             # skip neighbors that do not exist
-            neighbor = block.neighbors[k] #Verify this
-            if (block.neighbors[k] == 0): continue
+            try:
+                neighbor = block.neighbors[k] #Verify this
+            except IndexError:
+                continue
             # skip neighbors that were visited already
             if (neighbor.dirty == dirty): continue
             # loop over this neighbor's neighbors
@@ -152,17 +154,19 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 self.selected_block = self.find_next_neighbor(1, self.waiting_block, self.dirty, True)
             else:
                 self.selected_block = self.find_next_neighbor(self.waiting_block, self.dirty, True)
-            assert(self.selected_block);
+            if (self.selected_block == 0):
+                continue
             if (self.selected_block.proc_id == self.waiting_block.proc_id):
                 self.necessary_queue.append(selected_block)
             else:
                 self.necessary_queue.appendleft(selected_block)
         # maybe we need to load the necessary blocks for a waiting block
-        if (self.necessary_queue.size()):
+        if (len(self.necessary_queue)):
             self.selected_block = self.necessary_queue.pop()
             return self.selected_block.id
 
         # otherwise its finally the turn for the waiting block
+        print ("about to assert waiting block: ", self.waiting_block.wait_on)
         assert(self.waiting_block)
         assert(self.waiting_block.wait_on == 0)
         assert(self.waiting_block.wait_off == 0)
@@ -235,10 +239,13 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 block_origin[i] = block.origin[i];
             # always grow in the inflow direction
             for i in range(1,6,2):
-                if (block.neighbors[i]):
-        	        block_size[i/2] += nlayers; #verify syntax
+                try:
+                    block.neighbors[i]
+                    block_size[i/2] += nlayers; #verify syntax
+                except:
+                    continue
             # if more than one layer then also grow in the outflow direction
-            if (nlayers > 1):
+            if (self.nlayers > 1):
                 for i in range(1,6,2):
                     if (block.neighbors[i]):
                         block_size[i/2] += nlayers
@@ -254,12 +261,12 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         # fill in from neighboring blocks
         copy_from_block = Ghost3Dblock()
         filled = 0;
-        dirty +=1
-        if (nlayers == 1): # only from inflow direction
+        self.dirty +=1 #verify this variable is correct one.
+        if (self.nlayers == 1): # only from inflow direction
         #{  
-            while (find_next_neighbor(self, 1, block, dirty, false)):
+            while (self.find_next_neighbor(1, block, self.dirty, False)):
             #{
-                copy_from_block = find_next_neighbor(1, block, dirty, false)
+                copy_from_block = find_next_neighbor(1, block, dirty, False)
                 assert(copy_from_block.data)
                 assert(copy_from_block.sending > 0);
                 # fill 
@@ -278,7 +285,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                     num_allocated_blocks -=1
                     copy_from_block.data = 0
         else: # both directions
-            copy_from_block = find_next_neighbor(block, dirty, false)
+            copy_from_block = self.find_next_neighbor(1, block, self.dirty, False)
             while (copy_from_block):
                 assert(copy_from_block.data)
                 assert(copy_from_block.sending > 0)
@@ -292,30 +299,30 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 if (copy_from_block.sending == 0 and (copy_from_block.processed or copy_from_block.proc_id != self.rank)):
                     if (self.LOG_FILE_OUTPUT):
                         f = open('logfile' + str(self.rank), 'a')  #append to log file        
-                        f.write("deleted block ",copy_from_block.id)
+                        f.write("deleted block %s " % str(copy_from_block.id))
                         f.close
-                    num_allocated_blocks -=1
+                    self.num_allocated_blocks -=1
                     #del copy_from_block.data  work on deallocation in the future.
                     copy_from_block.data = 0
                 copy_from_block = find_next_neighbor(block, dirty, false)
         assert(filled == block.receiving)
         if (self.LOG_FILE_OUTPUT):
             f = open('logfile' + str(self.rank), 'a')  #append to log file        
-            f.write("has block ",block.id)
+            f.write("has block %s " % str(block.id))
             f.close
-        num_processed_blocks +=1
+        self.num_processed_blocks +=1
         block.processed = True
 
         if (block.sending == 0): # if nobody is waiting for this data
             if (self.LOG_FILE_OUTPUT):
                 f = open('logfile' + str(self.rank), 'a')  #append to log file        
-                f.write("deleted block ",block.id)
+                f.write("deleted block %i " % block.id)
                 f.close
-            num_allocated_blocks -=1
+            self.num_allocated_blocks -=1
             block.data = 0;      
         # copy result to output
         for i in range(3):
             origin_out[i] = block_origin[i];
             size_out[i] = block_size[i];
-        return block_data;
+        return block.data;
 

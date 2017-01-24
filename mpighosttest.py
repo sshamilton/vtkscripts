@@ -116,8 +116,8 @@ blocks[7].id = 7
 
 ghost = Ghost3Dmodule_free(comm, blocks, nblocks, nlayers)
 
-origin_out =  0
-size_out = 0
+origin_out =  [0,0,0]
+size_out = [16,16,16]
 selected_block = ghost.selectBlock()
 #Read in block here, then process
 blockdata = ghost.processBlock(selected_block, origin_out, size_out)

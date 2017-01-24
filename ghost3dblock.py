@@ -5,7 +5,7 @@ class Ghost3Dblock:
         self.neighbors = []
         self.data = 0
         self.wait_off = 0
-        self.wait_on = 1
+        self.wait_on = 0
         self.loaded = 0
         self.processed = 0
         self.receiving = 0
@@ -14,5 +14,7 @@ class Ghost3Dblock:
         self.faces = []
         self.queued = False
         self.dependencies = 0
+        self.size = [0,0,0]
+        self.origin = [0,0,0]
 
 
