@@ -16,37 +16,36 @@ nblocks = 8
 nlayers = 1
 cubesize = 16
 blocks = [Ghost3Dblock() for i in range(nblocks)] #list of blocks
-cubes = [np.zeros((cubesize,cubesize,cubesize)) for i in range (nblocks)]
 
-#For testing, set cube one to all ones and cube 2 to all 2s and so-on.
-for i in range(nblocks):
-    cubes[i][0:cubesize,0:cubesize,0:cubesize] = i+1
 
 #For the example, I'm going to explicitly define neighbors
 #We need to set all 6 neighbors to prevent null issue.
-blocks[0].data = cubes[0]
+#Setup varibles for all cubes first.
+for i in range(nblocks):
+    blocks[i].size = [64,64,64]
+
 blocks[0].neighbors.append(blocks[1])
 blocks[0].neighbors.append(blocks[2])
 blocks[0].neighbors.append(blocks[4])
 blocks[0].neighbors.append(0)
 blocks[0].neighbors.append(0)
 blocks[0].neighbors.append(0)
+blocks[0].origin = [0,0,0]
 
 blocks[0].proc_id = 0
 blocks[0].id = 0
 
-blocks[1].data = cubes[1]
 blocks[1].neighbors.append(blocks[0])
 blocks[1].neighbors.append(blocks[3])
 blocks[1].neighbors.append(blocks[5])
 blocks[1].neighbors.append(0)
 blocks[1].neighbors.append(0)
 blocks[1].neighbors.append(0)
+blocks[1].origin = [0,0,64]
 
 blocks[1].proc_id = 0
 blocks[1].id = 1
 
-blocks[2].data = cubes[2]
 blocks[2].neighbors.append(blocks[0])
 blocks[2].neighbors.append(blocks[3])
 blocks[2].neighbors.append(blocks[6])
@@ -55,8 +54,8 @@ blocks[2].neighbors.append(0)
 blocks[2].neighbors.append(0)
 blocks[2].proc_id = 0
 blocks[2].id = 2
+blocks[2].origin = [0,64,0]
 
-blocks[3].data = cubes[3]
 blocks[3].neighbors.append(blocks[1])
 blocks[3].neighbors.append(blocks[2])
 blocks[3].neighbors.append(blocks[7])
@@ -65,8 +64,8 @@ blocks[3].neighbors.append(0)
 blocks[3].neighbors.append(0)
 blocks[3].proc_id = 0
 blocks[3].id = 3
+blocks[2].origin = [0,64,64]
 
-blocks[4].data = cubes[4]
 blocks[4].neighbors.append(blocks[0])
 blocks[4].neighbors.append(blocks[5])
 blocks[4].neighbors.append(blocks[6])
@@ -75,8 +74,8 @@ blocks[4].neighbors.append(0)
 blocks[4].neighbors.append(0)
 blocks[4].proc_id = 1
 blocks[4].id = 4
+blocks[4].origin = [64,0,0]
 
-blocks[5].data = cubes[5]
 blocks[5].neighbors.append(blocks[1])
 blocks[5].neighbors.append(blocks[4])
 blocks[5].neighbors.append(blocks[7])
@@ -85,8 +84,8 @@ blocks[5].neighbors.append(0)
 blocks[5].neighbors.append(0)
 blocks[5].proc_id = 1
 blocks[5].id = 5
+blocks[5].origin = [64,0,64]
 
-blocks[6].data = cubes[6]
 blocks[6].neighbors.append(blocks[2])
 blocks[6].neighbors.append(blocks[4])
 blocks[6].neighbors.append(blocks[7])
@@ -95,8 +94,8 @@ blocks[6].neighbors.append(0)
 blocks[6].neighbors.append(0)
 blocks[6].proc_id = 1
 blocks[6].id = 6
+blocks[6].origin = [64,64,0]
 
-blocks[7].data = cubes[7]
 blocks[7].neighbors.append(blocks[3])
 blocks[7].neighbors.append(blocks[5])
 blocks[7].neighbors.append(blocks[6])
@@ -105,6 +104,7 @@ blocks[7].neighbors.append(0)
 blocks[7].neighbors.append(0)
 blocks[7].proc_id = 1
 blocks[7].id = 7
+blocks[2].origin = [64,64,64]
 
 #Algorithm
 # 1. Select. Select for processing a block that is owned by the selected processor, has a nonzero receive counter, has no additional dependency (its dependency pointer is zero, or the dependency is already resolved because the block it points to is already processed), and passes the corner rule.
@@ -118,11 +118,16 @@ ghost = Ghost3Dmodule_free(comm, blocks, nblocks, nlayers)
 
 origin_out =  [0,0,0]
 size_out = [16,16,16]
-selected_block = ghost.selectBlock()
-#Read in block here, then process
-blockdata = ghost.processBlock(selected_block, origin_out, size_out)
+selected_block_id = ghost.selectBlock()
+#Read in block here
+print (selected_block_id)
+filename = "data/numpy" + str(selected_block_id) + ".npy"
+selected_block = np.load(filename) 
+print ("Loaded: " + filename)
+#Process the block
+blockid = ghost.processBlock(selected_block, origin_out, size_out)
 
-print ("Block data ", blockdata)
+
 print("Complete")
 
 

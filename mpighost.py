@@ -22,6 +22,10 @@ from ghost3dblock import Ghost3Dblock
 import collections
 
 class Ghost3Dmodule_free(): #dsize here too maybe?
+    def __repr__(self):
+        print("Number of blocks: " + str(self.num_blocks))
+        print("Rank: " + str(self.rank))
+
     def  __init__(self, comm, blocks, nblocks, nlayers):
 
         self.LOG_FILE_OUTPUT = True
@@ -51,7 +55,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                     else:
                         block.wait_off =+ 1
                     block.receiving =+1
-                print("Selected block", block.id)
+                print("Initialized block", block.id)
              
 
         for i in range(27): #Find out why 27.
@@ -64,8 +68,8 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         print ("num_blocks: ", self.num_blocks)
         self.num_processed_blocks = 0
         self.selected_block = 0
-        self.waiting_block = Ghost3Dblock()
-        self.necessary_queue = collections.deque();
+        self.waiting_block = 0
+        self.necessary_queue = collections.deque()
         self.dirty = nblocks
         self.num_allocated_blocks = 0
         self.max_num_allocated_blocks = 0
@@ -85,9 +89,11 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
             except IndexError:
                 continue
             # skip neighbors that were visited already
-            if (neighbor.dirty == dirty): continue
+            if (neighbor and neighbor.dirty == dirty): continue
+                
             # loop over this neighbor's neighbors
             for l in range (flow, 6, 2):
+                if (neighbor == 0): continue #check for edges
                 # don't consider these neighbors of the neighbor
                 if (l == k): continue
                 # skip neighbor's neighbors that do not exist
@@ -115,6 +121,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 if (unloaded_only and neighborneighbor.loaded): continue
                 return neighborneighbor;
             # mark as visited
+            if (neighbor ==0): continue
             neighbor.dirty = dirty;
             # skip neighbors that don't fulfill the unloaded only requirement
             if (unloaded_only and neighbor.loaded): continue;
@@ -125,8 +132,8 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         print ("selecting block")
         #return -1 if all blocks are processed
         if (self.num_processed_blocks == self.num_blocks):
+            print ("All blocks processed")
             return -1
-
         #return the id of a block that was selected previously
         if (self.selected_block != 0):
             print( "WARNING: block already selected. need to call processBlock() first.")
@@ -138,7 +145,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
             i = 0
             while (self.waiting_block == 0):
                 while (len(self.candidate_queue[i])): #verify this is correct
-                    self.waiting_block = self.candidate_queue[i].pop()
+                    self.waiting_block = self.candidate_queue[i].pop().pop() #Unclear why this is happening
                     # has this block already been processed
                     if (self.waiting_block.processed):
                         self.waiting_block = 0
@@ -188,7 +195,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                 print( "ERROR: block was already loaded and data_in is not zero");
                 exit(1)
         else:   
-            if (data_in == 0):
+            if (len(data_in) == 0):
                 print( "ERROR: block was not yet loaded and data_in is zero");
                 exit(1)
 
@@ -263,10 +270,10 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
         filled = 0;
         self.dirty +=1 #verify this variable is correct one.
         if (self.nlayers == 1): # only from inflow direction
-        #{  
-            while (self.find_next_neighbor(1, block, self.dirty, False)):
-            #{
-                copy_from_block = find_next_neighbor(1, block, dirty, False)
+            copy_from_block = self.find_next_neighbor(1, block, self.dirty, False)
+            while (copy_from_block != 0):
+                print("Asserting block %s" % str(copy_from_block.id))
+                print (copy_from_block.data)
                 assert(copy_from_block.data)
                 assert(copy_from_block.sending > 0);
                 # fill 
@@ -284,6 +291,7 @@ class Ghost3Dmodule_free(): #dsize here too maybe?
                         f.close
                     num_allocated_blocks -=1
                     copy_from_block.data = 0
+                copy_from_block = self.find_next_neighbor(1, block, self.dirty, False)
         else: # both directions
             copy_from_block = self.find_next_neighbor(1, block, self.dirty, False)
             while (copy_from_block):
