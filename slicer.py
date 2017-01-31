@@ -31,34 +31,83 @@ def main(argv):
 
 
     #Get image from reader
-    #image = reader.GetOutput()
+    image = reader.GetOutput()
+    #magnitude
+    mag = vtk.vtkImageMagnitude()
+    image.GetPointData().SetScalars(image.GetPointData().GetArray(0))
+    mag.SetInputData(image)
+    mag.Update()
+    #Threshold
+    t = vtk.vtkThreshold()
+    t.SetInputData(mag.GetOutput())
+    t.ThresholdByLower(0.00001)
+    t.Update()
+    
+    #mapper = vtk.vtkSmartVolumeMapper()
 
-    mapper = vtk.vtkSmartVolumeMapper()
+    #mapper.SetInputData(t.GetOutput())
+    #mapper.ColorByArrayComponent("Velocity", 0)
+    #mapper.SetRequestedRenderModeToGPU()
+    #mapper.SetRequestedRenderModeToDefault()
+    #mapper.SetBlendModeToComposite()
+    #mapper.SetScalarModeToUsePointData()
+
     #mapper.ScalarVisibilityOn()
     #mapper.SetScalarRange(-1,1)
     #mapper.SetScalarModeToUsePointFieldData()
-    mapper.SetInputConnection(reader.GetOutputPort())
     #mapper.SetInputArrayToProcess(0, image)
+    #import pdb;pdb.set_trace()
+    #mapper.Update()
+    import pdb; pdb.set_trace()
+    #trying something new
+    gf = vtk.vtkGeometryFilter()
+    gf.SetInputData(t.GetOutput())
+    gf.Update()
+    poly = gf.GetOutput()
+
+    normals = vtk.vtkPolyDataNormals()
+    normals.SetInputData(poly.GetOutput())
+
+    normals.SetFeatureAngle(45) #?
+    normals.Update()
+    print normals.GetOutput()
+    mapper = vtk.vtkPolyDataMapper()
+    mapper.SetInputData(normals.GetOutput())
+    mapper.ScalarVisibilityOn()
+    mapper.SetScalarRange(-1,1)
+    mapper.SetScalarModeToUsePointFieldData()
+    mapper.ColorByArrayComponent("Velocity", 0)
     #print image
     #print contour
 
     #mapper.SelectColorArray("Q-criterion")
     #mapper.SetLookupTable(lut)
 
-    #print mapper
-    vol = vtk.vtkVolume()
-    vol.SetMapper(mapper)
-    
+    print mapper
+    actor = vtk.vtkActor()
+    actor.SetMapper(mapper)
+
+
+    #vol = vtk.vtkVolume()
+    #vol.SetMapper(mapper)
+    import pdb; pdb.set_trace()
+
     ren = vtk.vtkRenderer()
-    ren.AddViewProp(vol)
+    ren.AddVolume(vol)
     ren.SetBackground(1,1,1)
     ren.ResetCamera()
 
     renWin = vtk.vtkRenderWindow()
     renWin.SetSize(400,400)
-    renWin.SetOffScreenRendering(1)
+    #renWin.SetOffScreenRendering(1)
     renWin.AddRenderer(ren)
     renWin.Render()
+    
+
+    iren = vtk.vtkRenderWindowInteractor()
+    iren.SetRenderWindow(renWin)
+    iren.Initialize()
+    iren.Start()
     
     windowToImageFilter = vtk.vtkWindowToImageFilter()
     windowToImageFilter.SetInput(renWin)
