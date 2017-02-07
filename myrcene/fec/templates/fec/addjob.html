@@ -1,0 +1,10 @@
+{% extends 'fec/base.html' %}
+
+{% block content %}
+<h1>Create a new Job</h1>
+
+    <form method = "POST" class="addjob-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type = "submit" class = "save btn btn-default">Save</button>
+    </form>
+{% endblock %}

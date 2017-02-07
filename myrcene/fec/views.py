@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext, loader
+from .forms import JobForm
 from .models import Job
 from .models import Result
 from .models import Task
@@ -54,6 +55,9 @@ def index(request):
 
 
     elif request.method=='GET':
+        template = loader.get_template('fec/index.html')
+        response = HttpResponse(template.render(request))
+        return response
         return HttpResponse("Post client results to this page!")
 
 def spawnjob(request, webargs):
@@ -94,5 +98,9 @@ def jobs(request):
     alljobs = Job.objects.all()
     response = HttpResponse(template.render({'jobs': alljobs}, request))
     return response
+
+def addjob(request):
+    form = JobForm()
+    return render(request, 'fec/addjob.html', {'form': form})
 
 
