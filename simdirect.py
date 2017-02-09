@@ -15,7 +15,7 @@ from mod_getcutout import getcutoutmod
 from mod_h5tonpy import h5tonpy
 from mod_vortvelvolume import vortvelvolume
 from mod_vortmesh import vortmesh
-
+from mod_vortvelvolumei import vortvelvolumei
 
 
 start = timeit.default_timer()
@@ -30,7 +30,7 @@ p["ey"] = 255
 p["ez"] = 255
 p["dataset"] = "u00010"
 p["maxpool"] = 16
-p["action"] = 3
+p["action"] = 7
 p["inputfile"] = "data/iso256-"
 p["outputfile"] = "isotropicout-783"
 p["param1"] = "q"
@@ -42,7 +42,7 @@ for i in range(1, 2):
     args.append([p, i]) #Setup args for each parallel run
     print("I is ", i)
                 
-pool_results = modpool.map(vortvelvolume, args)
+pool_results = modpool.map(vortvelvolumei, args)
 start = timeit.default_timer()
 for pr in (pool_results):                        
     if (pr["message"] == "Success"):

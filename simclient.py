@@ -91,6 +91,8 @@ while True:
                         print("Convert to Numpy mod")
                         pool_results = modpool.map(h5tonpy, args)
                         #pool_results = h5tonpy(args[0])
+                    elif p["action"] == 7: #vorticity thresh dilated velocity volume
+                        pool_results = modpool.map(vortvelvolumei, args)
 
                     result = 1 #Assume all is well, then change to 0 if anything failed.
                     for pr in (pool_results):

@@ -31,42 +31,80 @@ def main(argv):
 
 
     #Get image from reader
-    #image = reader.GetOutput()
+    image = reader.GetOutput()
+    print ("Image read in")
 
-    mapper = vtk.vtkSmartVolumeMapper()
-    #mapper.ScalarVisibilityOn()
-    #mapper.SetScalarRange(-1,1)
-    #mapper.SetScalarModeToUsePointFieldData()
-    #mapper.SetInputConnection(reader.GetOutputPort())
-    #mapper.SetInputArrayToProcess(0, image)
-    #print image
-    #print contour
+    #compute q-criterion
+    vorticity = vtk.vtkGradientFilter()
+    vorticity.SetInputData(image)
+    vorticity.SetInputScalars(image.FIELD_ASSOCIATION_POINTS,"Velocity")
+    vorticity.ComputeQCriterionOn()
+    vorticity.SetComputeGradient(0)
+    vorticity.Update()
 
-    #mapper.SelectColorArray("Q-criterion")
-    #mapper.SetLookupTable(lut)
-    mapper.SetBlendModeToComposite()    
-    mapper.SetInputData(reader.GetOutput())
+    print ("Vorticity done")
+    #Get magnitude  not sure we need it now. lets see.
+    #mag = vtk.vtkImageMagnitude()
+    #cp = vtk.vtkCellDataToPointData()
+    #cp.SetInputData(vorticity.GetOutput())
+    #cp.Update()
+    #image.GetPointData().SetScalars(cp.GetOutput().GetPointData().GetVectors())
+    #mag.SetInputData(image)
+    #mag.Update()
+    #m = mag.GetOutput()
+
+    image.GetPointData().SetScalars(vorticity.GetOutput().GetPointData().GetVectors("Q-criterion"))
+    print image
+    #image.GetPointData().SetScalars(image.GetPointData().GetVectors("Velocity"))
+    c = vtk.vtkContourFilter()
+    #c.SetValue(0,1128)
+    c.SetValue(0,600)
+    
+    c.SetInputData(image)
+    c.Update()
+    #import pdb; pdb.set_trace()
+    contour = c.GetOutput()
+    #contour.GetCellData().SetScalars(image.GetPointData().GetVectors("Velocity"))
+    print "Contour done"
+    #normals = vtk.vtkPolyDataNormals()
+    #normals.SetInputData(contour)
+
+    #normals.SetFeatureAngle(45) #?
+    #normals.Update()
+    #print normals.GetOutput()
+    mapper = vtk.vtkPolyDataMapper()
+    mapper.SetInputData(contour)
+    mapper.ScalarVisibilityOn()
+    mapper.SetScalarRange(-1,1)
+    mapper.SetScalarModeToUsePointFieldData()
+    mapper.ColorByArrayComponent("Velocity", 0)
+    #import pdb; pdb.set_trace()
+    print ("mapped")
     
     #print mapper
+    actor = vtk.vtkActor()
+    actor.SetMapper(mapper)
     
-    volprop = vtk.vtkVolumeProperty
-    #volprop.ShadeOff()
-    volprop.SetInterpolationType(vtk.VTK_LINEAR_INTERPOLATION)
-    
-    vol = vtk.vtkVolume()
-    vol.SetMapper(mapper)
-    vol.SetProperty(volprop)
-
     ren = vtk.vtkRenderer()
-    ren.AddViewProp(vol)
-    #ren.SetBackground(1,1,1)
+    ren.AddActor(actor)
+    ren.SetBackground(1,1,1)
     ren.ResetCamera()
 
+    #camera = vtk.vtkCamera()
+    #camera.SetPosition(0,0,0)
+    #camera.SetFocalPoint(0,0,0)
+    #ren.SetActiveCamera(camera)
+    
     renWin = vtk.vtkRenderWindow()
-    renWin.SetSize(400,400)
-    renWin.SetOffScreenRendering(1)
+    renWin.SetSize(600,600)
     renWin.AddRenderer(ren)
-    renWin.Render()
+    renWin.SetOffScreenRendering(1)
+    #import pdb; pdb.set_trace()
+    #iren = vtk.vtkRenderWindowInteractor()
+
+    #iren.SetRenderWindow(renWin)
+    #iren.Initialize()
+    #iren.Start()
     
     windowToImageFilter = vtk.vtkWindowToImageFilter()
     windowToImageFilter.SetInput(renWin)
