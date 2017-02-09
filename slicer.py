@@ -37,21 +37,29 @@ def main(argv):
     #mapper.ScalarVisibilityOn()
     #mapper.SetScalarRange(-1,1)
     #mapper.SetScalarModeToUsePointFieldData()
-    mapper.SetInputConnection(reader.GetOutputPort())
+    #mapper.SetInputConnection(reader.GetOutputPort())
     #mapper.SetInputArrayToProcess(0, image)
     #print image
     #print contour
 
     #mapper.SelectColorArray("Q-criterion")
     #mapper.SetLookupTable(lut)
-
+    mapper.SetBlendModeToComposite()    
+    mapper.SetInputData(reader.GetOutput())
+    
     #print mapper
+    
+    volprop = vtk.vtkVolumeProperty
+    #volprop.ShadeOff()
+    volprop.SetInterpolationType(vtk.VTK_LINEAR_INTERPOLATION)
+    
     vol = vtk.vtkVolume()
     vol.SetMapper(mapper)
-    
+    vol.SetProperty(volprop)
+
     ren = vtk.vtkRenderer()
     ren.AddViewProp(vol)
-    ren.SetBackground(1,1,1)
+    #ren.SetBackground(1,1,1)
     ren.ResetCamera()
 
     renWin = vtk.vtkRenderWindow()
