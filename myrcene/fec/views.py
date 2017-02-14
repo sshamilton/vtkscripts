@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext, loader
 from .forms import JobForm
+from .forms import TaskForm
 from .models import Job
 from .models import Result
 from .models import Task
+from .models import Host
 import json
 #from datetime import datetime
 from django.utils import timezone
@@ -94,13 +96,23 @@ def results(request, webargs):
 
 def jobs(request):
     template = loader.get_template('fec/jobs.html')
-
     alljobs = Job.objects.all()
     response = HttpResponse(template.render({'jobs': alljobs}, request))
     return response
 
 def addjob(request):
     form = JobForm()
-    return render(request, 'fec/addjob.html', {'form': form})
+    hosts = Host.objects.all()
+    return render(request, 'fec/addjob.html', {'form': form, 'hosts': hosts})
 
+def create_tasks(request):
+    form = TaskForm()
+    hosts = Host.objects.all()
+    if request.method == 'POST':
+        hosts = request.POST.getlist('hosts')
+        print ("Listing checked hosts")
+        for host in hosts:
+            print host
+
+    return render(request, 'fec/createtask.html', {'form': form, 'hosts': hosts})
 

@@ -1,0 +1,21 @@
+{% extends 'fec/base.html' %}
+
+{% block content %}
+<h1>Create a new Task Set</h1>
+
+    <form method = "POST" class="createtask-form">{% csrf_token %}
+        {{ form.as_p }}
+    <br />
+
+    Choose which servers will be workers for this task:
+<br />
+    {% for host in hosts %} 
+        <input type="checkbox" name = "hosts"  id="option{{host.id}}" value="option{{ host.id }}">
+        <label for="option{{ host.id }}"><b>{{host.name}}</b></label>
+        <br />
+    {% endfor %}
+        <button type = "submit" class = "save btn btn-default">Save</button>
+    </form>
+{% endblock %}
+
+

@@ -38,11 +38,13 @@ class Task(models.Model):
     sx = models.IntegerField(default=0)
     sy = models.IntegerField(default=0)
     sz = models.IntegerField(default=0)
-    param1 = models.CharField(max_length=200, default="", blank=True) #multipurpose fields for module specific info
+    #multipurpose fields for module specific info
+    param1 = models.CharField(max_length=200, default="", blank=True) 
     param2 = models.CharField(max_length=200, default="", blank=True)
     param3 = models.CharField(max_length=200, default="", blank=True)
     param4 = models.CharField(max_length=200, default="", blank=True)
     param5 = models.CharField(max_length=200, default="", blank=True)    
+
 
 class Result(models.Model):
     def __unicode__(self):

@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^jobs/$', views.jobs, name='jobs'),
     url(r'^results/(?P<webargs>.*)$', views.results, name='results'),
     url(r'^addjob/$', views.addjob, name='addjob'),
+    url(r'^createtasks/$', views.create_tasks, name='create_tasks'),
 ]
