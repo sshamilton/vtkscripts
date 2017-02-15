@@ -35,6 +35,7 @@ def vortvelvolumei(args):
     #Determine if file is h5 or numpy
     rs = timeit.default_timer()
     vel = np.load(inputfile)
+    print ("File Loaded")
     re = timeit.default_timer()
     #convert numpy array to vtk
     cs = timeit.default_timer()
@@ -50,6 +51,7 @@ def vortvelvolumei(args):
     image.SetSpacing(.006135923, .006135923, .006135923)
     ce = timeit.default_timer()
     vs = timeit.default_timer()
+    print ("Beginning computation: " + comptype)
     if (comptype == "v"):
         vorticity = vtk.vtkCellDerivatives()
         vorticity.SetVectorModeToComputeVorticity()
@@ -64,7 +66,7 @@ def vortvelvolumei(args):
         vorticity.SetComputeGradient(0)
         vorticity.Update()
     ve = timeit.default_timer()
-
+    print("Initial calculation done")
     ms = timeit.default_timer()
     if (comptype == "v"):
         mag = vtk.vtkImageMagnitude()
@@ -100,7 +102,7 @@ def vortvelvolumei(args):
     ren.ResetCamera()
 
     renWin = vtk.vtkRenderWindow()
-    renWin.SetSize(600,600)
+    renWin.SetSize(1024,1024)
     renWin.AddRenderer(ren)
     renWin.SetOffScreenRendering(1)
 
@@ -109,7 +111,7 @@ def vortvelvolumei(args):
     windowToImageFilter.Update()
     
     w = vtk.vtkPNGWriter()
-    pngfilename = p["outputfile"] + ".png"
+    pngfilename = p["outputfile"] + str(cubenum) + ".png"
     w.SetFileName(pngfilename)
     w.SetInputConnection(windowToImageFilter.GetOutputPort())
     w.Write()
@@ -117,7 +119,7 @@ def vortvelvolumei(args):
 
     print ("Thresholding.")
     ts = timeit.default_timer()
-    t = vtk.vtkImageThreshold()
+    t = vtk.vtkImageThreshold() #Dense represenation (0's included, structured grid)
     #t = vtk.vtkThreshold() #sparse representation
 
     if (comptype == "q"):

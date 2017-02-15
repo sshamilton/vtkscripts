@@ -14,6 +14,11 @@ from django.utils import timezone
 from feccoord import Tasker
 from django.db.models.query import QuerySet
 from itertools import chain
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
+from PIL import Image
+
+import os #Used for testing
 
 # Create your views here.
 
@@ -29,6 +34,8 @@ def index(request):
         newresult.task_id = data['taskid']
         newresult.total_time = data['totaltime']   
         newresult.avg_time = data['computetime']
+        newresult.first_cube = data['cube_start']
+        newresult.last_cube = data['cube_end'] #This is copying what was sent. 
         newresult.created_at = timezone.now()
         newresult.modified_at = timezone.now() #Will be used when we update a record with times.
         newresult.save()
@@ -81,16 +88,15 @@ def spawnjob(request, webargs):
 
     return response
 
-def results(request, webargs):
-    template = loader.get_template('fec/results.html/')
-    jobid = webargs[0] 
-    job = Job.objects.get(pk=webargs[0])
+def results(request, pk):
+    template = loader.get_template('fec/results.html/') 
+    job = Job.objects.get(pk=pk)
     #results = job.task_set.result_set.all()
     tasks = job.task_set.all()
     results = tasks[0].result_set.all()
     allresults = Result.objects.all()
-    for task in tasks:
-        results = list(chain(results,task.result_set.all()))
+    #for task in tasks:
+    #    results = list(chain(results,task.result_set.all()))
     response = HttpResponse(template.render({'results': results, 'allresults': allresults}, request))
     return response
 
@@ -101,18 +107,55 @@ def jobs(request):
     return response
 
 def addjob(request):
-    form = JobForm()
-    hosts = Host.objects.all()
+    if request.method == 'POST':
+        #We are saving the form now.
+        form = JobForm(request.POST)
+        job = form.save(commit=False)
+        job.save()
+        return redirect('job_detail', pk=job.pk)
+    else:
+        form = JobForm()
     return render(request, 'fec/addjob.html', {'form': form, 'hosts': hosts})
 
+def job_detail(request, pk):
+    job = Job.objects.get(pk=pk)
+    tasks = Task.objects.filter(job=pk)
+    return render(request, 'fec/job_detail.html', {'job': job, 'tasks': tasks,})
+
+#The following checks for an output file and returns the image if it exists
+def showimage(request, imagefile):
+    #Check to see if file exists
+    try: 
+        imagefile = "/data/" + imagefile #The request is just the filename, so we add data/ back in
+        print ("Opening: " + imagefile)
+        print ("Current Path = " + os.getcwd())
+        ifile = os.getcwd() + imagefile
+        with open(ifile, "rb") as f:
+            return HttpResponse(f.read(), content_type="image/png")
+    except IOError:
+        print ("File not found: " + ifile)
+        #Give a white pixel back as a blank placeholder
+        white = Image.new('RGBA', (1,1), (0,0,0,0))
+        response = HttpResponse(content_type="image/png")
+        white.save(response, "PNG")
+        return response
+
+    #return the image
+    return 
 def create_tasks(request):
-    form = TaskForm()
     hosts = Host.objects.all()
     if request.method == 'POST':
         hosts = request.POST.getlist('hosts')
-        print ("Listing checked hosts")
+        print ("Creating task for each host")
         for host in hosts:
-            print host
+            form = TaskForm(request.POST)
+            hostid = host[6:] # Remove option text to get host id
+            task = form.save(commit=False)
+            task.host = Host.objects.get(pk=hostid)
 
-    return render(request, 'fec/createtask.html', {'form': form, 'hosts': hosts})
+            task.save()
+        return redirect('job_detail', pk=task.job.pk)
+    else:
+        form = TaskForm()
+        return render(request, 'fec/createtask.html', {'form': form, 'hosts': hosts})
 

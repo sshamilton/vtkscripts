@@ -2,19 +2,29 @@ Results for job x
 <br />
 Tasks:
 
-<ul>
+
 {% for result in results %}
-     <li>Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}</li>
-        
+     Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}
+     <br />
+     {% for cubenum in result.cuberange %}
+        <a href="../{{result.output_filename}}{{cubenum}}.png">
+        <img width=200 src="../{{result.output_filename}}{{cubenum}}.png"></a>
+     {% endfor %}
+    <br />        
 {% endfor %}
 
-</ul>
 
---All results<br />
-<ul>
+
+<!--
+For testing...
+--All results<br /><br /><br />
+
 {% for result in allresults %}
-     <li>Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}</li>
-        
+     <br />Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}</li>
+     
+          
 {% endfor %}
 
-</ul>
+-->
+
+

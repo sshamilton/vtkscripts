@@ -7,6 +7,7 @@ class Job(models.Model):
     ylen = models.IntegerField(default=1)
     zlen = models.IntegerField(default=1)
     ghostcells = models.IntegerField(default=0)
+    #hosts = models.ManyToManyField(
     def __unicode__(self):
         return 'Job: ' + self.name
     
@@ -50,6 +51,13 @@ class Result(models.Model):
     def __unicode__(self):
         return 'Name,' + self.task.name + ',' + str(self.total_time) + ','+ str(self.created_at) + ',' + self.task.host.name
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    def output_filename(self):
+        #Test if file exists maybe?
+
+        return self.task.output_file 
+    def cuberange(self): #Use this to generate numbers for images in the template
+        #print ("returning range from " + str(self.task.first_cube) + " to " + str(self.task.last_cube))
+        return range(self.first_cube, self.last_cube + 1) #Add one to make sure the last cube is included.
     first_cube = models.IntegerField(default=0)
     last_cube = models.IntegerField(default=0)
     total_time = models.FloatField(default=0.0)

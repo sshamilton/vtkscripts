@@ -14,6 +14,7 @@ from mod_test import testmod
 from mod_getcutout import getcutoutmod
 from mod_h5tonpy import h5tonpy
 from mod_vortvelvolume import vortvelvolume
+from mod_vortvelvolumei import vortvelvolumei
 from mod_vortmesh import vortmesh
 
 def return_success(p):

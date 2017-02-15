@@ -25,18 +25,18 @@ p["ptype"] = 1
 p["sx"] = 0
 p["sy"] = 0
 p["sz"] = 0
-p["ex"] = 255
-p["ey"] = 255
-p["ez"] = 255
+p["ex"] = 127
+p["ey"] = 127
+p["ez"] = 127
 p["dataset"] = "u00010"
-p["maxpool"] = 16
+p["maxpool"] = 2
 p["action"] = 7
-p["inputfile"] = "data/iso256-"
-p["outputfile"] = "isotropicout-783"
+p["inputfile"] = "data/cutout"
+p["outputfile"] = "simout-"
 p["param1"] = "q"
 p["param2"] = "783.3"
 p["cube_start"] = 1
-p["cube_end"] = 16
+p["cube_end"] = 3
 modpool = Pool(p["maxpool"])
 for i in range(1, 2):
     args.append([p, i]) #Setup args for each parallel run
