@@ -1,0 +1,22 @@
+{% extends 'fec/base.html' %}
+
+{% block content %}
+
+<h1>{{ job.name }}</h1>
+
+Cube Size: <br />
+<ul>
+<li>X Length: {{ job.xlen }}</li>
+<li>Y Length: {{ job.ylen }}</li>
+<li>Z Length: {{ job.zlen }}</li>
+</ul>
+
+Tasks associated with this job:
+<br /><br />
+
+{% for task in tasks %}
+{{ task }}
+<br />
+{% endfor %}
+
+{% endblock %}
