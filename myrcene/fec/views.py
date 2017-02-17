@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext, loader
+
 from .forms import JobForm
 from .forms import TaskForm
 from .models import Job
@@ -17,6 +18,8 @@ from itertools import chain
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from PIL import Image
+from chart import LineChartJSONView
+from django.views.generic import TemplateView
 
 import os #Used for testing
 
@@ -89,6 +92,7 @@ def spawnjob(request, webargs):
     return response
 
 def results(request, pk):
+    print("Regular results")
     template = loader.get_template('fec/results.html/') 
     job = Job.objects.get(pk=pk)
     #results = job.task_set.result_set.all()
@@ -99,6 +103,27 @@ def results(request, pk):
     #    results = list(chain(results,task.result_set.all()))
     response = HttpResponse(template.render({'results': results, 'allresults': allresults}, request))
     return response
+
+
+line_chart = TemplateView.as_view(template_name='fec/results_graph.html')
+line_chart_json = LineChartJSONView.as_view()
+
+def results_graph_old(request, pk):
+    print("Getting graph template")
+    template = loader.get_template('fec/results_graph.html/') 
+    job = Job.objects.get(pk=pk)
+    #results = job.task_set.result_set.all()
+    tasks = job.task_set.all()
+    results = tasks[0].result_set.all()
+    allresults = Result.objects.all()
+    #for task in tasks:
+    #    results = list(chain(results,task.result_set.all()))
+    line_chart = TemplateView.as_view(template_name='fec/results_graph.html')
+    line_chart_json = LineChartJSONView.as_view()
+    #response = HttpResponse(template.render({'results': results, 'allresults': allresults, 'line_chart': line_chart, 'line_chart_json' : line_chart_json}, request))
+
+    
+    #return response
 
 def jobs(request):
     template = loader.get_template('fec/jobs.html')
