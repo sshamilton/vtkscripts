@@ -106,11 +106,12 @@ def results(request, pk):
 
 
 #line_chart = TemplateView.as_view(template_name='fec/results_graph.html/')
-#line_chart_json = LineChartJSONView.as_view()
+line_chart_json = LineChartJSONView.as_view()
 
-def line_chart_json(request):
-    #line_chart_json = LineChartJSONView.as_view()
-    return HttpResponse(LineChartJSONView.as_view())
+#def line_chart_json(request, pk):
+    #line_chart_json = LineChartJSONView()
+    #print ("PK is: ", pk)
+    #return HttpResponse(line_chart_json)
 
 def line_chart(request, pk):
     template = loader.get_template('fec/results_graph.html/')

@@ -1,32 +1,19 @@
 {% load staticfiles %}
-Results for job x
+Result graph
 <br />
-Tasks:
 
-
-{% for result in results %}
-     Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}
-     <br />
-     {% for cubenum in result.cuberange %}
-        <a href="../{{result.output_filename}}{{cubenum}}.png">
-        <img width=200 src="../{{result.output_filename}}{{cubenum}}.png"></a>
-     {% endfor %}
-    <br />        
-{% endfor %}
-
-Graph...
 <canvas id="myChart" width="500" height="400"></canvas>
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
         <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
         <script type="text/javascript">
-            $.get('{% url "line_chart_json" %}', function(data) {
+            $.get('../../line_chart_json/json/{{pk}}/', function(data) {
                 var ctx = $("#myChart").get(0).getContext("2d");
                 new Chart(ctx).Line(data);
             });
         </script>
 
-
+<br />
 {% for result in results %}
      Result ID: {{result.id}} Task ID: {{result.task_id}} Compute time: {{result.total_time}}
      <br />
