@@ -122,23 +122,6 @@ def line_chart(request, pk):
     response = HttpResponse(template.render({'pk': pk, 'results': results, }, request))
     return response
 
-def results_graph_old(request, pk):
-    print("Getting graph template")
-    template = loader.get_template('fec/results_graph.html/') 
-    job = Job.objects.get(pk=pk)
-    #results = job.task_set.result_set.all()
-    tasks = job.task_set.all()
-    results = tasks[0].result_set.all()
-    allresults = Result.objects.all()
-    #for task in tasks:
-    #    results = list(chain(results,task.result_set.all()))
-    line_chart = TemplateView.as_view(template_name='fec/results_graph.html')
-    line_chart_json = LineChartJSONView.as_view()
-    #response = HttpResponse(template.render({'results': results, 'allresults': allresults, 'line_chart': line_chart, 'line_chart_json' : line_chart_json}, request))
-
-    
-    #return response
-
 def jobs(request):
     template = loader.get_template('fec/jobs.html')
     alljobs = Job.objects.all()
