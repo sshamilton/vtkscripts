@@ -21,7 +21,15 @@ def vortvelvolume(args):
         thresh = float(p["param2"])
     else:
         thresh = 783.3 #Default for q threshold on isotropic data
-
+    #We use 0 for structured grid (vti) and 1 for unstructured grid (vtu)
+    if (p["param3"] != ''):
+        grid = 0
+    else
+        grid = 1
+    if (p["param4"] != ''):
+        kernelsize = int(p["param4"])
+    else
+        kernelsize = 3
     inputfile = p["inputfile"] +str(cubenum) + ".npy" 
     outputfile = p["outputfile"] + str(cubenum) + ".vti" #always VTK Image Data for this.
     sx = p["sx"]
@@ -107,7 +115,7 @@ def vortvelvolume(args):
 
     d = vtk.vtkImageDilateErode3D()
     d.SetInputData(t.GetOutput())
-    d.SetKernelSize(4,4,4)
+    d.SetKernelSize(kernelsize,kernelsize,kernelsize)
     d.SetDilateValue(1)
     d.SetErodeValue(0)
     print ("Update dilate")
@@ -134,7 +142,10 @@ def vortvelvolume(args):
     velarray = stencil.GetOutput().GetPointData().GetScalars()
     image.GetPointData().RemoveArray("Velocity")
     image.GetPointData().SetVectors(velarray)
-    w = vtk.vtkXMLImageDataWriter()
+    if (grid == 0):
+        w = vtk.vtkXMLImageDataWriter()
+    else:
+        w = vtk.vtkXMLUnstructuredGridWriter()
     w.SetCompressorTypeToZLib()
     #w.SetCompressorTypeToNone() Need to figure out why this fails.
     w.SetEncodeAppendedData(0) #turn of base 64 encoding for fast write

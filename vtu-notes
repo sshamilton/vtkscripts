@@ -1,0 +1,37 @@
+– Density (rho)
+– Material Temperature (tev)
+– Radiation Temperature (rev)
+– Pressure (prs)
+– Sound Speed (snd)
+
+import vtk
+ur = vtk.vtkXMLUnstructuredGridReader()
+ur.SetFileName("pv_insitu_22010_0_304.vtu")
+ur.Update()
+ug = ur.GetOutput()
+
+c = vtk.vtkContourFilter()
+c.SetInputData(ug)
+c.SetValue(0,2.5)
+c.Update()
+print c
+
+
+
+
+
+#c.SetInputArrayToProcess(0,0,0, ug.FIELD_ASSOCIATION_CELLS, "rho")
+#image.GetPointData().SetScalars(cp.GetOutput().GetPointData().GetVectors())
+
+#cp = vtk.vtkCellDataToPointData()
+#cp.SetInputData(ug)
+
+#cp.Update()
+
+newu = vtk.vtkUnstructuredGrid()
+newu.GetPointData().SetScalars(ug.GetCellData().GetScalars("rho"))
+#ug.GetPointData().SetScalars(ug.GetCellData().GetScalars("rho"))
+
+ug.GetCellData().SetActiveScalars("rho")
+
+ug.GetPointData().SetScalars(ug.GetCellData().GetScalars("rho"))

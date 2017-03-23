@@ -118,26 +118,32 @@ def vortvelvolumei(args):
     w.SetFileName(pngfilename)
     w.SetInputConnection(windowToImageFilter.GetOutputPort())
     w.Write()
-    #Shift camera angle and take another snapshot.
-    #ren.SetActiveCamera(camera)
-    #ren.ResetCamera()
-    camera.Azimuth(90)
 
+    #Shift camera angle and take snapshots around the cube.
+    for aznum in range(4):
+        camera.Azimuth(90)
+        windowToImageFilter = vtk.vtkWindowToImageFilter()
+        windowToImageFilter.SetInput(renWin)
+        windowToImageFilter.Update()
+        pngfilename = p["outputfile"] + str(cubenum) + "-r" + str(az)+ ".png"
+        w.SetFileName(pngfilename)
+        w.SetInputConnection(windowToImageFilter.GetOutputPort())
+        w.Write()
+
+    camera.Yaw(90) #Rotate camera to top
     windowToImageFilter = vtk.vtkWindowToImageFilter()
     windowToImageFilter.SetInput(renWin)
     windowToImageFilter.Update()
-
-    pngfilename = p["outputfile"] + str(cubenum) + "-r1.png"
+    pngfilename = p["outputfile"] + str(cubenum) + "-t1.png"
     w.SetFileName(pngfilename)
     w.SetInputConnection(windowToImageFilter.GetOutputPort())
     w.Write()
-    camera.Azimuth(90)
 
+    camera.Yaw(180) #Rotate camera to bottom
     windowToImageFilter = vtk.vtkWindowToImageFilter()
     windowToImageFilter.SetInput(renWin)
     windowToImageFilter.Update()
-
-    pngfilename = p["outputfile"] + str(cubenum) + "-r2.png"
+    pngfilename = p["outputfile"] + str(cubenum) + "-b1.png"
     w.SetFileName(pngfilename)
     w.SetInputConnection(windowToImageFilter.GetOutputPort())
     w.Write()
