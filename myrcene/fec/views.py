@@ -118,7 +118,7 @@ def line_chart(request, pk):
     #TemplateView.as_view(template_name='fec/results_graph.html')
     job = Job.objects.get(pk=pk)
     tasks = job.task_set.all()
-    results = tasks[0].result_set.all()
+    results = tasks[0].result_set.all() #fix this so all tasks are passed.
     response = HttpResponse(template.render({'pk': pk, 'results': results, }, request))
     return response
 
