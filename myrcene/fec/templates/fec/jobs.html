@@ -3,7 +3,7 @@ Choose a job to start:
 <br />
 <ul>
 {% for job in jobs %}
-     <li>Job: <a href = '/fec/job_detail/{{job.id}}'>{{job.name}}</a>&nbsp; <a href = '/fec/spawnjob/{{job.id}}'>Spawn this job</a> &nbsp; <a href='/fec/results/{{job.id}}'>View Results (if available)</a></li>
+<li>Job: <a href = '/fec/job_detail/{{job.id}}'>{{job.name}}</a>&nbsp; <a href = '/fec/spawnjob/{{job.id}}'>Spawn this job</a> &nbsp; <a href='/fec/results/{{job.id}}'>View Results (if available)</a> <a href='/fec/results_graph/{{job.id}}'>View Chart</a></li>
 {% endfor %}
 </li>
 </ul>
