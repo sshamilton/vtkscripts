@@ -24,11 +24,11 @@ def vortvelvolume(args):
     #We use 0 for structured grid (vti) and 1 for unstructured grid (vtu)
     if (p["param3"] != ''):
         grid = 0
-    else
+    else:
         grid = 1
     if (p["param4"] != ''):
         kernelsize = int(p["param4"])
-    else
+    else:
         kernelsize = 3
     inputfile = p["inputfile"] +str(cubenum) + ".npy" 
     outputfile = p["outputfile"] + str(cubenum) + ".vti" #always VTK Image Data for this.

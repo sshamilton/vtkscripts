@@ -125,7 +125,7 @@ def vortvelvolumei(args):
         windowToImageFilter = vtk.vtkWindowToImageFilter()
         windowToImageFilter.SetInput(renWin)
         windowToImageFilter.Update()
-        pngfilename = p["outputfile"] + str(cubenum) + "-r" + str(az)+ ".png"
+        pngfilename = p["outputfile"] + str(cubenum) + "-r" + str(aznum)+ ".png"
         w.SetFileName(pngfilename)
         w.SetInputConnection(windowToImageFilter.GetOutputPort())
         w.Write()
