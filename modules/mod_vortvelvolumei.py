@@ -130,7 +130,7 @@ def vortvelvolumei(args):
         w.SetInputConnection(windowToImageFilter.GetOutputPort())
         w.Write()
 
-    camera.Yaw(90) #Rotate camera to top
+    camera.Elevation(90) #Rotate camera to top
     windowToImageFilter = vtk.vtkWindowToImageFilter()
     windowToImageFilter.SetInput(renWin)
     windowToImageFilter.Update()
@@ -139,7 +139,7 @@ def vortvelvolumei(args):
     w.SetInputConnection(windowToImageFilter.GetOutputPort())
     w.Write()
 
-    camera.Yaw(180) #Rotate camera to bottom
+    camera.Elevation(180) #Rotate camera to bottom
     windowToImageFilter = vtk.vtkWindowToImageFilter()
     windowToImageFilter.SetInput(renWin)
     windowToImageFilter.Update()
