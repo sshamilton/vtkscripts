@@ -159,7 +159,7 @@ def vortvelvolume(args):
         w.GetCompressor().SetTolerance(1e-2)
         w.GetCompressor().SetNumComponents(3)
 
-    #result = w.Write()
+    result = w.Write()
     result = 1 #don't write for benchmarking
     we = timeit.default_timer()
 
